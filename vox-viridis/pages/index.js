@@ -1,5 +1,5 @@
-import Footer from "./components/Footer.js"
-import Homepage from './components/Home/Homepage'
+import Footer from "../components/Footer.js"
+import Homepage from './Home/Homepage'
 
 export default function Home() {
   return (
