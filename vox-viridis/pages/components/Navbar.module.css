@@ -13,6 +13,10 @@
     padding-top: 1vh;
 }
 
+.loginText {
+    margin-top: 0.2vh;
+}
+
 .topbarText {
     text-align: center;
     font-weight: normal;
@@ -25,10 +29,6 @@
     justify-content: center;
     height: 5vh;
 }
-.logoImage {
-    margin-top: 0.6vh;
-}
-
 .routeContainerLeft {
     float: left;
     margin-left: 5vw;

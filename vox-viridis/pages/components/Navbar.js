@@ -7,7 +7,7 @@ const Navbar = () => {
         <div className={styles.topbar}>
             <div className={styles.login}>
                 <AccountCircleRoundedIcon />
-                <text>Login</text>
+                <text className={styles.loginText}>Login</text>
             </div>
             <div className={styles.logoContainer}>
                 <h2 className={styles.topbarText}>
@@ -17,8 +17,8 @@ const Navbar = () => {
                 <img
                     className={styles.logoImage}
                     src="../../vox-viridis_icon.png"
-                    width="20"
-                    height="20"
+                    width="35"
+                    height="35"
                 ></img>
             </div>
             <hr />
@@ -37,12 +37,7 @@ const Navbar = () => {
                     <IconButton className={styles.routeContactUs}>
                         Contact Us
                     </IconButton>
-                    <IconButton
-                        className={styles.routeAbout}
-                        styles={{ right: "50px" }}
-                    >
-                        About
-                    </IconButton>
+                    <IconButton className={styles.routeAbout}>About</IconButton>
                 </div>
             </div>
         </div>
