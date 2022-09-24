@@ -1,13 +1,11 @@
-import styles from './Homepage.module.css'
+import Topbar from "../Navbar";
 
 function Homepage() {
     return (
-        <div className={styles.Homepage}>
-            
+        <div>
+            <Topbar />
         </div>
     );
 }
-
-
 
 export default Homepage;

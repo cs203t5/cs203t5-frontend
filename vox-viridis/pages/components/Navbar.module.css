@@ -1,0 +1,41 @@
+.topbar {
+    background-color: #faf8f4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 2ch;
+    min-height: 95vh;
+}
+
+.login {
+    display: flex;
+    justify-content: right;
+    padding-right: 2vw;
+    padding-top: 1vh;
+}
+
+.topbarText {
+    text-align: center;
+    font-weight: normal;
+    font-size: 2em;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+}
+.logoImage {
+    margin-top: 0.6vh;
+}
+
+.routeContainerLeft {
+    float: left;
+    margin-left: 5vw;
+}
+.routeContainerRight {
+    display: flex;
+    float: right;
+    margin-right: 5vw;
+    gap: 2vw;
+}
