@@ -1,11 +1,12 @@
 import styles from "./Navbar.module.css";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import Link from "next/link";
 
 const Navbar = () => {
     return (
-        <div className={styles.topbar}>
-            <div className={styles.login}>
+        <div>
+            <div className={styles.login} href="/login">
                 <AccountCircleRoundedIcon />
                 <text className={styles.loginText}>Login</text>
             </div>
@@ -22,8 +23,9 @@ const Navbar = () => {
                 ></img>
             </div>
             <hr />
-            <div className={styles.routeContainer}>
-                <div className={styles.routeContainerLeft}>
+            {/* <div className={styles.routeContainer}> */}
+            <div className={styles.routeContainerLeft}>
+                <Link href="/campaign">
                     <IconButton
                         disableRipple
                         disableFocusRipple
@@ -31,14 +33,21 @@ const Navbar = () => {
                     >
                         Campaign
                     </IconButton>
-                </div>
-                <div className={styles.routeContainerRight}>
+                </Link>
+            </div>
+            <div className={styles.routeContainerRight}>
+                <Link href="/help">
                     <IconButton className={styles.routeHelp}>Help</IconButton>
+                </Link>
+                <Link href="/contactus">
                     <IconButton className={styles.routeContactUs}>
                         Contact Us
                     </IconButton>
+                </Link>
+                <Link href="/about">
                     <IconButton className={styles.routeAbout}>About</IconButton>
-                </div>
+                </Link>
+                {/* </div> */}
             </div>
         </div>
     );
