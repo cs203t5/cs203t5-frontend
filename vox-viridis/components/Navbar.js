@@ -23,7 +23,7 @@ const Navbar = () => {
                 ></img>
             </div>
             <hr />
-            {/* <div className={styles.routeContainer}> */}
+
             <div className={styles.routeContainerLeft}>
                 <Link href="/campaign">
                     <IconButton
@@ -47,7 +47,6 @@ const Navbar = () => {
                 <Link href="/about">
                     <IconButton className={styles.routeAbout}>About</IconButton>
                 </Link>
-                {/* </div> */}
             </div>
         </div>
     );

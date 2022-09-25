@@ -16,11 +16,13 @@
 .climatechangeContainer,
 .landfillContainer {
     justify-content: center;
+    margin-bottom: 5vh;
 }
 .marineImg {
 }
 .marineWriteup {
     width: 30vh;
+    margin-top: 2.5vh;
 }
 
 .climatechangeContainer {
@@ -30,6 +32,7 @@
 }
 
 .climateWriteup {
+    margin-top: 2.5vh;
     width: 20vw;
 }
 
@@ -40,5 +43,6 @@
     width: 30vh;
 }
 .landfillWriteup {
+    margin-top: 2.5vh;
     width: 20vw;
 }
