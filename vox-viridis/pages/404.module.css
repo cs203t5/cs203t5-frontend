@@ -11,8 +11,20 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    display: flex;
-    font-size: 5em;
+    /* display: flex; */
+    font-size: 3em;
+    font-style: oblique;
 }
+
+.img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
 .notFoundText {
+    text-align: center;
+    justify-content: center;
+    margin-top: 8vh;
 }

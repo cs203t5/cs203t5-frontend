@@ -3,7 +3,8 @@ const NotFound = () => {
     return (
         <div className={styles.bg}>
             <div className={styles.internalContainer}>
-                <text className={styles.notFoundText}>Not Found</text>
+                <img className={styles.img} src="../404.svg" />
+                <div className={styles.notFoundText}>Error! Page Not Found</div>
             </div>
         </div>
     );
