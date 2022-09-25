@@ -14,7 +14,7 @@ a {
     font-family: "Italiana";
     color: black;
     box-sizing: border-box;
-    font-weight: 400;
+    font-weight: bold;
 }
 
 /* @media (prefers-color-scheme: dark) {

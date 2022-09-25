@@ -16,6 +16,7 @@
 .climatechangeContainer,
 .landfillContainer {
     justify-content: center;
+    margin-bottom: 5vh;
 }
 .marineImg {
 }

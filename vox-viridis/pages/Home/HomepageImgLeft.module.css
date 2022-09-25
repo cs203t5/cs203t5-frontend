@@ -1,0 +1,25 @@
+.homepageLeftImg {
+    width: 30vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    margin-left: 15vw;
+}
+
+.homepageLeftContainer {
+    display: flex;
+}
+
+.homepageLeftTextContainer {
+    align-self: center;
+    margin-left: 3vw;
+}
+
+.homepageLeftHeader {
+    font-size: 2em;
+    font-style: italic;
+}
+
+.homepageLeftText {
+    margin-top: 2vh;
+    width: 30vw;
+}
