@@ -9,7 +9,7 @@ const HomepageIntro = () => {
                     src="../../home/marine.png"
                     FFFFFF
                 ></img>
-                <div style={{ fontSize: "1.5em", margin: "5px" }}>
+                <div style={{ fontSize: "1.5em", marginTop: "3vh" }}>
                     Marine Pollution
                 </div>
                 <div className={styles.marineWriteup}>
@@ -24,7 +24,9 @@ const HomepageIntro = () => {
                     src="../../home/landfill.png"
                     FFFFFF
                 ></img>
-                <div style={{ fontSize: "1.5em", margin: "5px" }}>Landfill</div>
+                <div style={{ fontSize: "1.5em", marginTop: "3vh" }}>
+                    Landfill
+                </div>
                 <div className={styles.landfillWriteup}>
                     With our limited land capacity, even Pulau Semakau is
                     running out of space for our waste. Get started on recycling
@@ -37,7 +39,7 @@ const HomepageIntro = () => {
                     src="../../home/climatechange.png"
                     FFFFFF
                 ></img>
-                <div style={{ fontSize: "1.5em", margin: "5px" }}>
+                <div style={{ fontSize: "1.5em", marginTop: "3vh" }}>
                     Climate Change
                 </div>
                 <div className={styles.climateWriteup}>
