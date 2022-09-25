@@ -8,10 +8,11 @@
 .BigImg {
     object-fit: cover;
     max-width: 100%;
-    height: 60vh;
+    height: 75vh;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    justify-content: center;
 }
 
 .introContainer {
@@ -28,29 +29,33 @@
     margin-top: 5vh;
 }
 
-.marineContainer {
+.marineContainer,
+.climatechangeContainer,
+.landfillContainer {
+    justify-content: center;
 }
 .marineImg {
 }
 .marineWriteup {
-    font-weight: 100;
+    width: 30vh;
 }
 
 .climatechangeContainer {
 }
 
 .climatechangeImg {
-    width: 25vw;
 }
 
 .climateWriteup {
+    width: 20vw;
 }
 
 .landfillContainer {
 }
 
 .landfillImg {
-    width: 25vw;
+    width: 30vh;
 }
 .landfillWriteup {
+    width: 20vw;
 }

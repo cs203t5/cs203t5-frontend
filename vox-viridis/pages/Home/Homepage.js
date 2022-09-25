@@ -36,7 +36,7 @@ function Homepage() {
                     <div style={{ fontSize: "1.5em", margin: "5px" }}>
                         Landfill
                     </div>
-                    <div className={styles.marineWriteup}>
+                    <div className={styles.landfillWriteup}>
                         With our limited land capacity, even Pulau Semakau is
                         running out of space for our waste. Get started on
                         recycling before it is too late.{" "}
@@ -51,7 +51,7 @@ function Homepage() {
                     <div style={{ fontSize: "1.5em", margin: "5px" }}>
                         Climate Change
                     </div>
-                    <div className={styles.marineWriteup}>
+                    <div className={styles.climateWriteup}>
                         Rising sea level, melting ice caps and homeless polar
                         bears. These are caused by our irresponsiblties and we
                         have to start taking action now.
