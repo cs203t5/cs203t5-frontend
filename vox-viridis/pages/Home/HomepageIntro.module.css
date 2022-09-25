@@ -1,0 +1,44 @@
+.introContainer {
+    background-color: #ffffff;
+    display: flex;
+    gap: 3vw;
+    justify-content: space-evenly;
+    text-align: center;
+    font-style: italic;
+    text-decoration-thickness: 1px;
+}
+.introContainer img {
+    height: 25vh;
+    margin-top: 5vh;
+}
+
+.marineContainer,
+.climatechangeContainer,
+.landfillContainer {
+    justify-content: center;
+}
+.marineImg {
+}
+.marineWriteup {
+    width: 30vh;
+}
+
+.climatechangeContainer {
+}
+
+.climatechangeImg {
+}
+
+.climateWriteup {
+    width: 20vw;
+}
+
+.landfillContainer {
+}
+
+.landfillImg {
+    width: 30vh;
+}
+.landfillWriteup {
+    width: 20vw;
+}
