@@ -1,3 +1,4 @@
+@import url("http://fonts.cdnfonts.com/css/italiana");
 html,
 body {
     padding: 0;
@@ -10,9 +11,10 @@ a {
 }
 
 * {
-    font-family: "Italiana", serif;
+    font-family: "Italiana";
     color: black;
     box-sizing: border-box;
+    font-weight: 400;
 }
 
 /* @media (prefers-color-scheme: dark) {
