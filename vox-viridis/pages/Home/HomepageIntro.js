@@ -7,7 +7,6 @@ const HomepageIntro = () => {
                 <img
                     className={styles.marineImg}
                     src="../../home/marine.png"
-                    FFFFFF
                 ></img>
                 <div style={{ fontSize: "1.5em", marginTop: "3vh" }}>
                     Marine Pollution
@@ -22,7 +21,6 @@ const HomepageIntro = () => {
                 <img
                     className={styles.landfillImg}
                     src="../../home/landfill.png"
-                    FFFFFF
                 ></img>
                 <div style={{ fontSize: "1.5em", marginTop: "3vh" }}>
                     Landfill
@@ -37,7 +35,6 @@ const HomepageIntro = () => {
                 <img
                     className={styles.climatechangeImg}
                     src="../../home/climatechange.png"
-                    FFFFFF
                 ></img>
                 <div style={{ fontSize: "1.5em", marginTop: "3vh" }}>
                     Climate Change
