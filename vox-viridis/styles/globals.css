@@ -17,6 +17,14 @@ a {
     font-weight: bold;
 }
 
+.pageBg {
+    background-color: #faf8f4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 2ch;
+    min-height: 95vh;
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -10,18 +10,22 @@ const Navbar = () => {
                 <AccountCircleRoundedIcon />
                 <text className={styles.loginText}>Login</text>
             </div>
-            <div className={styles.logoContainer}>
-                <h2 className={styles.topbarText}>
-                    <i styles={{ fontSize: "50px" }}>Vox-Viridis</i>
-                </h2>
 
-                <img
-                    className={styles.logoImage}
-                    src="../../vox-viridis_icon.png"
-                    width="35"
-                    height="35"
-                ></img>
-            </div>
+            <Link href="/">
+                <div className={styles.logoContainer}>
+                    <h2 className={styles.topbarText}>
+                        <i styles={{ fontSize: "50px" }}>Vox-Viridis</i>
+                    </h2>
+
+                    <img
+                        className={styles.logoImage}
+                        src="../../vox-viridis_icon.png"
+                        width="35"
+                        height="35"
+                    ></img>
+                </div>
+            </Link>
+
             <hr />
 
             <div className={styles.routeContainerLeft}>
