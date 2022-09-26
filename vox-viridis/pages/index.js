@@ -5,6 +5,8 @@ import HomepageImgLeft from "../components/Home/HomepageImgLeft";
 import HomepageIntro from "../components/Home/HomepageIntro";
 import HomepageRewards from "../components/Home/HomepageRight";
 import globalStyle from "./Global.module.css";
+
+
 const contents = [
     {
         header: "Campaign",

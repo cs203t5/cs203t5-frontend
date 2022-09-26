@@ -11,7 +11,7 @@
 
 .topbarText {
     text-align: center;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 2em;
 }
 
@@ -21,6 +21,10 @@
     justify-content: center;
     height: 5vh;
     cursor: pointer;
+}
+.routeContainer {
+    overflow: hidden;
+    color: black;
 }
 .routeContainerLeft {
     float: left;

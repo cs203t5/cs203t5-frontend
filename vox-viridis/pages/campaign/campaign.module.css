@@ -1,0 +1,18 @@
+.search {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+.searchForCampaign {
+    width: 40vw;
+}
+
+.campaignContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: max-content;
+
+    grid-auto-rows: minmax(100px, auto);
+
+    margin-top: 5vh;
+}

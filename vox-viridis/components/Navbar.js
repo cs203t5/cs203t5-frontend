@@ -1,5 +1,5 @@
 import styles from "./Navbar.module.css";
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@mui/material/IconButton";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import Link from "next/link";
 
@@ -27,30 +27,43 @@ const Navbar = () => {
             </Link>
 
             <hr />
-
-            <div className={styles.routeContainerLeft}>
-                <Link href="/campaign">
-                    <IconButton
-                        disableRipple
-                        disableFocusRipple
-                        className={styles.routeCampaign}
-                    >
-                        Campaign
-                    </IconButton>
-                </Link>
-            </div>
-            <div className={styles.routeContainerRight}>
-                <Link href="/help">
-                    <IconButton className={styles.routeHelp}>Help</IconButton>
-                </Link>
-                <Link href="/contactus">
-                    <IconButton className={styles.routeContactUs}>
-                        Contact Us
-                    </IconButton>
-                </Link>
-                <Link href="/about">
-                    <IconButton className={styles.routeAbout}>About</IconButton>
-                </Link>
+            <div className={styles.routeContainer}>
+                <div className={styles.routeContainerLeft}>
+                    <Link href="/campaign">
+                        <IconButton
+                            className={styles.routeCampaign}
+                            sx={{ color: "black" }}
+                        >
+                            Campaign
+                        </IconButton>
+                    </Link>
+                </div>
+                <div className={styles.routeContainerRight}>
+                    <Link href="/help">
+                        <IconButton
+                            className={styles.routeHelp}
+                            sx={{ color: "black" }}
+                        >
+                            Help
+                        </IconButton>
+                    </Link>
+                    <Link href="/contactus">
+                        <IconButton
+                            className={styles.routeContactUs}
+                            sx={{ color: "black" }}
+                        >
+                            Contact Us
+                        </IconButton>
+                    </Link>
+                    <Link href="/about">
+                        <IconButton
+                            className={styles.routeAbout}
+                            sx={{ color: "black" }}
+                        >
+                            About
+                        </IconButton>
+                    </Link>
+                </div>
             </div>
         </div>
     );

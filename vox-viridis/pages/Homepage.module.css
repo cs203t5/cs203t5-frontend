@@ -1,6 +1,6 @@
 .BigImg {
     object-fit: cover;
-    max-width: 100%;
+    max-width: 90%;
     height: 75vh;
     display: block;
     margin-left: auto;
