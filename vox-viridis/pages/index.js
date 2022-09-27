@@ -26,7 +26,7 @@ export default function Home() {
             <div className={globalStyle.pageBg}>
                 <Navbar />
                 <Fade clear delay={200} duration={500}>
-                    <div class="row justify-content-center">
+                    <div className="row justify-content-center">
                         <img
                             className="img-responsive center-block"
                             src="../../home/homepageBig.png"
@@ -43,9 +43,9 @@ export default function Home() {
                 <Slide left delay={500}>
                     <HomepageImgLeft content={contents[0]}></HomepageImgLeft>
                 </Slide>
-                <Slide right delay={500}>
-                    <HomePageRight />
-                </Slide>
+
+                <HomePageRight />
+
                 <Slide left delay={500}>
                     <HomepageImgLeft content={contents[1]}></HomepageImgLeft>
                 </Slide>

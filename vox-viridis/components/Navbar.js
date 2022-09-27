@@ -75,8 +75,6 @@ const Navbar = () => {
                         </NavbarTemplate.Collapse>
                     </Container>
                 </NavbarTemplate>
-                <div className={styles.routeContainerLeft}></div>
-                <div className={styles.routeContainerRight}></div>
             </div>
         </div>
     );
