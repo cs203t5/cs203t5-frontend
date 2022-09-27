@@ -36,7 +36,7 @@ export default function Home() {
                 <Fade left delay={500}>
                     <TestHomePageIntro />
                 </Fade>
-                <hr></hr>
+
                 <Slide left delay={500}>
                     <HomepageImgLeft content={contents[0]}></HomepageImgLeft>
                 </Slide>

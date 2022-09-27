@@ -1,7 +1,7 @@
 import styles from "./TestHomePageIntro.module.css";
 const TestHomePageIntro = () => {
     return (
-        <div className="row" align="center">
+        <div className="row " align="center" style={{ marginBottom: "0.8vh" }}>
             {" "}
             <div className="col-sm-12 col-md col-lg-4 ">
                 <img
