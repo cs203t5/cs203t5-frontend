@@ -2,6 +2,10 @@ import styles from "./Navbar.module.css";
 import IconButton from "@mui/material/IconButton";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import Link from "next/link";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import NavbarTemplate from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const Navbar = () => {
     return (
@@ -28,42 +32,51 @@ const Navbar = () => {
 
             <hr />
             <div className={styles.routeContainer}>
-                <div className={styles.routeContainerLeft}>
-                    <Link href="/campaign">
-                        <IconButton
-                            className={styles.routeCampaign}
-                            sx={{ color: "black" }}
-                        >
-                            Campaign
-                        </IconButton>
-                    </Link>
-                </div>
-                <div className={styles.routeContainerRight}>
-                    <Link href="/help">
-                        <IconButton
-                            className={styles.routeHelp}
-                            sx={{ color: "black" }}
-                        >
-                            Help
-                        </IconButton>
-                    </Link>
-                    <Link href="/contactus">
-                        <IconButton
-                            className={styles.routeContactUs}
-                            sx={{ color: "black" }}
-                        >
-                            Contact Us
-                        </IconButton>
-                    </Link>
-                    <Link href="/about">
-                        <IconButton
-                            className={styles.routeAbout}
-                            sx={{ color: "black" }}
-                        >
-                            About
-                        </IconButton>
-                    </Link>
-                </div>
+                <NavbarTemplate expand="lg">
+                    <Container>
+                        <NavbarTemplate.Toggle aria-controls="basic-navbar-nav" />
+                        <NavbarTemplate.Collapse id="basic-navbar-nav">
+                            <Nav className="me-auto">
+                                <Link href="/campaign">
+                                    <IconButton
+                                        className={styles.routeCampaign}
+                                        sx={{ color: "black" }}
+                                    >
+                                        Campaign
+                                    </IconButton>
+                                </Link>
+                            </Nav>
+                            <Nav className="ml-auto">
+                                <Link href="/help">
+                                    <IconButton
+                                        className={styles.routeHelp}
+                                        sx={{ color: "black" }}
+                                    >
+                                        Help
+                                    </IconButton>
+                                </Link>
+                                <Link href="/contactus">
+                                    <IconButton
+                                        className={styles.routeContactUs}
+                                        sx={{ color: "black" }}
+                                    >
+                                        Contact Us
+                                    </IconButton>
+                                </Link>
+                                <Link href="/about">
+                                    <IconButton
+                                        className={styles.routeAbout}
+                                        sx={{ color: "black" }}
+                                    >
+                                        About
+                                    </IconButton>
+                                </Link>
+                            </Nav>
+                        </NavbarTemplate.Collapse>
+                    </Container>
+                </NavbarTemplate>
+                <div className={styles.routeContainerLeft}></div>
+                <div className={styles.routeContainerRight}></div>
             </div>
         </div>
     );

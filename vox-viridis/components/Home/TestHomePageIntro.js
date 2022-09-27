@@ -1,8 +1,15 @@
 import styles from "./TestHomePageIntro.module.css";
 const TestHomePageIntro = () => {
     return (
-        <div className="row " align="center" style={{ marginBottom: "0.8vh" }}>
-            {" "}
+        <div
+            className="row mx-0"
+            align="center"
+            style={{
+                marginBottom: "0.8vh",
+                backgroundColor: "white",
+                maxWidth: "100%",
+            }}
+        >
             <div className="col-sm-12 col-md col-lg-4 ">
                 <img
                     className={styles.marineImg}
@@ -14,7 +21,7 @@ const TestHomePageIntro = () => {
                 <div className={styles.marineWriteup}>
                     52% of sea turtles have eaten commerical plastic, affecting
                     their mortality rate. Get involved with Vox Viridis to save
-                    our precious marine animals!{" "}
+                    our precious marine animals!
                 </div>
             </div>
             <div className="col-sm-12 col-md col-lg-4">
@@ -28,7 +35,7 @@ const TestHomePageIntro = () => {
                 <div className={styles.landfillWriteup}>
                     With our limited land capacity, even Pulau Semakau is
                     running out of space for our waste. Get started on recycling
-                    before it is too late.{" "}
+                    before it is too late.
                 </div>
             </div>
             <div className="col-sm-12 col-md col-lg-4">
