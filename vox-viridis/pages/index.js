@@ -5,7 +5,7 @@ import HomepageImgLeft from "../components/Home/HomepageImgLeft";
 import HomepageIntro from "../components/Home/HomepageIntro";
 import HomepageRewards from "../components/Home/HomepageRight";
 import globalStyle from "./Global.module.css";
-
+import { Fade, Slide } from "react-reveal";
 
 const contents = [
     {
@@ -24,16 +24,26 @@ export default function Home() {
         <div>
             <div className={globalStyle.pageBg}>
                 <Navbar />
-                <div>
-                    <img
-                        className={styles.BigImg}
-                        src="../../home/homepageBig.png"
-                    ></img>
-                </div>
-                <HomepageIntro />
-                <HomepageImgLeft content={contents[0]}></HomepageImgLeft>
-                <HomepageRewards />
-                <HomepageImgLeft content={contents[1]}></HomepageImgLeft>
+                <Fade clear delay={200} duration={500}>
+                    <div>
+                        <img
+                            className={styles.BigImg}
+                            src="../../home/homepageBig.png"
+                        ></img>
+                    </div>
+                </Fade>
+                <Fade left delay={500}>
+                    <HomepageIntro />
+                </Fade>
+                <Slide left delay={500}>
+                    <HomepageImgLeft content={contents[0]}></HomepageImgLeft>
+                </Slide>
+                <Slide right delay={1000}>
+                    <HomepageRewards />
+                </Slide>
+                <Slide left delay={500}>
+                    <HomepageImgLeft content={contents[1]}></HomepageImgLeft>
+                </Slide>
             </div>
             <Footer />
         </div>
