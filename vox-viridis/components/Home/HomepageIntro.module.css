@@ -20,6 +20,7 @@
     margin-bottom: 5vh;
 }
 .marineImg {
+    aspect-ratio: 1/4;
 }
 .marineWriteup {
     width: 30vh;
@@ -41,7 +42,7 @@
 }
 
 .landfillImg {
-    width: 30vh;
+    /* width: 30vh; */
 }
 .landfillWriteup {
     margin-top: 2.5vh;

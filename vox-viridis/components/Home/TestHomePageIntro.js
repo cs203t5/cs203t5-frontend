@@ -1,10 +1,9 @@
-import styles from "./HomepageIntro.module.css";
-
-const HomepageIntro = () => {
+import styles from "./TestHomePageIntro.module.css";
+const TestHomePageIntro = () => {
     return (
-        <div className={styles.introContainer}>
-            
-            <div className={styles.marineContainer}>
+        <div className="row" align="center">
+            {" "}
+            <div className="col-sm-12 col-md col-lg-4 ">
                 <img
                     className={styles.marineImg}
                     src="../../home/marine.png"
@@ -18,7 +17,7 @@ const HomepageIntro = () => {
                     our precious marine animals!{" "}
                 </div>
             </div>
-            <div className={styles.landfillContainer}>
+            <div className="col-sm-12 col-md col-lg-4">
                 <img
                     className={styles.landfillImg}
                     src="../../home/landfill.png"
@@ -32,7 +31,7 @@ const HomepageIntro = () => {
                     before it is too late.{" "}
                 </div>
             </div>
-            <div className={styles.climatechangeContainer}>
+            <div className="col-sm-12 col-md col-lg-4">
                 <img
                     className={styles.climatechangeImg}
                     src="../../home/climatechange.png"
@@ -50,4 +49,4 @@ const HomepageIntro = () => {
     );
 };
 
-export default HomepageIntro;
+export default TestHomePageIntro;
