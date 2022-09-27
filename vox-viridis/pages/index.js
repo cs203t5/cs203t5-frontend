@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import styles from "./Homepage.module.css";
 import HomepageImgLeft from "../components/Home/HomepageImgLeft";
 import HomepageIntro from "../components/Home/HomepageIntro";
-import HomepageRewards from "../components/Home/HomepageRight";
+import HomePageRight from "../components/Home/HomepageRight";
 import globalStyle from "./Global.module.css";
 import { Fade, Slide } from "react-reveal";
 import TestHomePageIntro from "../components/Home/TestHomePageIntro.js";
@@ -26,10 +26,13 @@ export default function Home() {
             <div className={globalStyle.pageBg}>
                 <Navbar />
                 <Fade clear delay={200} duration={500}>
-                    <div>
+                    <div class="row justify-content-center">
                         <img
-                            className={styles.BigImg}
+                            className="img-responsive center-block"
                             src="../../home/homepageBig.png"
+                            style={{
+                                maxWidth: "78% !important",
+                            }}
                         ></img>
                     </div>
                 </Fade>
@@ -40,8 +43,8 @@ export default function Home() {
                 <Slide left delay={500}>
                     <HomepageImgLeft content={contents[0]}></HomepageImgLeft>
                 </Slide>
-                <Slide right delay={1000}>
-                    <HomepageRewards />
+                <Slide right delay={500}>
+                    <HomePageRight />
                 </Slide>
                 <Slide left delay={500}>
                     <HomepageImgLeft content={contents[1]}></HomepageImgLeft>
