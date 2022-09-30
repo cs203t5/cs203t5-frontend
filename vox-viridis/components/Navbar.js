@@ -5,27 +5,34 @@ import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import NavbarTemplate from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 
 const Navbar = () => {
     return (
-        <div>
-            <div className={styles.login} href="/login">
-                <AccountCircleRoundedIcon />
-                <text className={styles.loginText}>Login</text>
+        <div className="container-fluid">
+            <div
+                className="d-flex flex-row-reverse p-2"
+                style={{ cursor: "pointer" }}
+            >
+                <Link href="/login">
+                    <div>
+                        <AccountCircleRoundedIcon />
+                        <text className={styles.loginText}>Login</text>
+                    </div>
+                </Link>
             </div>
 
             <Link href="/">
                 <div className={styles.logoContainer}>
-                    <h2 className={styles.topbarText}>
-                        <i styles={{ fontSize: "50px" }}>Vox-Viridis</i>
-                    </h2>
+                    <div style={{ fontSize: "2em" }}>
+                        <i>Vox-Viridis</i>
+                    </div>
 
                     <img
-                        className={styles.logoImage}
+                        className="row"
                         src="../../vox-viridis_icon.png"
                         width="35"
                         height="35"
+                        style={{ marginLeft: "5px" }}
                     ></img>
                 </div>
             </Link>
@@ -40,7 +47,9 @@ const Navbar = () => {
                                 <Link href="/campaign">
                                     <IconButton
                                         className={styles.routeCampaign}
-                                        sx={{ color: "black" }}
+                                        sx={{
+                                            color: "black",
+                                        }}
                                     >
                                         Campaign
                                     </IconButton>

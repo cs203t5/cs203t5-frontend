@@ -1,16 +1,8 @@
-.homepageRightContainer {
-    background-color: #ffffff;
-    display: flex;
-}
 .homepageRightImg {
     width: 20vw;
     margin-top: 3vw;
     margin-bottom: 3vw;
     margin-left: 5vw;
-}
-.homepageRightHeader {
-    font-size: 2em;
-    font-style: italic;
 }
 
 .homepageRightTextContainer {

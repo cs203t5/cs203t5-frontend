@@ -17,8 +17,6 @@
 .marineImg,
 .climatechangeImg,
 .landfillImg {
-    /* height: 25vh; */
-    /* object-fit: contain; */
     max-width: 80%;
     margin-top: 5vh;
     height: 40%;
