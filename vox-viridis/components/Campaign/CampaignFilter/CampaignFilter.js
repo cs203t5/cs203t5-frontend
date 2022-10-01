@@ -1,5 +1,4 @@
 import Button from "@mui/material/Button";
-import styles from "./CampaignFilter.module.css";
 import CampaignFilterCheckBox from "./CampaignFilterCheckBox";
 import CampaignSortBy from "./CampaignSortBy";
 
