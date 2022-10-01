@@ -1,4 +1,3 @@
-import styles from "./CampaignFilterCheckBox.module.css";
 const CampaignFilterCheckBox = (props) => {
     const renderCheckBox = props.content.filters.map((filter) => (
         <div className="form-check" style={{ display: "flex" }} key={filter}>

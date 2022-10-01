@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar";
 import globalStyle from "../Global.module.css";
 import styles from "./campaign.module.css";
 import SearchIcon from "@mui/icons-material/Search";
-import CampaignFilter from "../../components/Campaign/CampaignFilter";
+import CampaignFilter from "../../components/Campaign/CampaignFilter/CampaignFilter";
 import Footer from "../../components/Footer.js";
 import CampaignBoxSticky from "../../components/Campaign/CampaignBoxSticky";
 
@@ -22,7 +22,7 @@ const Campaign = () => {
                             <SearchIcon />
                         </IconButton>
                     </div>{" "}
-                    <div className="row">
+                    <div className="row mt-5">
                         <div className="col-lg-2">
                             <CampaignFilter />
                         </div>
