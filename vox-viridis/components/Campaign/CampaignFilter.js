@@ -21,7 +21,7 @@ const contents = [
 const CampaignFilter = () => {
     return (
         <div
-            className="col-lg-2 mt-10 d-none d-lg-block sticky-top p-0"
+            className="w-100 mt-10 d-none d-lg-block sticky-top p-0"
             style={{
                 backgroundColor: "#ffffff",
                 borderRadius: "10px",
@@ -54,6 +54,7 @@ const CampaignFilter = () => {
             <CampaignFilterCheckBox content={contents[1]} />
             <hr style={{ color: "grey" }} />
             <CampaignFilterCheckBox content={contents[2]} style="20px" />
+            <div className="mb-100"></div>
         </div>
     );
 };

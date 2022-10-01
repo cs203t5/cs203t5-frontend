@@ -22,12 +22,18 @@ const Campaign = () => {
                             <SearchIcon />
                         </IconButton>
                     </div>{" "}
-                    <CampaignFilter />
-                    <CampaignBoxSticky />
-                    <CampaignBoxSticky />
-                    <CampaignBoxSticky />
-                    <CampaignBoxSticky />
-                    <CampaignBoxSticky />
+                    <div className="row">
+                        <div className="col-lg-2">
+                            <CampaignFilter />
+                        </div>
+                        <div className="col-lg-10">
+                            <CampaignBoxSticky />
+                            <CampaignBoxSticky />
+                            <CampaignBoxSticky />
+                            <CampaignBoxSticky />
+                            <CampaignBoxSticky />
+                        </div>
+                    </div>
                 </div>
             </div>
             <Footer></Footer>
