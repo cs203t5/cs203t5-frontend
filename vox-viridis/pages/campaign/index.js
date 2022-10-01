@@ -9,21 +9,26 @@ const Campaign = () => {
     return (
         <div>
             <div className={globalStyle.pageBg} style={{ display: "block" }}>
-                <Navbar />
+                <div className="container-fluid p-0 ">
+                    <Navbar />
+                    <div className={styles.search}>
+                        <Input
+                            placeholder="Search for campaigns"
+                            className={styles.searchForCampaign}
+                        />
+                        <IconButton size="large">
+                            <SearchIcon />
+                        </IconButton>
+                    </div>
+                    <div className="container-fluid g-0 mt-5 ">
+                        <div className="row m-auto">
+                            <CampaignFilter />
 
-                <div className={styles.search}>
-                    <Input
-                        placeholder="Search for campaigns"
-                        className={styles.searchForCampaign}
-                    />
-                    <IconButton size="large">
-                        <SearchIcon />
-                    </IconButton>
-                </div>
-                <div className={styles.campaignContainer}>
-                    <CampaignFilter />
-                    <div className={styles.campaignLeft}>saearaes</div>
-                    <div className={styles.campaignRight}>saearaes</div>
+                            <div className="col-4 p-0 ">saearaes</div>
+
+                            <div className="col-4 p-0 ">saearaes</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

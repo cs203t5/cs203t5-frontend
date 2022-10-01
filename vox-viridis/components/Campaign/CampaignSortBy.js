@@ -3,43 +3,55 @@ import styles from "./CampaignSortBy.module.css";
 
 const CampaignSortBy = () => {
     return (
-        <div style={{ fontWeight: "bold" }}>
-            <div className={styles.sortBy}>Sort By</div>
-            <div className={styles.sortButton}>
-                <Button
-                    variant="contained"
-                    className={styles.sortNewest}
-                    size="small"
-                    style={{
-                        color: "black",
-                        textTransform: "none",
-                        height: "3vh",
-                        backgroundColor: "blanchedalmond",
-                        borderRadius: "5px",
-                        fontFamily: "Italiana ",
-                        width: "0.5vw",
-                    }}
-                    disableRipple
+        <div className="row-fluid" style={{ fontWeight: "bold" }}>
+            <div
+                className="row-fluid mb-2 p-0"
+                style={{
+                    fontSize: "1.3em",
+                    fontWeight: "500",
+                    marginLeft: "1.5vw",
+                }}
+            >
+                Sort By
+            </div>
+            <div className="container-fluid p-0" style={{ width: "inherit" }}>
+                <div className="row gap-2" style={{ margin: "auto" }}>
+                    <div
+                        className="col p-0 justify-content-center"
+                        style={{ display: "flex" }}
                     >
-                    Newest
-                </Button>
-                <Button
-                    variant="contained"
-                    className={styles.sortOldest}
-                    size="small"
-                    style={{
-                        color: "black",
-                        borderRadius: "5px",
-                        textTransform: "none",
-                        height: "3vh",
-                        backgroundColor: "blanchedalmond",
-                        fontFamily: "Italiana ",
-                        width: "0.5vw",
-                    }}
-                    disableRipple
-                >
-                    Oldest
-                </Button>
+                        <button
+                            type="button "
+                            class="btn btn-primary btn-xs"
+                            style={{
+                                backgroundColor: "blanchedalmond",
+                                color: "black",
+                                border: "0",
+                                margin: "auto",
+                            }}
+                        >
+                            Newest
+                        </button>
+                    </div>
+                    <div
+                        className="col p-0 justify-content-center"
+                        style={{ display: "flex" }}
+                    >
+                        <button
+                            type="button"
+                            class="btn btn-primary btn-xs"
+                            style={{
+                                backgroundColor: "blanchedalmond",
+                                color: "black",
+                                border: "0",
+
+                                width: "auto",
+                            }}
+                        >
+                            Oldest
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     );

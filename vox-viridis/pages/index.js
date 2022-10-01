@@ -6,7 +6,6 @@ import HomepageIntro from "../components/Home/HomepageIntro";
 import HomePageRight from "../components/Home/HomepageRight";
 import globalStyle from "./Global.module.css";
 import { Fade, Slide } from "react-reveal";
-import TestHomePageIntro from "../components/Home/TestHomePageIntro.js";
 
 const contents = [
     {
@@ -37,7 +36,7 @@ export default function Home() {
                     </div>
                 </Fade>
                 <Fade left delay={500} duration={700}>
-                    <TestHomePageIntro />
+                    <HomepageIntro />
                 </Fade>
 
                 <Slide left delay={500} duration={700}>

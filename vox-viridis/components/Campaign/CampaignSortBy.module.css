@@ -1,11 +1,3 @@
-.sortBy {
-    margin: 1vw;
-    margin-bottom: 1.2vh;
-    font-size: 1.1em;
-    font-weight: 700;
-    margin-left: 1.5vw;
-}
-
 .sortButton {
     display: flex;
     justify-content: space-evenly;

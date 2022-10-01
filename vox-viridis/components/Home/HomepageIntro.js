@@ -1,10 +1,16 @@
-import styles from "./HomepageIntro.module.css";
-
-const HomepageIntro = () => {
+import styles from "./HomePageIntro.module.css";
+const TestHomePageIntro = () => {
     return (
-        <div className={styles.introContainer}>
-            
-            <div className={styles.marineContainer}>
+        <div
+            className="row mx-0"
+            align="center"
+            style={{
+                marginBottom: "0.8vh",
+                backgroundColor: "white",
+                maxWidth: "100%",
+            }}
+        >
+            <div className="col-sm-12 col-md col-lg-4 ">
                 <img
                     className={styles.marineImg}
                     src="../../home/marine.png"
@@ -15,10 +21,10 @@ const HomepageIntro = () => {
                 <div className={styles.marineWriteup}>
                     52% of sea turtles have eaten commerical plastic, affecting
                     their mortality rate. Get involved with Vox Viridis to save
-                    our precious marine animals!{" "}
+                    our precious marine animals!
                 </div>
             </div>
-            <div className={styles.landfillContainer}>
+            <div className="col-sm-12 col-md col-lg-4">
                 <img
                     className={styles.landfillImg}
                     src="../../home/landfill.png"
@@ -29,10 +35,10 @@ const HomepageIntro = () => {
                 <div className={styles.landfillWriteup}>
                     With our limited land capacity, even Pulau Semakau is
                     running out of space for our waste. Get started on recycling
-                    before it is too late.{" "}
+                    before it is too late.
                 </div>
             </div>
-            <div className={styles.climatechangeContainer}>
+            <div className="col-sm-12 col-md col-lg-4">
                 <img
                     className={styles.climatechangeImg}
                     src="../../home/climatechange.png"
@@ -50,4 +56,4 @@ const HomepageIntro = () => {
     );
 };
 
-export default HomepageIntro;
+export default TestHomePageIntro;
