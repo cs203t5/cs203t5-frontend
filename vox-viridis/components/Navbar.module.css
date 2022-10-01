@@ -8,6 +8,7 @@
 
 .loginText {
     margin-top: 0.2vh;
+    margin-right: 0.5vw;
 }
 
 .topbarText {
@@ -24,7 +25,6 @@
     cursor: pointer;
 }
 .routeContainer {
-    overflow: hidden;
     color: black;
 }
 .routeContainerLeft {

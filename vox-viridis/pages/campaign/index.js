@@ -4,6 +4,8 @@ import globalStyle from "../Global.module.css";
 import styles from "./campaign.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 import CampaignFilter from "../../components/Campaign/CampaignFilter";
+import Footer from "../../components/Footer.js";
+import CampaignBox from "../../components/Campaign/CampaignBox";
 
 const Campaign = () => {
     return (
@@ -20,17 +22,41 @@ const Campaign = () => {
                             <SearchIcon />
                         </IconButton>
                     </div>
-                    <div className="container-fluid g-0 mt-5 ">
-                        <div className="row m-auto">
+                    <div className="container-fluid g-0 mt-5 pb-5">
+                        <div className="row m-auto ">
                             <CampaignFilter />
-
-                            <div className="col-4 p-0 ">saearaes</div>
-
-                            <div className="col-4 p-0 ">saearaes</div>
+                            <div className="col-8 p-0 offset-1">
+                                <div
+                                    className="row m-auto"
+                                    style={{ height: "500px" }}
+                                >
+                                    <CampaignBox />
+                                    <CampaignBox />
+                                </div>
+                                <div
+                                    className="row m-auto"
+                                    style={{ height: "500px" }}
+                                >
+                                    <CampaignBox />
+                                    <CampaignBox />
+                                </div>
+                                <div
+                                    className="row m-auto"
+                                    style={{ height: "500px" }}
+                                >
+                                    <CampaignBox />
+                                    <CampaignBox />
+                                </div>
+                                <div className="row m-auto">
+                                    <CampaignBox />
+                                    <CampaignBox />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

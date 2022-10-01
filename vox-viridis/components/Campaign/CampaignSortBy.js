@@ -1,6 +1,8 @@
 import { Button } from "@mui/material";
 import styles from "./CampaignSortBy.module.css";
 
+const buttons = ["Newest", "Oldest"];
+
 const CampaignSortBy = () => {
     return (
         <div className="row-fluid" style={{ fontWeight: "bold" }}>
@@ -16,41 +18,26 @@ const CampaignSortBy = () => {
             </div>
             <div className="container-fluid p-0" style={{ width: "inherit" }}>
                 <div className="row gap-2" style={{ margin: "auto" }}>
-                    <div
-                        className="col p-0 justify-content-center"
-                        style={{ display: "flex" }}
-                    >
-                        <button
-                            type="button "
-                            class="btn btn-primary btn-xs"
-                            style={{
-                                backgroundColor: "blanchedalmond",
-                                color: "black",
-                                border: "0",
-                                margin: "auto",
-                            }}
+                    {buttons.map((button) => (
+                        <div
+                            className="col p-0 justify-content-center"
+                            style={{ display: "flex" }}
                         >
-                            Newest
-                        </button>
-                    </div>
-                    <div
-                        className="col p-0 justify-content-center"
-                        style={{ display: "flex" }}
-                    >
-                        <button
-                            type="button"
-                            class="btn btn-primary btn-xs"
-                            style={{
-                                backgroundColor: "blanchedalmond",
-                                color: "black",
-                                border: "0",
-
-                                width: "auto",
-                            }}
-                        >
-                            Oldest
-                        </button>
-                    </div>
+                            <button
+                                type="button "
+                                class="btn btn-primary btn-xs"
+                                style={{
+                                    backgroundColor: "blanchedalmond",
+                                    color: "black",
+                                    border: "0",
+                                    margin: "auto",
+                                    width: "70px",
+                                }}
+                            >
+                                {button}
+                            </button>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

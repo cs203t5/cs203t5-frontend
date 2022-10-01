@@ -8,7 +8,7 @@ import NavbarTemplate from "react-bootstrap/Navbar";
 
 const Navbar = () => {
     return (
-        <div className="container-fluid">
+        <div className="container-fluid p-0">
             <div
                 className="d-flex flex-row-reverse p-2"
                 style={{ cursor: "pointer" }}
@@ -37,7 +37,7 @@ const Navbar = () => {
                 </div>
             </Link>
 
-            <hr />
+            <hr style={{ color: "grey" }} />
             <div className={styles.routeContainer}>
                 <NavbarTemplate expand="lg">
                     <Container>

@@ -21,13 +21,17 @@ const contents = [
 const CampaignFilter = () => {
     return (
         <div
-            className="col-2 lg-1 mt-10 d-none d-lg-block sticky-top p-0 offset-1"
+            className="col-2 lg-1 mt-10 d-none d-lg-block sticky-top p-0"
             style={{
                 backgroundColor: "#ffffff",
                 borderRadius: "10px",
                 borderStyle: "solid",
                 borderWidth: "1.8px",
                 width: "10%",
+                marginLeft: "70px",
+                maxHeight: "auto",
+                overflow: "visible",
+                alignItems: "flex-start",
             }}
         >
             <div
