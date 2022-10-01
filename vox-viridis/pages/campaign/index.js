@@ -5,7 +5,7 @@ import styles from "./campaign.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 import CampaignFilter from "../../components/Campaign/CampaignFilter";
 import Footer from "../../components/Footer.js";
-import CampaignBox from "../../components/Campaign/CampaignBox";
+import CampaignBoxSticky from "../../components/Campaign/CampaignBoxSticky";
 
 const Campaign = () => {
     return (
@@ -23,27 +23,11 @@ const Campaign = () => {
                         </IconButton>
                     </div>{" "}
                     <CampaignFilter />
-                    <div
-                        className="col-4 p-0 offset-2 border border-primary"
-                        style={{ display: "flex", height: "500px" }}
-                    >
-                        Enter
-                    </div>
-                    <div className="row mx-auto p-0 ml-2">
-                        <div
-                            className="col-4 p-0 offset-2 border border-primary"
-                            style={{ display: "flex", height: "500px" }}
-                        >
-                            Enter
-                        </div>
-                        <div
-                            className="col-4 p-0 offset-1 border border-primary"
-                            style={{ display: "flex" }}
-                        >
-                            Enter
-                        </div>
-                        
-                    </div>
+                    <CampaignBoxSticky />
+                    <CampaignBoxSticky />
+                    <CampaignBoxSticky />
+                    <CampaignBoxSticky />
+                    <CampaignBoxSticky />
                 </div>
             </div>
             <Footer></Footer>

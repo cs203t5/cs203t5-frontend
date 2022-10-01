@@ -29,10 +29,10 @@ const CampaignFilter = () => {
                 borderWidth: "1.8px",
                 width: "10%",
                 marginLeft: "70px",
-                overflow: "auto",
+                overflow: "hidden",
                 alignItems: "flex-start",
                 top: "2vh",
-                position: "-webkit-sticky",
+                float: "left",
             }}
         >
             <div
