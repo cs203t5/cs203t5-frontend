@@ -4,6 +4,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: #f1e1c7 !important;
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -11,7 +12,7 @@ a {
 }
 
 * {
-    font-family: "Italiana";
+    font-family: "Italiana", serif;
     color: black;
     box-sizing: border-box;
     font-weight: bold;
