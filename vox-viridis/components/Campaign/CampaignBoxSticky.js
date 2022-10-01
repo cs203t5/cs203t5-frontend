@@ -2,7 +2,7 @@ function CampaignBoxSticky() {
     return (
         <div className="row p-0 mb-5 gap-5 mx-3">
             <div
-                className="col-lg-5 md-4 col-xs-6 offset-md-1 border "
+                className="col-lg-5 md-5 col-xs-6 offset-lg-1 border "
                 style={{
                     display: "flex",
 
@@ -67,7 +67,7 @@ function CampaignBoxSticky() {
                 </div>
             </div>
             <div
-                className="col-lg-5 md-4 col-xs-6  border "
+                className="col-lg-5 md-5 col-xs-6  border "
                 style={{
                     display: "flex",
 

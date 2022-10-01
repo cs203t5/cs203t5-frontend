@@ -22,6 +22,9 @@ const Campaign = () => {
                             <SearchIcon />
                         </IconButton>
                     </div>{" "}
+                    <div className="row m-auto d-lg-none">
+                        jkdsnakjandd-none d-lg-block
+                    </div>
                     <div className="row mt-5">
                         <div className="col-lg-2">
                             <CampaignFilter />
