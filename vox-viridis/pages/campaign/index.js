@@ -21,38 +21,28 @@ const Campaign = () => {
                         <IconButton size="large">
                             <SearchIcon />
                         </IconButton>
+                    </div>{" "}
+                    <CampaignFilter />
+                    <div
+                        className="col-4 p-0 offset-2 border border-primary"
+                        style={{ display: "flex", height: "500px" }}
+                    >
+                        Enter
                     </div>
-                    <div className="container-fluid g-0 mt-5 pb-5">
-                        <div className="row m-auto ">
-                            <CampaignFilter />
-                            <div className="col-8 p-0 offset-1">
-                                <div
-                                    className="row m-auto"
-                                    style={{ height: "500px" }}
-                                >
-                                    <CampaignBox />
-                                    <CampaignBox />
-                                </div>
-                                <div
-                                    className="row m-auto"
-                                    style={{ height: "500px" }}
-                                >
-                                    <CampaignBox />
-                                    <CampaignBox />
-                                </div>
-                                <div
-                                    className="row m-auto"
-                                    style={{ height: "500px" }}
-                                >
-                                    <CampaignBox />
-                                    <CampaignBox />
-                                </div>
-                                <div className="row m-auto">
-                                    <CampaignBox />
-                                    <CampaignBox />
-                                </div>
-                            </div>
+                    <div className="row mx-auto p-0 ml-2">
+                        <div
+                            className="col-4 p-0 offset-2 border border-primary"
+                            style={{ display: "flex", height: "500px" }}
+                        >
+                            Enter
                         </div>
+                        <div
+                            className="col-4 p-0 offset-1 border border-primary"
+                            style={{ display: "flex" }}
+                        >
+                            Enter
+                        </div>
+                        
                     </div>
                 </div>
             </div>

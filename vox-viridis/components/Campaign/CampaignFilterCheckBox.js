@@ -1,17 +1,17 @@
 import styles from "./CampaignFilterCheckBox.module.css";
 const CampaignFilterCheckBox = (props) => {
     const renderCheckBox = props.content.filters.map((filter) => (
-        <div class="form-check" style={{ display: "flex" }}>
+        <div className="form-check" style={{ display: "flex" }} key={filter}>
             <input
-                class="form-check-input "
+                className="form-check-input "
                 type="checkbox"
                 value=""
                 id="flexCheckDefault"
                 style={{ width: "1vw", height: "1vw" }}
             />
             <label
-                class="form-check-label"
-                for="flexCheckDefault"
+                className="form-check-label"
+                htmlFor="flexCheckDefault"
                 style={{
                     marginLeft: "5px",
                     fontWeight: "normal",

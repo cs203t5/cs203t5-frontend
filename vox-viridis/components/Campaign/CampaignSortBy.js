@@ -22,10 +22,11 @@ const CampaignSortBy = () => {
                         <div
                             className="col p-0 justify-content-center"
                             style={{ display: "flex" }}
+                            key={button}
                         >
                             <button
                                 type="button "
-                                class="btn btn-primary btn-xs"
+                                className="btn btn-primary btn-xs"
                                 style={{
                                     backgroundColor: "blanchedalmond",
                                     color: "black",
