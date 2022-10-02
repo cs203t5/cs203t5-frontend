@@ -35,19 +35,20 @@ const Navbar = () => {
                     <div
                         className="col-lg-auto col-md-auto col-xs-auto justify-content-center m-auto"
                         style={{
-                            fontSize: "xxx-large",
                             fontStyle: "italic",
                             cursor: "pointer",
                         }}
                     >
-                        Vox-Viridis
-                        <img
-                            className="col"
-                            src="../../vox-viridis_icon.png"
-                            width="35"
-                            height="35"
-                            style={{ marginLeft: "5px" }}
-                        />
+                        <h3>
+                            Vox-Viridis
+                            <img
+                                className="col mb-2"
+                                src="../../vox-viridis_icon.png"
+                                width="35"
+                                height="35"
+                                style={{ marginLeft: "5px" }}
+                            />
+                        </h3>
                     </div>
                 </Link>
             </div>
