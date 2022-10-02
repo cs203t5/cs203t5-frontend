@@ -33,6 +33,7 @@ const Register = () => {
                             className="col lg-12"
                             style={{
                                 fontSize: "50px",
+                                fontWeight: "bold",
                             }}
                         >
                             Sign Up
