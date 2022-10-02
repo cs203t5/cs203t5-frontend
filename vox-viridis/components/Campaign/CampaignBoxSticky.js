@@ -5,11 +5,11 @@ function CampaignBoxSticky() {
                 className="col-lg-5 md-5 col-xs-6 offset-lg-1 border "
                 style={{
                     display: "flex",
-
                     borderRadius: "10px",
                     borderColor: "black!important",
                     fontWeight: "500",
                     fontSize: "0.9em",
+                    cursor: "pointer",
                 }}
             >
                 <div className="container h-100">
@@ -23,7 +23,7 @@ function CampaignBoxSticky() {
                         </div>
                         <div
                             className="col-6 p-0 ms-4 h-25 mt-sm-3 mt-2"
-                            style={{ fontWeight: "500" }}
+                            style={{ fontWeight: "600" }}
                         >
                             {" "}
                             Save The Earth
@@ -75,6 +75,7 @@ function CampaignBoxSticky() {
                     borderColor: "black!important",
                     fontWeight: "500",
                     fontSize: "0.9em",
+                    cursor: "pointer",
                 }}
             >
                 <div className="container h-100">
@@ -88,7 +89,7 @@ function CampaignBoxSticky() {
                         </div>
                         <div
                             className="col-6 p-0 ms-4 h-25 mt-sm-3 mt-2"
-                            style={{ fontWeight: "500" }}
+                            style={{ fontWeight: "600" }}
                         >
                             {" "}
                             Save The Earth

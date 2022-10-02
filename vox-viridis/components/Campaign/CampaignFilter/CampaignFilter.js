@@ -37,7 +37,7 @@ const CampaignFilter = () => {
             <div
                 className="row-fluid mt-3"
                 style={{
-                    fontWeight: "500",
+                    fontWeight: "600",
                     fontSize: "1.5em",
                     marginLeft: "1.5vw",
                     marginTop: "5vh",

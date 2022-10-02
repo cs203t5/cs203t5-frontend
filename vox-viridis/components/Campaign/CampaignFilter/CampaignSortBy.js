@@ -10,7 +10,7 @@ const CampaignSortBy = () => {
                 className="row-fluid mb-2 p-0"
                 style={{
                     fontSize: "1.3em",
-                    fontWeight: "500",
+                    fontWeight: "600",
                     marginLeft: "1.5vw",
                 }}
             >

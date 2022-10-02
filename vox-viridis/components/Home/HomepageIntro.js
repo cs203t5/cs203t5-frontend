@@ -20,7 +20,11 @@ const HomePageIntro = () => {
                     </div>
                     <div
                         className="col"
-                        style={{ fontSize: "1.5em", marginTop: "3vh" }}
+                        style={{
+                            fontSize: "1.5em",
+                            marginTop: "3vh",
+                            fontWeight: "600",
+                        }}
                     >
                         Marine Pollution
                     </div>
@@ -43,7 +47,11 @@ const HomePageIntro = () => {
                     </div>
                     <div
                         className="col"
-                        style={{ fontSize: "1.5em", marginTop: "3vh" }}
+                        style={{
+                            fontSize: "1.5em",
+                            marginTop: "3vh",
+                            fontWeight: "600",
+                        }}
                     >
                         Landfill
                     </div>
@@ -66,7 +74,11 @@ const HomePageIntro = () => {
                     </div>
                     <div
                         className="col"
-                        style={{ fontSize: "1.5em", marginTop: "3vh" }}
+                        style={{
+                            fontSize: "1.5em",
+                            marginTop: "3vh",
+                            fontWeight: "600",
+                        }}
                     >
                         Climate Change
                     </div>

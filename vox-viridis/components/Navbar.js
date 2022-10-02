@@ -116,7 +116,10 @@ const Navbar = () => {
                         style={{ marginLeft: "5vw" }}
                     />
                     <NavbarTemplate.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto" style={{ marginLeft: "8vw" }}>
+                        <Nav
+                            className="me-lg-auto ms-lg-5"
+                            // style={{ marginLeft: "8vw" }}
+                        >
                             <Link href="/campaign">
                                 <IconButton
                                     sx={{
@@ -128,7 +131,10 @@ const Navbar = () => {
                             </Link>
                         </Nav>
 
-                        <Nav className="" style={{ marginRight: "8vw" }}>
+                        <Nav
+                            className="me-lg-5"
+                            // style={{ marginRight: "8vw" }}
+                        >
                             <Link href="/help">
                                 <IconButton sx={{ color: "black" }}>
                                     Help

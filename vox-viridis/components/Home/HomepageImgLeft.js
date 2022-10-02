@@ -23,6 +23,7 @@ const HomepageImgLeft = (props) => {
                         fontSize: "2em",
                         fontStyle: "italic",
                         justifyContent: "center",
+                        fontWeight: "600",
                     }}
                 >
                     {props.content.header}

@@ -6,7 +6,8 @@ const Register = () => {
                 backgroundColor: "#faf8f4",
                 boxSizing: "border-box",
                 borderRadius: "10px",
-                margin: "10ch",
+                marginTop: "10ch",
+                marginBottom: "10ch",
             }}
         >
             <div className="row mt-6">

@@ -14,9 +14,7 @@ const CampaignFilterCheckBox = (props) => {
                 style={{
                     marginLeft: "5px",
                     fontWeight: "normal",
-                    fontSize: "medium",
-                    // alignSelf: "center",
-                    marginTop: "2px",
+                    fontSize: "20px",
                 }}
             >
                 {filter}
@@ -28,7 +26,7 @@ const CampaignFilterCheckBox = (props) => {
         <div
             className="row-fluid"
             style={{
-                fontSize: "1.3em",
+                // fontSize: "2em",
                 fontWeight: "500",
                 paddingBottom: props.style,
             }}
@@ -37,7 +35,7 @@ const CampaignFilterCheckBox = (props) => {
                 className="row-fluid mb-2 p-0"
                 style={{
                     marginLeft: "1.5vw",
-                    fontWeight: "500",
+                    fontWeight: "600",
                 }}
             >
                 {props.content.title}

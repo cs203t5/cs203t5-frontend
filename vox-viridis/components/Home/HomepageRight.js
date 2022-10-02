@@ -17,6 +17,7 @@ const HomepageRewards = () => {
                             fontStyle: "italic",
                             justifyContent: "center",
                             margin: "auto",
+                            fontWeight: "600",
                         }}
                     >
                         Rewards
