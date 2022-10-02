@@ -8,10 +8,13 @@ import NavbarTemplate from "react-bootstrap/Navbar";
 const Navbar = () => {
     return (
         <div className="container-fluid p-0">
-            <div className="row m-auto" style={{ cursor: "pointer" }}>
-                <Link href="/login">
-                    <div className="col ms-auto p-0">
-                        <div className="col float-end me-3 mt-1">
+            <div className="row m-auto">
+                <div className="col ms-auto p-0">
+                    <Link href="/login">
+                        <div
+                            className="col float-end me-3 mt-1"
+                            style={{ cursor: "pointer" }}
+                        >
                             <AccountCircleRoundedIcon
                                 style={{ fontSize: "xx-large" }}
                             />
@@ -23,30 +26,31 @@ const Navbar = () => {
                                 Login
                             </span>
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+                </div>
             </div>
 
-            <Link href="/">
-                <div className={styles.logoContainer}>
+            <div className="row m-auto justify-content-center">
+                <Link href="/">
                     <div
+                        className="col-2"
                         style={{
                             fontSize: "xxx-large",
                             fontStyle: "italic",
+                            cursor: "pointer",
                         }}
                     >
                         Vox-Viridis
+                        <img
+                            className="col"
+                            src="../../vox-viridis_icon.png"
+                            width="35"
+                            height="35"
+                            style={{ marginLeft: "5px" }}
+                        />
                     </div>
-
-                    <img
-                        className="row"
-                        src="../../vox-viridis_icon.png"
-                        width="35"
-                        height="35"
-                        style={{ marginLeft: "5px" }}
-                    ></img>
-                </div>
-            </Link>
+                </Link>
+            </div>
 
             <hr style={{ color: "grey" }} />
             <div className={styles.routeContainer}>
