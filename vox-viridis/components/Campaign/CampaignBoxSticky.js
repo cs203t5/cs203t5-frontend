@@ -91,7 +91,7 @@ function CampaignBoxSticky() {
                             style={{ fontWeight: "500" }}
                         >
                             {" "}
-                            <bold>Save The Earth</bold>
+                            Save The Earth
                             <br />
                             <a>Kiehl's</a>
                         </div>
