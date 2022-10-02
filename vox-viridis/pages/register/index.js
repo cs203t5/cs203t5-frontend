@@ -1,7 +1,7 @@
 const Register = () => {
     return (
         <div
-            className={styles.pageBg}
+            className=""
             style={{
                 backgroundColor: "#faf8f4",
                 boxSizing: "border-box",

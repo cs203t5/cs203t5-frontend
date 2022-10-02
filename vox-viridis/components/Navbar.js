@@ -8,14 +8,21 @@ import NavbarTemplate from "react-bootstrap/Navbar";
 const Navbar = () => {
     return (
         <div className="container-fluid p-0">
-            <div
-                className="d-flex flex-row-reverse p-2"
-                style={{ cursor: "pointer" }}
-            >
+            <div className="row m-auto" style={{ cursor: "pointer" }}>
                 <Link href="/login">
-                    <div>
-                        <AccountCircleRoundedIcon />
-                        <text className={styles.loginText}>Login</text>
+                    <div className="col ms-auto p-0">
+                        <div className="col float-end me-3 mt-1">
+                            <AccountCircleRoundedIcon
+                                style={{ fontSize: "xx-large" }}
+                            />
+
+                            <span
+                                className="span-1"
+                                style={{ alignSelf: "center" }}
+                            >
+                                Login
+                            </span>
+                        </div>
                     </div>
                 </Link>
             </div>
