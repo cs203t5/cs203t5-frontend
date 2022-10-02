@@ -21,7 +21,7 @@ const NotFound = () => {
                         style={{
                             backgroundColor: "#7d7565",
                             justifyContent: "center",
-
+                            color: "white",
                             height: "5vh",
                         }}
                     >
