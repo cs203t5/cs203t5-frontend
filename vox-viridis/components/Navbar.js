@@ -10,9 +10,12 @@ const Navbar = () => {
     return (
         <div className="container-fluid p-0">
             <div className="row m-auto">
-                <div className="col ms-auto p-0">
-                    <Dropdown>
-                        <Dropdown.Toggle className="col float-end me-3 mt-1 dropdown">
+                <div className="col ms-auto p-0 ">
+                    <Dropdown align="end" drop="down">
+                        <Dropdown.Toggle
+                            className="col float-end me-1 mt-1 dropdown"
+                            style={{ backgroundColor: "inherit", border: "0" }}
+                        >
                             <AccountCircleRoundedIcon
                                 style={{ fontSize: "xx-large" }}
                             />
@@ -38,7 +41,7 @@ const Navbar = () => {
                                         placeholder="email@example.com"
                                     />
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group mt-1">
                                     <label htmlFor="exampleDropdownFormPassword1">
                                         Password
                                     </label>
