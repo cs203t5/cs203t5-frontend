@@ -115,7 +115,7 @@ const Navbar = () => {
                         aria-controls="basic-navbar-nav"
                         style={{ marginLeft: "5vw" }}
                     />
-                    <NavbarTemplate.Collapse id="basic-navbar-nav">
+                    <NavbarTemplate.Collapse className="basic-navbar-nav gap-2">
                         <Nav
                             className="me-lg-auto ms-lg-5"
                             // style={{ marginLeft: "8vw" }}
@@ -132,7 +132,7 @@ const Navbar = () => {
                         </Nav>
 
                         <Nav
-                            className="me-lg-5"
+                            className="me-lg-5 gap-lg-3"
                             // style={{ marginRight: "8vw" }}
                         >
                             <Link href="/help">

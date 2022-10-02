@@ -6,6 +6,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import CampaignFilter from "../../components/Campaign/CampaignFilter/CampaignFilter";
 import Footer from "../../components/Footer.js";
 import CampaignBoxSticky from "../../components/Campaign/CampaignBoxSticky";
+import CampaignFilterSmall from "../../components/Campaign/CampaignFilter/CampaignFilterSmall";
 
 const Campaign = () => {
     return (
@@ -22,9 +23,7 @@ const Campaign = () => {
                             <SearchIcon />
                         </IconButton>
                     </div>{" "}
-                    <div className="row m-auto d-lg-none">
-                        jkdsnakjandd-none d-lg-block
-                    </div>
+                    {/* <CampaignFilterSmall /> */}
                     <div className="row mt-5">
                         <div className="col-lg-2">
                             <CampaignFilter />
