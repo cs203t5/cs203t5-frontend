@@ -30,10 +30,10 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="row m-auto justify-content-center">
+            <div className="row m-auto  ">
                 <Link href="/">
                     <div
-                        className="col-2"
+                        className="col-lg-auto col-md-auto col-xs-auto justify-content-center m-auto"
                         style={{
                             fontSize: "xxx-large",
                             fontStyle: "italic",
