@@ -15,7 +15,9 @@ a {
     font-family: "Italiana", serif;
     color: black;
     box-sizing: border-box;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 25px;
+    /* font-size: 1.2rem; */
 }
 
 .pageBg {
