@@ -94,7 +94,7 @@ const Navbar = () => {
                             cursor: "pointer",
                         }}
                     >
-                        <h3>
+                        <h3 style={{ textAlign: "center" }}>
                             Vox-Viridis
                             <img
                                 className="col mb-2"
@@ -108,7 +108,7 @@ const Navbar = () => {
                 </Link>
             </div>
 
-            <hr style={{ color: "grey" }} />
+            <hr style={{ color: "grey", margin: "0", marginBottom: "10px" }} />
             <div className={styles.routeContainer}>
                 <NavbarTemplate expand="lg">
                     <NavbarTemplate.Toggle
