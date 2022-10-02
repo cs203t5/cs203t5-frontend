@@ -26,7 +26,7 @@ function CampaignBoxSticky() {
                             style={{ fontWeight: "500" }}
                         >
                             {" "}
-                            <bold>Save The Earth</bold>
+                            Save The Earth
                             <br />
                             <a>Kiehl's</a>
                         </div>
@@ -60,7 +60,7 @@ function CampaignBoxSticky() {
                                 className="img-fluid w-50 "
                             />
                         </div>
-                        <div className="col-9" style={{ alignSelf: "center" }}>
+                        <div className="col-8" style={{ alignSelf: "center" }}>
                             23 September 2022 - 05 October 2022
                         </div>
                     </div>
@@ -125,7 +125,7 @@ function CampaignBoxSticky() {
                                 className="img-fluid w-50 "
                             />
                         </div>
-                        <div className="col-9" style={{ alignSelf: "center" }}>
+                        <div className="col-8" style={{ alignSelf: "center" }}>
                             23 September 2022 - 05 October 2022
                         </div>
                     </div>
