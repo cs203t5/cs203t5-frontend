@@ -31,7 +31,7 @@ const Navbar = () => {
                 <div className={styles.logoContainer}>
                     <div
                         style={{
-                            fontSize: "xxx-large!important",
+                            fontSize: "xxx-large",
                             fontStyle: "italic",
                         }}
                     >
