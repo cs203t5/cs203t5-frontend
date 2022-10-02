@@ -5,7 +5,6 @@ import HomepageImgLeft from "../components/Home/HomepageImgLeft";
 import HomepageIntro from "../components/Home/HomepageIntro";
 import HomePageRight from "../components/Home/HomepageRight";
 import globalStyle from "./Global.module.css";
-import { Fade, Slide } from "react-reveal";
 
 const contents = [
     {
@@ -24,30 +23,24 @@ export default function Home() {
         <div>
             <div className={globalStyle.pageBg}>
                 <Navbar />
-                <Fade clear delay={200} duration={800}>
-                    <div className="row justify-content-center">
-                        <img
-                            className="img-responsive center-block"
-                            src="../../home/homepageBig.png"
-                            style={{
-                                maxWidth: "78% !important",
-                            }}
-                        ></img>
-                    </div>
-                </Fade>
-                <Fade left delay={500} duration={700}>
-                    <HomepageIntro />
-                </Fade>
 
-                <Slide left delay={500} duration={700}>
-                    <HomepageImgLeft content={contents[0]}></HomepageImgLeft>
-                </Slide>
+                <div className="row justify-content-center">
+                    <img
+                        className="img-responsive center-block"
+                        src="../../home/homepageBig.png"
+                        style={{
+                            maxWidth: "78% !important",
+                        }}
+                    ></img>
+                </div>
+
+                <HomepageIntro />
+
+                <HomepageImgLeft content={contents[0]}></HomepageImgLeft>
 
                 <HomePageRight />
 
-                <Slide left delay={500} duration={700}>
-                    <HomepageImgLeft content={contents[1]}></HomepageImgLeft>
-                </Slide>
+                <HomepageImgLeft content={contents[1]}></HomepageImgLeft>
             </div>
             <Footer />
         </div>

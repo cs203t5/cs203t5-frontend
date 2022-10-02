@@ -32,7 +32,7 @@ const CampaignSortBy = () => {
                                     color: "black",
                                     border: "0",
                                     margin: "auto",
-                                    width: "70px",
+                                    // width: "70px",
                                 }}
                             >
                                 {button}
