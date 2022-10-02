@@ -25,7 +25,7 @@ a {
     box-sizing: border-box;
     border-radius: 10px;
     margin: 2ch;
-    min-height: 95vh;
+    /* min-height: 95vh; */
 }
 
 /* @media (prefers-color-scheme: dark) {

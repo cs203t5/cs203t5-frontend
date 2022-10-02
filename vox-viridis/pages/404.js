@@ -14,13 +14,14 @@ const NotFound = () => {
                     }}
                 >
                     <Button
+                        className="w-auto h-100 px-md-5 px-xs-4 px-s-3"
                         variant="contained"
                         href="/"
                         size="large"
                         style={{
                             backgroundColor: "#7d7565",
                             justifyContent: "center",
-                            width: "30vw",
+
                             height: "5vh",
                         }}
                     >
