@@ -1,9 +1,31 @@
 import { Button, Form, CloseButton } from "react-bootstrap";
 import Router from "next/router";
+import { useState } from "react";
+import axios from "axios";
 
 const Register = () => {
+    const [inputValues, setInputValues] = useState({
+        username: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        dob: "",
+    });
+
     const returnToHome = (e) => {
         Router.push("/");
+    };
+
+    const submitRegister = () => {
+        axios
+            .post("http://localhost:8080/api/users/save", inputValues, {})
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
@@ -43,6 +65,12 @@ const Register = () => {
                             <Form.Control
                                 type="email"
                                 placeholder="Enter email"
+                                onChange={(e) => {
+                                    setInputValues({
+                                        ...inputValues,
+                                        email: e.target.value,
+                                    });
+                                }}
                             />
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
@@ -66,6 +94,12 @@ const Register = () => {
                                     <Form.Control
                                         type="First Name"
                                         placeholder="First Name"
+                                        onChange={(e) => {
+                                            setInputValues({
+                                                ...inputValues,
+                                                firstName: e.target.value,
+                                            });
+                                        }}
                                     />
                                 </Form.Group>
                             </div>
@@ -83,8 +117,14 @@ const Register = () => {
                                     controlId="formBasicPassword"
                                 >
                                     <Form.Control
-                                        type="Last Name Name"
+                                        type="Last Name"
                                         placeholder="Last Name"
+                                        onChange={(e) => {
+                                            setInputValues({
+                                                ...inputValues,
+                                                lastName: e.target.value,
+                                            });
+                                        }}
                                     />
                                 </Form.Group>
                             </div>
@@ -102,22 +142,17 @@ const Register = () => {
                             className="mb-3"
                             controlId="formBasicPassword"
                         >
-                            <Form.Control placeholder="Username" />
+                            <Form.Control
+                                placeholder="Username"
+                                onChange={(e) => {
+                                    setInputValues({
+                                        ...inputValues,
+                                        username: e.target.value,
+                                    });
+                                }}
+                            />
                         </Form.Group>
-                        <div
-                            className="col lg-12"
-                            style={{
-                                fontSize: "30px",
-                            }}
-                        >
-                            Email
-                        </div>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="formBasicPassword"
-                        >
-                            <Form.Control placeholder="Email Name" />
-                        </Form.Group>
+
                         <div
                             className="col lg-12"
                             style={{
@@ -130,7 +165,16 @@ const Register = () => {
                             className="mb-3"
                             controlId="formBasicPassword"
                         >
-                            <Form.Control placeholder="Password" />
+                            <Form.Control
+                                type="password"
+                                placeholder="Password"
+                                onChange={(e) => {
+                                    setInputValues({
+                                        ...inputValues,
+                                        password: e.target.value,
+                                    });
+                                }}
+                            />
                         </Form.Group>
                         <div
                             className="col lg-12"
@@ -144,7 +188,10 @@ const Register = () => {
                             className="mb-3"
                             controlId="formBasicPassword"
                         >
-                            <Form.Control placeholder="Password" />
+                            <Form.Control
+                                placeholder="Password"
+                                type="password"
+                            />
                         </Form.Group>
 
                         <div
@@ -155,7 +202,16 @@ const Register = () => {
                         >
                             Date of Birth
                         </div>
-                        <Form.Control type="date" name="date_of_birth" />
+                        <Form.Control
+                            type="date"
+                            name="date_of_birth"
+                            onChange={(e) => {
+                                setInputValues({
+                                    ...inputValues,
+                                    dob: e.target.value,
+                                });
+                            }}
+                        />
                     </div>
                     <Button
                         className="w-25 ms-auto me-3 mt-5"
@@ -163,6 +219,10 @@ const Register = () => {
                         type="submit"
                         value="Submit"
                         style={{ minWidth: "150px" }}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            submitRegister();
+                        }}
                     />{" "}
                 </div>
             </div>

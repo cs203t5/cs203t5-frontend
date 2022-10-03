@@ -5,7 +5,7 @@ import { useState } from "react";
 
 function NavBarLogin() {
     const [inputValues, setInputValues] = useState({
-        email: "",
+        username: "",
         password: "",
     });
 
@@ -13,17 +13,33 @@ function NavBarLogin() {
         e.preventDefault();
 
         axios
-            .post("http://localhost:8080/api/users/token", {
-                auth: {
-                    username: inputValues.email,
-                    password: inputValues.password,
-                },
-                "Content-Type": "application/json",
-            })
+            .post(
+                "http://localhost:8080/api/users/token",
+                {},
+                {
+                    auth: {
+                        username: inputValues.username,
+                        password: inputValues.password,
+                    },
+                }
+            )
             .then(function (response) {
-                console.log(response);
+                localStorage.setItem("token", response.data);
             })
             .catch(function (error) {
+                console.log(error);
+            });
+
+        axios
+            .get("http://localhost:8080/api/users/name", {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
                 console.log(error);
             });
     };
@@ -51,19 +67,17 @@ function NavBarLogin() {
                     <Dropdown.Menu>
                         <form className="px-4 py-1">
                             <div className="form-group">
-                                <label htmlFor="exampleDropdownFormEmail1">
-                                    Email address
-                                </label>
+                                <label>Username</label>
                                 <input
-                                    type="email"
+                                    type="username"
                                     className="form-control"
+                                    placeholder="Username"
                                     onChange={(e) =>
                                         setInputValues({
                                             ...inputValues,
-                                            email: e.target.value,
+                                            username: e.target.value,
                                         })
                                     }
-                                    placeholder="email@example.com"
                                 />
                             </div>
                             <div className="form-group mt-1">
