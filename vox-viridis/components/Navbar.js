@@ -1,111 +1,25 @@
 import styles from "./Navbar.module.css";
 import IconButton from "@mui/material/IconButton";
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import Link from "next/link";
 import Nav from "react-bootstrap/Nav";
 import NavbarTemplate from "react-bootstrap/Navbar";
-import Dropdown from "react-bootstrap/Dropdown";
+import NavBarLogin from "./NavBarLogin";
 
 const Navbar = () => {
     return (
         <div className="container-fluid p-0">
-            <div className="row m-auto">
-                <div className="col ms-auto p-0 ">
-                    <Dropdown align="end" drop="down">
-                        <Dropdown.Toggle
-                            className="col float-end me-1 mt-1 dropdown"
-                            style={{ backgroundColor: "inherit", border: "0" }}
-                        >
-                            <AccountCircleRoundedIcon
-                                style={{ fontSize: "xx-large" }}
-                            />
-
-                            <span
-                                className="span-1"
-                                style={{ alignSelf: "center" }}
-                            >
-                                Login
-                            </span>
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                            <form className="px-4 py-1">
-                                <div className="form-group">
-                                    <label htmlFor="exampleDropdownFormEmail1">
-                                        Email address
-                                    </label>
-                                    <input
-                                        type="email"
-                                        className="form-control"
-                                        // id="exampleDropdownFormEmail1"
-                                        placeholder="email@example.com"
-                                    />
-                                </div>
-                                <div className="form-group mt-1">
-                                    <label htmlFor="exampleDropdownFormPassword1">
-                                        Password
-                                    </label>
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        // id="exampleDropdownFormPassword1"
-                                        placeholder="Password"
-                                    />
-                                </div>
-                                <div className="form-check mt-1">
-                                    <input
-                                        type="checkbox"
-                                        className="form-check-input"
-                                        // id="dropdownCheck"
-                                    />
-                                    <label
-                                        className="form-check-label"
-                                        htmlFor="dropdownCheck"
-                                    >
-                                        Remember me
-                                    </label>
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary"
-                                    style={{
-                                        marginTop: "5px",
-                                        fontWeight: "bold",
-                                    }}
-                                >
-                                    Sign in
-                                </button>
-                            </form>
-                            <div className="dropdown-divider"></div>
-                            <a
-                                className="dropdown-item"
-                                href="/register"
-                                style={{ fontWeight: "bold" }}
-                            >
-                                New around here? Sign up
-                            </a>
-                            <a
-                                className="dropdown-item"
-                                href="/forgetpassword"
-                                style={{ fontWeight: "bold" }}
-                            >
-                                Forgot password?
-                            </a>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </div>
-            </div>
+            <NavBarLogin />
 
             <div className="row m-auto  ">
                 <Link href="/">
                     <div
-                        className="col-lg-auto col-md-auto col-xs-auto justify-content-center m-auto"
+                        className="col justify-content-center mb-3"
                         style={{
                             fontStyle: "italic",
                             cursor: "pointer",
                         }}
                     >
-                        <h3 style={{ textAlign: "center", fontWeight: "bold" }}>
+                        <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
                             Vox-Viridis
                             <img
                                 className="col mb-2"
@@ -114,12 +28,15 @@ const Navbar = () => {
                                 height="35"
                                 style={{ marginLeft: "5px" }}
                             />
-                        </h3>
+                        </h2>
                     </div>
                 </Link>
             </div>
-
+            {/* <div className="row border-bottom border-dark text-white m-auto ">
+                dsad{" "}
+            </div> */}
             <hr style={{ color: "grey", margin: "0", marginBottom: "10px" }} />
+
             <div className={styles.routeContainer}>
                 <NavbarTemplate expand="lg">
                     <NavbarTemplate.Toggle
