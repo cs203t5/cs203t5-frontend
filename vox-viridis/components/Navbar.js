@@ -68,16 +68,27 @@ const Navbar = () => {
                                 <button
                                     type="submit"
                                     className="btn btn-primary"
-                                    style={{ marginTop: "5px" }}
+                                    style={{
+                                        marginTop: "5px",
+                                        fontWeight: "bold",
+                                    }}
                                 >
                                     Sign in
                                 </button>
                             </form>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="/register">
+                            <a
+                                className="dropdown-item"
+                                href="/register"
+                                style={{ fontWeight: "bold" }}
+                            >
                                 New around here? Sign up
                             </a>
-                            <a className="dropdown-item" href="/forgetpassword">
+                            <a
+                                className="dropdown-item"
+                                href="/forgetpassword"
+                                style={{ fontWeight: "bold" }}
+                            >
                                 Forgot password?
                             </a>
                         </Dropdown.Menu>
@@ -94,7 +105,7 @@ const Navbar = () => {
                             cursor: "pointer",
                         }}
                     >
-                        <h3 style={{ textAlign: "center" }}>
+                        <h3 style={{ textAlign: "center", fontWeight: "bold" }}>
                             Vox-Viridis
                             <img
                                 className="col mb-2"
