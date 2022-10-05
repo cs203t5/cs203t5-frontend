@@ -1,7 +1,5 @@
 @import url("http://fonts.cdnfonts.com/css/italiana");
-@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Nanum+Gothic&family=PT+Sans&display=swap');
 
 html,
 body {
@@ -11,8 +9,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.font-Handlee{
+.fonts{
   font-family: 'Handlee', cursive;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 
 a {

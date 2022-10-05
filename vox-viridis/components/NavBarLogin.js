@@ -2,6 +2,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import axios from "axios";
 import { useState } from "react";
+import { fontFamily, height } from "@mui/system";
 
 function NavBarLogin() {
     const [inputValues, setInputValues] = useState({
@@ -53,12 +54,23 @@ function NavBarLogin() {
                         style={{ backgroundColor: "inherit", border: "0" }}
                     >
                         <AccountCircleRoundedIcon
-                            style={{ fontSize: "xx-large" , fill:"#949494" , height:"40px"}}
+                            style={{
+                                fontSize: "xx-large",
+                                fill: "#949494",
+                                height: "30px",
+                                position:"relative;top:6px",
+                            }}
                         />
 
                         <span
                             className="span-1"
-                            style={{ alignSelf: "center",color:"#949494"}}
+                            style={{
+                                alignSelf: "center",
+                                color: "#949494",
+                                position:"relative;top:7px;left:1px",
+                                fontSize:"19px",
+                                fontFamily:"Nanum Gothic"
+                            }}
                         >
                             Login
                         </span>

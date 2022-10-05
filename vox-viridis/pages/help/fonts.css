@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Nanum+Gothic&family=PT+Sans&display=swap');
 
 html,
 
 p{
     font-family: 'Handlee', cursive;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'PT Sans', sans-serif;
 }

@@ -2,6 +2,8 @@ import globalStyle from "../Global.module.css";
 import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import NavBarLogin from "../../components/NavBarLogin";
+import NavBarButton from "../../pages/help/Help Components/NavBarButton";
+import AssistantPhotoTwoToneIcon from '@mui/icons-material/AssistantPhotoTwoTone';
 
 const Header = () => {
     return (
@@ -34,31 +36,21 @@ const Navbar2 = () => {
         >
             <div class="container-fluid px-0">
                 <Header></Header>
-                <p class="font-Handlee">Campaign</p>
+                <div class="row">
+                    <div class="col">
+                        <Link href="/campaign">
+                            <NavBarButton textContent="Campaigns" LinkPassed="/campaign" toggle="true" children ={<AssistantPhotoTwoToneIcon/>}/>
+                        </Link>
+                    </div>
+                    <div class="col">
+                        <NavBarButton textContent="Rewards" LinkPassed="" toggle="true"/>
+                    </div>
+                </div>
             </div>
         </nav>
     );
 };
 
-// const Navbar2 = () => {
-//     return (
-//         <nav class="navbar" style={{ backgroundColor: "#EEEEEE" }}>
-//             <div class="container-fluid">
-
-//                 <a class="navbar-brand - 4" href="#">
-//                     <p class = "font-Handlee">Campaign</p>
-//                 </a>
-//                 <a class="navbar-brand - 4" href="#">
-//                     <p class = "font-Handlee">Help</p>
-//                 </a>
-//                 <a class="navbar-brand -4" href="#">
-//                     <p class = "font-Handlee">Contact us</p>
-//                 </a>
-
-//             </div>
-//         </nav>
-//     );
-// };
 const index = () => {
     return (
         <div>
