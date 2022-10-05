@@ -50,15 +50,15 @@ function NavBarLogin() {
                 <Dropdown align="end" drop="down">
                     <Dropdown.Toggle
                         className="col float-end me-1 mt-1 dropdown"
-                        style={{ backgroundColor: "inherit", border: "0"}}
+                        style={{ backgroundColor: "inherit", border: "0" }}
                     >
                         <AccountCircleRoundedIcon
-                            style={{ fontSize: "xx-large" }}
+                            style={{ fontSize: "xx-large" , fill:"#949494" , height:"40px"}}
                         />
 
                         <span
                             className="span-1"
-                            style={{ alignSelf: "center",color:"#949494" }}
+                            style={{ alignSelf: "center",color:"#949494"}}
                         >
                             Login
                         </span>
