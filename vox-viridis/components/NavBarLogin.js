@@ -45,12 +45,12 @@ function NavBarLogin() {
     };
 
     return (
-        <div className="row m-auto">
+        <div className="row text-right">
             <div className="col ms-auto p-0 ">
                 <Dropdown align="end" drop="down">
                     <Dropdown.Toggle
                         className="col float-end me-1 mt-1 dropdown"
-                        style={{ backgroundColor: "inherit", border: "0" }}
+                        style={{ backgroundColor: "inherit", border: "0"}}
                     >
                         <AccountCircleRoundedIcon
                             style={{ fontSize: "xx-large" }}
@@ -58,7 +58,7 @@ function NavBarLogin() {
 
                         <span
                             className="span-1"
-                            style={{ alignSelf: "center" }}
+                            style={{ alignSelf: "center",color:"#949494" }}
                         >
                             Login
                         </span>
