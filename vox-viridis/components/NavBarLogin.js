@@ -2,6 +2,8 @@ import Dropdown from "react-bootstrap/Dropdown";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import axios from "axios";
 import { useState } from "react";
+import Router from "next/router";
+import { Button, Form } from "react-bootstrap";
 
 function NavBarLogin() {
     const [inputValues, setInputValues] = useState({
@@ -25,23 +27,24 @@ function NavBarLogin() {
             )
             .then(function (response) {
                 localStorage.setItem("token", response.data);
+                Router.reload(window.location.pathname);
             })
             .catch(function (error) {
                 console.log(error);
             });
 
-        axios
-            .get("http://localhost:8080/api/users/name", {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        // axios
+        //     .get("http://localhost:8080/api/users/name", {
+        //         headers: {
+        //             Authorization: `Bearer ${localStorage.getItem("token")}`,
+        //         },
+        //     })
+        //     .then((response) => {
+        //         console.log(response);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
     };
 
     return (
@@ -81,13 +84,11 @@ function NavBarLogin() {
                                 />
                             </div>
                             <div className="form-group mt-1">
-                                <label htmlFor="exampleDropdownFormPassword1">
-                                    Password
-                                </label>
-                                <input
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control
                                     type="password"
-                                    className="form-control"
                                     placeholder="Password"
+                                    required
                                     onChange={(e) =>
                                         setInputValues({
                                             ...inputValues,
@@ -95,6 +96,9 @@ function NavBarLogin() {
                                         })
                                     }
                                 />
+                                <Form.Control.Feedback type="invalid">
+                                    Please provide a valid city.
+                                </Form.Control.Feedback>
                             </div>
                             <div className="form-check mt-1">
                                 <input
@@ -109,7 +113,7 @@ function NavBarLogin() {
                                     Remember me
                                 </label>
                             </div>
-                            <button
+                            <Button
                                 type="submit"
                                 className="btn btn-primary"
                                 onClick={(e) => sendLogin(e)}
@@ -119,11 +123,15 @@ function NavBarLogin() {
                                 }}
                             >
                                 Sign in
-                            </button>
+                            </Button>
                         </form>
                         <div
                             className="dropdown-item-text "
-                            style={{ fontWeight: "bold", fontWeight: "500" }}
+                            style={{
+                                fontWeight: "bold",
+                                fontWeight: "500",
+                                textAlign: "center",
+                            }}
                         >
                             New around here?{" "}
                             <a href="/register" style={{ color: "black" }}>
