@@ -5,9 +5,14 @@ html,
 body {
     padding: 0;
     margin: 0;
-    background-color: #f1e1c7 !important;
+    background-color: #BAF5E3 !important;
     -webkit-font-smoothing: antialiased;
 }
+
+/* #F1E1C7 */
+/* 78DDBF */
+/* BAF5E3 */
+/* 88E7CA */
 
 .fonts{
   font-family: 'Handlee', cursive;
@@ -29,7 +34,7 @@ a {
 }
 
 .pageBg {
-    background-color: #faf8f4;
+    background-color: #FAF8F4;
     box-sizing: border-box;
     border-radius: 10px;
     margin: 2ch;
@@ -39,6 +44,7 @@ a {
 .dropdown-toggle::after{
   display:none !important;
 }
+
 
 /* @media (prefers-color-scheme: dark) {
   html {

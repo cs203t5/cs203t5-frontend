@@ -17,4 +17,7 @@ function NavBarButton({LinkPassed,toggle,textContent, children}) {
     );
 }
 
+/* why is my button not unclickable??
+found that issue is not from the function*/
+
 export default NavBarButton;
