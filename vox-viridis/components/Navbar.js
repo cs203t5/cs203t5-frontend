@@ -20,7 +20,7 @@ const Navbar = () => {
             {isLoggedIn ? (
                 <NavBarLogout setIsLoggedIn={setIsLoggedIn} />
             ) : (
-                <NavBarLogin setLogin={setIsLoggedIn} />
+                <NavBarLogin />
             )}
 
             <div className="row m-auto  ">
@@ -58,7 +58,7 @@ const Navbar = () => {
                     />
                     <NavbarTemplate.Collapse className="basic-navbar-nav gap-2">
                         <Nav
-                            className="me-lg-auto ms-lg-5"
+                            className="me-lg-auto ms-lg-5 gap-lg-4"
                             // style={{ marginLeft: "8vw" }}
                         >
                             <Link href="/campaign">
@@ -70,6 +70,18 @@ const Navbar = () => {
                                     Campaign
                                 </IconButton>
                             </Link>
+
+                            {isLoggedIn && (
+                                <Link href="/rewards">
+                                    <IconButton
+                                        sx={{
+                                            color: "black",
+                                        }}
+                                    >
+                                        Rewards
+                                    </IconButton>
+                                </Link>
+                            )}
                         </Nav>
 
                         <Nav

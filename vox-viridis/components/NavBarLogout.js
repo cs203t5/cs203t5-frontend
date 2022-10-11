@@ -9,13 +9,19 @@ function NavBarLogout(props) {
     };
     return (
         <div
-            className="row"
+            className="row p-0 m-auto "
             onClick={handleLogout}
             style={{ cursor: "pointer" }}
         >
-            <div className="col-1 ms-auto p-0 mt-2 me-2" style={{}}>
-                <LogoutIcon />
-                Logout
+            <div className="col">
+                <div
+                    className="col-auto p-0 float-end mt-2 me-2
+             "
+                    style={{}}
+                >
+                    <LogoutIcon style={{ fontSize: "xx-large" }} />
+                    Logout
+                </div>
             </div>
         </div>
     );

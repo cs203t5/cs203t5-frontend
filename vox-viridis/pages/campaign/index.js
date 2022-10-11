@@ -7,8 +7,34 @@ import CampaignFilter from "../../components/Campaign/CampaignFilter/CampaignFil
 import Footer from "../../components/Footer.js";
 import CampaignBoxSticky from "../../components/Campaign/CampaignBoxSticky";
 import CampaignFilterSmall from "../../components/Campaign/CampaignFilter/CampaignFilterSmall";
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
 
 const Campaign = () => {
+    const [data, setdata] = useState([]);
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:8080/api/campaign")
+            .then((response) => {
+                const everything = response.data;
+                const campaigns = [];
+                for (let i = 0; i < everything.length; i += 2) {
+                    const campaign1 = everything[i];
+                    const campaign2 = everything[i + 1];
+                    const allCamppaign = [];
+                    allCamppaign.push(campaign1);
+                    allCamppaign.push(campaign2);
+                    campaigns.push(allCamppaign);
+                }
+                setdata(campaigns);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
     return (
         <div>
             <div className={globalStyle.pageBg} style={{ display: "block" }}>
@@ -29,11 +55,15 @@ const Campaign = () => {
                             <CampaignFilter />
                         </div>
                         <div className="col-lg-10">
-                            <CampaignBoxSticky />
-                            <CampaignBoxSticky />
-                            <CampaignBoxSticky />
-                            <CampaignBoxSticky />
-                            <CampaignBoxSticky />
+                            {data &&
+                                data.map((element, index) => {
+                                    return (
+                                        <CampaignBoxSticky
+                                            campaignData={element}
+                                            key={index}
+                                        />
+                                    );
+                                })}
                         </div>
                     </div>
                 </div>

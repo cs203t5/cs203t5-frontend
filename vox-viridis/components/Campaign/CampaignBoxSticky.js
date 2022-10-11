@@ -1,4 +1,7 @@
-function CampaignBoxSticky() {
+import { maxHeight } from "@mui/system";
+
+function CampaignBoxSticky(props) {
+    console.log(props);
     return (
         <div className="row p-0 mb-5 gap-5 mx-3">
             <div
@@ -12,12 +15,21 @@ function CampaignBoxSticky() {
                 }}
             >
                 <div className="container h-100">
-                    <div className="row w-100">
+                    <div
+                        className="row w-100 "
+                        style={{ alignItems: "center" }}
+                    >
                         <div className="col-4 p-0 h-25" style={{}}>
                             <img
-                                src="../../campaign/image 27.svg"
-                                className="img-fluid w-75 ms-4 mt-2"
-                                style={{}}
+                                src={props.campaignData[0].image}
+                                className="img-fluid w-75 mt-2 ms-2"
+                                style={{
+                                    width: "60px",
+                                    height: "100px",
+                                    aspectRatio: "1",
+                                    alignSelf: "center",
+                                    objectFit: "contain" /*magic*/,
+                                }}
                             />
                         </div>
                         <div
@@ -25,9 +37,11 @@ function CampaignBoxSticky() {
                             style={{ fontWeight: "600" }}
                         >
                             {" "}
-                            Save The Earth
+                            {props.campaignData[0].title}
+                            <div style={{ color: "#596D55" }}>
+                                {props.campaignData[0].companyName}
+                            </div>
                             <br />
-                            <a>Kiehl's</a>
                         </div>
                     </div>
                     <div className="row w-100 mt-2">
@@ -49,7 +63,7 @@ function CampaignBoxSticky() {
                             />
                         </div>
                         <div className="col-8" style={{ alignSelf: "center" }}>
-                            Jurong East, Singapore
+                            {props.campaignData[0].address}
                         </div>
                     </div>
                     <div className="row w-100 mt-2 mb-3">
@@ -60,7 +74,9 @@ function CampaignBoxSticky() {
                             />
                         </div>
                         <div className="col-8" style={{ alignSelf: "center" }}>
-                            23 September 2022 - 05 October 2022
+                            {`${
+                                props.campaignData[0].startDate.split("T")[0]
+                            } - ${props.campaignData[0].endDate.split("T")[0]}`}
                         </div>
                     </div>
                 </div>
@@ -77,22 +93,36 @@ function CampaignBoxSticky() {
                 }}
             >
                 <div className="container h-100">
-                    <div className="row w-100">
+                    <div
+                        className="row w-100 "
+                        style={{ alignItems: "center" }}
+                    >
                         <div className="col-4 p-0 h-25" style={{}}>
                             <img
-                                src="../../campaign/image 27.svg"
+                                src={props.campaignData[1].image}
                                 className="img-fluid w-75 ms-4 mt-2"
-                                style={{}}
+                                style={{
+                                    // width: "50px",
+                                    // height: "100px",
+                                    // minHeight: "50px",
+                                    width: "60px",
+                                    height: "100px",
+                                    aspectRatio: 1,
+                                    alignSelf: "center",
+                                    objectFit: "contain" /*magic*/,
+                                }}
                             />
                         </div>
                         <div
-                            className="col-6 p-0 ms-4 h-25 mt-sm-3 mt-2"
+                            className="col-6 p-0 ms-4 h-25 mt-sm-3 mt-2 text-align-center"
                             style={{ fontWeight: "600" }}
                         >
                             {" "}
-                            Save The Earth
+                            {props.campaignData[1].title}
+                            <div style={{ color: "#596D55" }}>
+                                {props.campaignData[1].companyName}
+                            </div>
                             <br />
-                            <a>Kiehl's</a>
                         </div>
                     </div>
                     <div className="row w-100 mt-2">
@@ -114,7 +144,7 @@ function CampaignBoxSticky() {
                             />
                         </div>
                         <div className="col-8" style={{ alignSelf: "center" }}>
-                            Jurong East, Singapore
+                            {props.campaignData[1].address}
                         </div>
                     </div>
                     <div className="row w-100 mt-2 mb-3">
@@ -125,7 +155,9 @@ function CampaignBoxSticky() {
                             />
                         </div>
                         <div className="col-8" style={{ alignSelf: "center" }}>
-                            23 September 2022 - 05 October 2022
+                            {`${
+                                props.campaignData[1].startDate.split("T")[0]
+                            } - ${props.campaignData[1].endDate.split("T")[0]}`}
                         </div>
                     </div>
                 </div>

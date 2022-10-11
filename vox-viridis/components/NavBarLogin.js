@@ -35,18 +35,6 @@ function NavBarLogin(props) {
                 console.log(error);
             });
 
-        // axios
-        //     .get("http://localhost:8080/api/users/name", {
-        //         headers: {
-        //             Authorization: `Bearer ${localStorage.getItem("token")}`,
-        //         },
-        //     })
-        //     .then((response) => {
-        //         console.log(response);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
     };
 
     return (
