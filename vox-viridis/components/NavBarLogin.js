@@ -5,7 +5,7 @@ import { useState } from "react";
 import Router from "next/router";
 import { Button, Form } from "react-bootstrap";
 
-function NavBarLogin() {
+function NavBarLogin(props) {
     const [inputValues, setInputValues] = useState({
         username: "",
         password: "",
@@ -13,7 +13,9 @@ function NavBarLogin() {
 
     const sendLogin = (e) => {
         e.preventDefault();
-
+        if (!inputValues.password) {
+            e.preventPropagation;
+        }
         axios
             .post(
                 "http://localhost:8080/api/users/token",
@@ -156,10 +158,10 @@ function NavBarLogin() {
                         <div className="dropdown-divider"></div>
                         <div className="dropdown-item-text" style={{}}>
                             <div className="row">
-                                <img
+                                {/* <img
                                     clasName=" img-fluid rounded mx-auto d-md-block d-none"
                                     src="../../singpass.svg"
-                                />
+                                /> */}
                             </div>
                         </div>
                     </Dropdown.Menu>

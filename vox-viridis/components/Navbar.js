@@ -4,11 +4,24 @@ import Link from "next/link";
 import Nav from "react-bootstrap/Nav";
 import NavbarTemplate from "react-bootstrap/Navbar";
 import NavBarLogin from "./NavBarLogin";
+import NavBarLogout from "./NavBarLogout";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            setIsLoggedIn(true);
+        }
+    }, [isLoggedIn]);
+
     return (
         <div className="container-fluid p-0">
-            <NavBarLogin />
+            {isLoggedIn ? (
+                <NavBarLogout setIsLoggedIn={setIsLoggedIn} />
+            ) : (
+                <NavBarLogin setLogin={setIsLoggedIn} />
+            )}
 
             <div className="row m-auto  ">
                 <Link href="/">

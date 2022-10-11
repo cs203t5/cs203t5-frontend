@@ -14,15 +14,7 @@ const Register = () => {
         dob: "",
         validated: false,
     });
-    const [errorValues, setErrorValues] = useState({
-        // username: "",
-        // password: "",
-        // confirmPassword: "",
-        // firstName: "",
-        // lastName: "",
-        // email: "",
-        // dob: "",
-    });
+    const [errorValues, setErrorValues] = useState({});
 
     const returnToHome = (e) => {
         Router.push("/");
@@ -121,15 +113,6 @@ const Register = () => {
         }
 
         setInputValues({ ...inputValues, validated: true });
-
-        // axios
-        //     .post("http://localhost:8080/api/users/save", inputValues, {})
-        //     .then((response) => {
-        //         console.log(response);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
     };
 
     return (
