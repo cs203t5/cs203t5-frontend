@@ -3,19 +3,30 @@ import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import axios from "axios";
 import { useState } from "react";
 import Router from "next/router";
-import { Button, Form } from "react-bootstrap";
+import { Alert, Button, Form } from "react-bootstrap";
 
 function NavBarLogin(props) {
     const [inputValues, setInputValues] = useState({
         username: "",
         password: "",
     });
+    const [validated, setValidated] = useState(false);
+
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        } else {
+            sendLogin(event);
+        }
+
+        setValidated(true);
+    };
 
     const sendLogin = (e) => {
         e.preventDefault();
-        if (!inputValues.password) {
-            e.preventPropagation;
-        }
+
         axios
             .post(
                 "http://localhost:8080/api/users/token",
@@ -32,9 +43,11 @@ function NavBarLogin(props) {
                 Router.reload(window.location.pathname);
             })
             .catch(function (error) {
-                console.log(error);
+                console.log(error.response.status);
+                if (error.response.status === 401) {
+                    <Alert>hello</Alert>;
+                }
             });
-
     };
 
     return (
@@ -58,11 +71,17 @@ function NavBarLogin(props) {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <form className="px-4 py-1">
+                        <Form
+                            noValidate
+                            validated={validated}
+                            onSubmit={handleSubmit}
+                            className="px-4 py-1 needs-validation"
+                        >
                             <div className="form-group">
                                 <label>Username</label>
                                 <input
                                     type="username"
+                                    required
                                     className="form-control"
                                     placeholder="Username"
                                     onChange={(e) =>
@@ -72,6 +91,9 @@ function NavBarLogin(props) {
                                         })
                                     }
                                 />
+                                <div class="invalid-feedback">
+                                    Please provide a username
+                                </div>
                             </div>
                             <div className="form-group mt-1">
                                 <Form.Label>Password</Form.Label>
@@ -86,27 +108,27 @@ function NavBarLogin(props) {
                                         })
                                     }
                                 />
-                                <Form.Control.Feedback type="invalid">
-                                    Please provide a valid city.
-                                </Form.Control.Feedback>
+                                <div class="invalid-feedback">
+                                    Please provide a password
+                                </div>
                             </div>
-                            <div className="form-check mt-1">
-                                <input
-                                    type="checkbox"
-                                    className="form-check-input"
-                                    // id="dropdownCheck"
-                                />
+                            <div className="form-check mt-1 ">
                                 <label
-                                    className="form-check-label"
-                                    htmlFor="dropdownCheck"
+                                    className="form-label"
+                                    // htmlFor="dropdownCheck"
                                 >
+                                    <input
+                                        type="checkbox"
+                                        className="form-check-input"
+                                        validated="false"
+                                    />
                                     Remember me
                                 </label>
                             </div>
                             <Button
                                 type="submit"
                                 className="btn btn-primary"
-                                onClick={(e) => sendLogin(e)}
+                                // onClick={(e) => handleSubmit(e)}
                                 style={{
                                     marginTop: "5px",
                                     fontWeight: "bold",
@@ -114,7 +136,7 @@ function NavBarLogin(props) {
                             >
                                 Sign in
                             </Button>
-                        </form>
+                        </Form>
                         <div
                             className="dropdown-item-text "
                             style={{

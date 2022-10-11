@@ -100,12 +100,10 @@ const Register = () => {
 
             return stateObj;
         });
-        console.log(errorValues);
     };
 
     const submitRegister = (e) => {
         const form = e.currentTarget;
-        console.log(form.checkValidity());
 
         if (form.checkValidity() === false) {
             e.preventDefault();
