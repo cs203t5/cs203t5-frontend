@@ -37,8 +37,8 @@ const HelpPageDetails = () => {
             <div className="row w-100 h-100">
                 <div className="col-lg-6 col-12">
                     <img
-                        src="../../Help page image.png"
-                        className="img-fluid w-100 h-100"
+                        src="../../help image.svg"
+                        className="img-fluid w-100"
                     ></img>
                 </div>
                 <div className="col-lg-6 col-12 my-md-4 my-lg-0 text-center">

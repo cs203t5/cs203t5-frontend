@@ -22,7 +22,7 @@ const AboutDetails = () => {
                         style={{
                             fontFamily: "PT Sans",
                             fontSize: "25px",
-                            position: "relative;top:150px;"
+                            position: "relative;top:140px;"
                         }}
                     >
                         We are a group of SMU CS students embarking on our CS203
