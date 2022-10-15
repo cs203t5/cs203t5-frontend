@@ -66,7 +66,8 @@ const HelpPageDetails = () => {
                                     aria-expanded="false"
                                     aria-controls="flush-collapseOne"
                                 >
-                                    Q(User): The store has rejected my recycleables.
+                                    Q(User): The store has rejected my
+                                    recycleables.
                                 </button>
                             </h2>
                             <div
@@ -76,7 +77,12 @@ const HelpPageDetails = () => {
                                 data-bs-parent="#accordionFlushExample"
                             >
                                 <div class="accordion-body">
-                                Have you checked the conditions of your recycleables? It could be its damaged or unclean state that has caused it to be rejected! Do check with stores through our platform before going to the stores for exchanges!"
+                                    Have you checked the conditions of your
+                                    recycleables? It could be its damaged or
+                                    unclean state that has caused it to be
+                                    rejected! Do check with stores through our
+                                    platform before going to the stores for
+                                    exchanges!"
                                 </div>
                             </div>
                         </div>
@@ -90,7 +96,8 @@ const HelpPageDetails = () => {
                                     aria-expanded="false"
                                     aria-controls="flush-collapseTwo"
                                 >
-                                    Q(User): I did not receive any stamps after giving a recycleable to the store.
+                                    Q(User): I did not receive any stamps after
+                                    giving a recycleable to the store.
                                 </button>
                             </h2>
                             <div
@@ -100,7 +107,10 @@ const HelpPageDetails = () => {
                                 data-bs-parent="#accordionFlushExample"
                             >
                                 <div class="accordion-body">
-                                    Sorry for the inconvenience caused! Please send us a ticket through the Contact Us page so that we can verify and assist you in this matter!
+                                    Sorry for the inconvenience caused! Please
+                                    send us a ticket through the Contact Us page
+                                    so that we can verify and assist you in this
+                                    matter!
                                 </div>
                             </div>
                         </div>
@@ -127,7 +137,12 @@ const HelpPageDetails = () => {
                                 data-bs-parent="#accordionFlushExample"
                             >
                                 <div class="accordion-body">
-                                    We are sorry to hear that. It could possibly caused by the fact that your campaign does not relate to our green movement! For more information or assistance, please use the contact us so that we can verify your campaign manually.
+                                    We are sorry to hear that. It could possibly
+                                    caused by the fact that your campaign does
+                                    not relate to our green movement! For more
+                                    information or assistance, please use the
+                                    contact us so that we can verify your
+                                    campaign manually.
                                 </div>
                             </div>
                         </div>
@@ -149,5 +164,3 @@ const index = () => {
 };
 
 export default index;
-
-
