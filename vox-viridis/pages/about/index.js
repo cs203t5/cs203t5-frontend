@@ -22,17 +22,17 @@ const AboutDetails = () => {
                         style={{
                             fontFamily: "PT Sans",
                             fontSize: "25px",
-                            position: "relative;top:140px;"
+                            position: "relative;top:140px;",
                         }}
                     >
                         We are a group of SMU CS students embarking on our CS203
                         journey! Through this project, we hope to raise
                         awareness of on-going green campaigns and incentivise
-                        everyone to participant. <br></br><br></br>
-                        
-                        Since it is a work of progress,
-                        please be patient with us and we welcome any feedback
-                        through the contact us page. Thank you!
+                        everyone to participate. <br></br>
+                        <br></br>
+                        Since it is a work of progress, please be patient with
+                        us and we welcome any feedback through the contact us
+                        page. Thank you!
                     </p>
                 </div>
             </div>
