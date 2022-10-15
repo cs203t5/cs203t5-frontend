@@ -1,29 +1,5 @@
 import Navbar from "../../components/Navbar";
 import globalStyle from "../Global.module.css";
-import QuestionsDropdown from "./questionsDropdown";
-
-// const HelpPageDetails = () => {
-//     return (
-//         <div className="container-fluid">
-//             <div className="row" style={{ height: "100vh" }}>
-//                 <div className="col-5 px-3 py-5">
-//                     <img
-//                         src="../../Help page image.png"
-//                         /*width="330"
-//                         height="225"*/
-//                         class="img-fluid w-50 h-50"
-//                         alt="Responsive image"
-//                         style={{ position: "relative;top:100px" }}
-//                     />
-//                 </div>
-//                 <div className="col-7 px-2 py-2 text-center">
-//                     <p style={{ fontFamily: "PT Sans",color:"rgb(69, 144, 210)" }}>FAQ</p>
-//                     <QuestionsDropdown question="hello" answer="world" />
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
 
 const HelpPageDetails = () => {
     return (
