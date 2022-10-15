@@ -59,12 +59,23 @@ function NavBarLogin(props) {
                         style={{ backgroundColor: "inherit", border: "0" }}
                     >
                         <AccountCircleRoundedIcon
-                            style={{ fontSize: "xx-large" }}
+                            style={{
+                                fontSize: "xx-large",
+                                fill: "#949494",
+                                height: "30px",
+                                position: "relative;top:6px",
+                            }}
                         />
 
                         <span
                             className="span-1"
-                            style={{ alignSelf: "center" }}
+                            style={{
+                                alignSelf: "center",
+                                color: "#949494",
+                                position: "relative;top:7px;left:1px",
+                                fontSize: "19px",
+                                fontFamily: "Nanum Gothic",
+                            }}
                         >
                             Login
                         </span>
