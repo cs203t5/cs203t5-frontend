@@ -108,7 +108,7 @@ const ContactUs = () => {
                             <div className="col-lg-6 col-12">
                                 <img
                                     src="../../contactus/contactus.svg"
-                                    className="img-fluid w-75 h-75"
+                                    className="img-fluid w-100 h-100"
                                 ></img>
                             </div>
                             <div className="col-lg-6 col-12">
