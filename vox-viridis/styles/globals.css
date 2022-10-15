@@ -1,10 +1,22 @@
 @import url("http://fonts.cdnfonts.com/css/italiana");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Nanum+Gothic&family=PT+Sans&display=swap");
+
 html,
 body {
     padding: 0;
     margin: 0;
     background-color: #f1e1c7 !important;
     -webkit-font-smoothing: antialiased;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.fonts {
+  font-family: "Handlee", cursive;
+  font-family: "Nanum Gothic", sans-serif;
+  font-family: "PT Sans", sans-serif;
 }
 
 a {

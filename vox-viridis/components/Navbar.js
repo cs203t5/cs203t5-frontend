@@ -33,15 +33,21 @@ const Navbar = () => {
                         }}
                     >
                         <h2 style={{ textAlign: "center", fontWeight: "bold" }}>
-                            Vox-Viridis
                             <img
-                                className="col mb-2"
-                                src="../../vox-viridis_icon.png"
-                                width="35"
-                                height="35"
+                                className="col mb-0"
+                                src="../../Vox Icon.jpg"
+                                width="210"
+                                height="95"
                                 style={{ marginLeft: "5px" }}
                             />
                         </h2>
+                        {/* <img
+                            src="../../Vox Icon.jpg"
+                            width="190"
+                            height="85"
+                            className="center"
+                            style={{ cursor: "pointer"}}
+                        /> */}
                     </div>
                 </Link>
             </div>
