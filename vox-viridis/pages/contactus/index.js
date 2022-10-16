@@ -27,7 +27,7 @@ const ContactUs = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [show2, setShow2] = useState(true);
+    const [show2, setShow2] = useState(false);
 
 
     const submitContact = (e) => {
