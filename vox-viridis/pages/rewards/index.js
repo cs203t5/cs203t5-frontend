@@ -1,22 +1,16 @@
 import Navbar from "../../components/Navbar";
 import globalStyle from "../Global.module.css";
 import Card from "react-bootstrap/Card";
-import styles from "./rewards.module.css";
-import { useRef } from "react";
-import { Overlay } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y } from "swiper";
+import { useState } from "react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination, A11y } from "swiper";
-import { useSwiper } from "swiper/react";
-import { useState } from "react";
 
 function index() {
-    const swiper = useSwiper();
-
     return (
         <div>
             <div className={globalStyle.pageBg}>
@@ -66,15 +60,22 @@ function index() {
 }
 
 function RewardCard() {
-    const [opacity, setOpacity] = useState(0);
-    const [imageOpacity, setImageOpacity] = useState(1);
+    const [opacity, setOpacity] = useState({
+        imageOpacity: 1,
+        textOpacity: 0,
+    });
+
     const showOverlay = (show) => {
         if (show) {
-            setOpacity(1);
-            setImageOpacity(0.3);
+            setOpacity({
+                imageOpacity: 0.3,
+                textOpacity: 1,
+            });
         } else {
-            setOpacity(0);
-            setImageOpacity(1);
+            setOpacity({
+                imageOpacity: 1,
+                textOpacity: 0,
+            });
         }
     };
     return (
@@ -88,11 +89,14 @@ function RewardCard() {
                 <Card.Img
                     variant="top"
                     src="../../shaoDong.jpeg"
-                    style={{ objectFit: "cover", opacity: imageOpacity }}
+                    style={{
+                        objectFit: "cover",
+                        opacity: opacity.imageOpacity,
+                    }}
                 />
                 <Card.ImgOverlay
                     className="d-flex align-items-end"
-                    style={{ opacity: opacity }}
+                    style={{ opacity: opacity.textOpacity }}
                 >
                     <Card.Body className="p-0 w-100">
                         <Card.Title
