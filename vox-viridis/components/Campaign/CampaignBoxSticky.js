@@ -33,7 +33,7 @@ function CampaignBoxSticky(props) {
                             />
                         </div>
                         <div
-                            className="col-6 p-0 ms-4 h-25 mt-sm-3 mt-2 text-align-center"
+                            className="col-8 p-0 ms-2 h-25 mt-sm-3 mt-2 text-align-center"
                             style={{ fontWeight: "600" }}
                         >
                             {" "}
@@ -111,7 +111,7 @@ function CampaignBoxSticky(props) {
                             />
                         </div>
                         <div
-                            className="col-6 p-0 ms-4 h-25 mt-sm-3 mt-2 text-align-center"
+                            className="col-8 p-0 ms-2 h-25 mt-sm-3 mt-2 text-align-center"
                             style={{ fontWeight: "600" }}
                         >
                             {" "}

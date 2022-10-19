@@ -23,6 +23,7 @@ const AboutDetails = () => {
                             fontFamily: "PT Sans",
                             fontSize: "25px",
                             position: "relative;top:140px;",
+                            alignSelf: "center",
                         }}
                     >
                         We are a group of SMU CS students embarking on our CS203

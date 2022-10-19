@@ -6,7 +6,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import CampaignFilter from "../../components/Campaign/CampaignFilter/CampaignFilter";
 import Footer from "../../components/Footer.js";
 import CampaignBoxSticky from "../../components/Campaign/CampaignBoxSticky";
-import CampaignFilterSmall from "../../components/Campaign/CampaignFilter/CampaignFilterSmall";
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";

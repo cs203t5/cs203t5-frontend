@@ -21,7 +21,9 @@
     "react-awesome-reveal": "^4.0.1",
     "react-bootstrap": "^2.5.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "^6.4.1"
+    "react-router-dom": "^6.4.1",
+    "slider": "^1.0.4",
+    "swiper": "^8.4.4"
   },
   "devDependencies": {
     "eslint": "8.24.0",

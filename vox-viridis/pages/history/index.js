@@ -1,9 +1,16 @@
-import Home from "../../components/Home/Carousel/Home (1)/Carousel";
+import Navbar from "../../components/Navbar";
+import globalStyle from "../Global.module.css";
+
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 function index() {
     return (
         <div>
-            <Home />
+            <div className={globalStyle.pageBg}>
+                <Navbar />
+                
+            </div>
         </div>
     );
 }
