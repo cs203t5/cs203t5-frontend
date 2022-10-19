@@ -168,10 +168,10 @@ function NavBarLogin(props) {
                         <div className="dropdown-divider"></div>
                         <div className="dropdown-item-text" style={{}}>
                             <div className="row">
-                                {/* <img
+                                <img
                                     clasName=" img-fluid rounded mx-auto d-md-block d-none"
                                     src="../../singpass.svg"
-                                /> */}
+                                />
                             </div>
                         </div>
                     </Dropdown.Menu>

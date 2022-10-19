@@ -5,11 +5,11 @@ const buttons = ["Newest", "Oldest"];
 
 const CampaignSortBy = () => {
     return (
-        <div className="row-fluid" style={{ fontWeight: "bold" }}>
+        <div className="row-fluid mt-3" style={{ fontWeight: "bold" }}>
             <div
                 className="row-fluid mb-2 p-0"
                 style={{
-                    fontSize: "1.3em",
+                    // fontSize: "0.8em",
                     fontWeight: "600",
                     marginLeft: "1.5vw",
                 }}

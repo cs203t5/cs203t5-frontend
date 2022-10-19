@@ -34,18 +34,6 @@ const CampaignFilter = () => {
                 float: "left",
             }}
         >
-            <div
-                className="row-fluid mt-3"
-                style={{
-                    fontWeight: "600",
-                    fontSize: "1.5em",
-                    marginLeft: "1.5vw",
-                    marginTop: "5vh",
-                }}
-            >
-                Filter by
-            </div>
-            <hr style={{ color: "grey" }} />
             <CampaignSortBy />
             <hr style={{ color: "grey" }} />
             <CampaignFilterCheckBox content={contents[0]} />

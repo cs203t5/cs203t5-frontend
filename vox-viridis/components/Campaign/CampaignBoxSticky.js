@@ -19,12 +19,12 @@ function CampaignBoxSticky(props) {
                         className="row w-100 "
                         style={{ alignItems: "center" }}
                     >
-                        <div className="col-4 p-0 h-25" style={{}}>
+                        <div className="col-3 p-0 h-25" style={{}}>
                             <img
                                 src={props.campaignData[0].image}
                                 className="img-fluid w-75 mt-2 ms-2"
                                 style={{
-                                    width: "60px",
+                                    width: "100px",
                                     height: "100px",
                                     aspectRatio: "1",
                                     alignSelf: "center",
@@ -33,7 +33,7 @@ function CampaignBoxSticky(props) {
                             />
                         </div>
                         <div
-                            className="col-6 p-0 ms-4 h-25 mt-sm-3 mt-2"
+                            className="col-6 p-0 ms-4 h-25 mt-sm-3 mt-2 text-align-center"
                             style={{ fontWeight: "600" }}
                         >
                             {" "}
@@ -97,17 +97,14 @@ function CampaignBoxSticky(props) {
                         className="row w-100 "
                         style={{ alignItems: "center" }}
                     >
-                        <div className="col-4 p-0 h-25" style={{}}>
+                        <div className="col-3 p-0 h-25" style={{}}>
                             <img
                                 src={props.campaignData[1].image}
-                                className="img-fluid w-75 ms-4 mt-2"
+                                className="img-fluid w-75 mt-2 ms-2"
                                 style={{
-                                    // width: "50px",
-                                    // height: "100px",
-                                    // minHeight: "50px",
                                     width: "60px",
                                     height: "100px",
-                                    aspectRatio: 1,
+                                    aspectRatio: "1",
                                     alignSelf: "center",
                                     objectFit: "contain" /*magic*/,
                                 }}

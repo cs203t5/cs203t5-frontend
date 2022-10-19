@@ -82,6 +82,17 @@ const Navbar = () => {
                                     </IconButton>
                                 </Link>
                             )}
+                            {isLoggedIn && (
+                                <Link href="/history">
+                                    <IconButton
+                                        sx={{
+                                            color: "black",
+                                        }}
+                                    >
+                                        History
+                                    </IconButton>
+                                </Link>
+                            )}
                         </Nav>
 
                         <Nav
