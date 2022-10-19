@@ -9,6 +9,7 @@ import "swiper/swiper.min.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Button } from "react-bootstrap";
 
 function index() {
     return (
@@ -16,8 +17,13 @@ function index() {
             <div className={globalStyle.pageBg}>
                 <Navbar />
                 <div className="row mt-5 mx-4" style={{ overflow: "hidden" }}>
-                    <div className="row mb-2 ">
-                        <h4 className="font-weight-bold">Rewards</h4>
+                    <div className="row mb-2 pe-0">
+                        <div className="col d-flex pe-0">
+                            <div className="font-weight-bold me-auto">
+                                <h4>Rewards</h4>
+                            </div>
+                            <Button variant="primary ml-auto">View All</Button>{" "}
+                        </div>
                     </div>
                     <Swiper
                         modules={[Navigation, Pagination]}
