@@ -41,19 +41,10 @@ const Navbar = () => {
                                 style={{ marginLeft: "5px" }}
                             />
                         </h2>
-                        {/* <img
-                            src="../../Vox Icon.jpg"
-                            width="190"
-                            height="85"
-                            className="center"
-                            style={{ cursor: "pointer"}}
-                        /> */}
                     </div>
                 </Link>
             </div>
-            {/* <div className="row border-bottom border-dark text-white m-auto ">
-                dsad{" "}
-            </div> */}
+
             <hr style={{ color: "grey", margin: "0", marginBottom: "10px" }} />
 
             <div className={styles.routeContainer}>
