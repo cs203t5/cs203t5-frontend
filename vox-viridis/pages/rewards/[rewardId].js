@@ -65,7 +65,8 @@ function rewardPage() {
                         >
                             {data.campaignName}
                         </div>
-                        {data.rewardType === "points" ? <Points /> : <Cards />}
+                        <Points /> 
+                        <Cards />
                         <div className="row mt-5 px-4">
                             <Alert key="dark" variant="dark">
                                 <div

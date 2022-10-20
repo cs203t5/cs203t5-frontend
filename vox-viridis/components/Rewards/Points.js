@@ -1,8 +1,8 @@
 function Points() {
     return (
         <div
-            className="row mt-5 px-4 m-auto justify-content-center w-75"
-            style={{ border: "solid", borderRadius: "20px" }}
+            className="row mt-5 px-4 m-auto justify-content-center"
+            style={{ border: "solid", borderRadius: "20px", width: "85%" }}
         >
             <div className="row">
                 <div
