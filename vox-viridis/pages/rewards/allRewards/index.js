@@ -1,7 +1,7 @@
-import Navbar from "../../components/Navbar";
-import globalStyle from "../Global.module.css";
-import Footer from "../../components/Footer.js";
-import RewardCard from "../../components/AllRewards/RewardCard";
+import Navbar from "../../../components/Navbar";
+import globalStyle from "../../Global.module.css";
+import Footer from "../../../components/Footer.js";
+import RewardCard from "../../../components/AllRewards/RewardCard";
 import { Row } from "react-bootstrap";
 
 function index() {

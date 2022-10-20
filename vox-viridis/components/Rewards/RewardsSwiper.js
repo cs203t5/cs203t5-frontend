@@ -13,10 +13,10 @@ import Router from "next/router";
 function RewardsSwiper(props) {
     const showViewAll = () => {
         if (props.data.title === "Rewards") {
-            Router.push("/allRewards");
+            Router.push("/rewards/allRewards");
             return;
         } else if (props.data.title === "Shops") {
-            Router.push("/allShops");
+            Router.push("/rewards/allShops");
         }
     };
     return (

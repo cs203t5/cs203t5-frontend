@@ -1,7 +1,7 @@
-import Navbar from "../../components/Navbar";
+import Navbar from "../../../components/Navbar";
 
-import globalStyle from "../Global.module.css";
-import Footer from "../../components/Footer.js";
+import globalStyle from "../../Global.module.css";
+import Footer from "../../../components/Footer.js";
 
 function index() {
     return (

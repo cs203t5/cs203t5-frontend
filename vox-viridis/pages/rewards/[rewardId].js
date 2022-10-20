@@ -5,6 +5,7 @@ import { Alert, Button } from "react-bootstrap";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import Points from "../../components/Rewards/Points";
 import Cards from "../../components/Rewards/Cards";
+import { useRouter } from "next/router";
 
 const data = {
     shopName: "The Body Shop",
@@ -14,6 +15,14 @@ const data = {
     rewardType: "cards",
 };
 function rewardPage() {
+    const router = useRouter();
+
+    const showRewardHistory = () => {
+        router.push({
+            pathname: "/rewards/rewardTransaction/[rewardId]",
+            query: { rewardId: router.query.rewardId },
+        });
+    };
     return (
         <div>
             <div>
@@ -37,18 +46,23 @@ function rewardPage() {
                             >
                                 {data.shopName}
                             </div>
+
                             <div
                                 className="col-2 p-0 "
                                 style={{ alignSelf: "center" }}
                             >
                                 <Button
-                                    className=""
+                                    className="ms-auto"
+                                    variant="outline-primary"
                                     size="lg"
                                     style={{
-                                        backgroundColor:
-                                            "rgba(232, 166, 64, 0.59)",
                                         color: "black",
                                         float: "right",
+                                        "--bs-btn-hover-bg":
+                                            "rgba(232, 166, 64, 0.59)",
+                                        borderColor: "black",
+                                        "--bs-btn-active-bg":
+                                            "rgba(232, 166, 64, 0.59)",
                                     }}
                                 >
                                     Chat
@@ -65,7 +79,7 @@ function rewardPage() {
                         >
                             {data.campaignName}
                         </div>
-                        <Points /> 
+                        <Points />
                         <Cards />
                         <div className="row mt-5 px-4">
                             <Alert key="dark" variant="dark">
@@ -80,6 +94,26 @@ function rewardPage() {
                                     {data.termsAndCondition}
                                 </div>
                             </Alert>
+                        </div>
+                        <div className="row mt-3 px-4">
+                            <Button
+                                className="w-25 ms-auto"
+                                variant="outline-primary"
+                                size="lg"
+                                style={{
+                                    color: "black",
+                                    float: "right",
+                                    "--bs-btn-hover-bg":
+                                        "rgba(232, 166, 64, 0.59)",
+                                    borderColor: "black",
+                                    "--bs-btn-active-bg":
+                                        "rgba(232, 166, 64, 0.59)",
+                                }}
+                                onClick={showRewardHistory}
+                            >
+                                {" "}
+                                View Rewards History
+                            </Button>
                         </div>
                     </div>
                 </div>
