@@ -12,7 +12,7 @@ function index() {
                 style={{ paddingBottom: "5vh" }}
             >
                 <Navbar />
-                <div className="container-fluid mt-5 g-5 mx-4">
+                <div className="container-fluid mt-5 g-5 ">
                     <div
                         className="my-4"
                         style={{
