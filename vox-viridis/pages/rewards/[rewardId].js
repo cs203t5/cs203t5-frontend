@@ -11,7 +11,7 @@ const data = {
     campaignName: "Recycle Paper",
     termsAndCondition:
         "Please sell your tissue, we can only give 5 tissue each. I like psyduck, i like turtles",
-    rewardType: "points",
+    rewardType: "cards",
 };
 function rewardPage() {
     return (
@@ -33,7 +33,7 @@ function rewardPage() {
                         <div className="row mt-2 px-4 d-flex">
                             <div
                                 className="col-10 p-0 float-start"
-                                style={{ fontSize: "3em", fontWeight: "100" }}
+                                style={{ fontSize: "3rem", fontWeight: "100" }}
                             >
                                 {data.shopName}
                             </div>

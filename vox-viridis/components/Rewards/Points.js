@@ -30,11 +30,11 @@ function Points() {
                     }}
                 >
                     <p className="m-0" style={{ fontSize: "3em" }}>
-                        100
+                        5
                     </p>
                     <div className="m-0">
-                        <p className="m-0">pts</p>
-                        <p className="m-0">earned</p>
+                        <p className="m-0">Jeans</p>
+                        <p className="m-0">Recyclced</p>
                     </div>
                 </div>
                 <div
@@ -46,11 +46,11 @@ function Points() {
                     }}
                 >
                     <p className="m-0" style={{ fontSize: "3em" }}>
-                        100
+                        2.89
                     </p>
                     <div className="m-0">
-                        <p className="m-0">pts</p>
-                        <p className="m-0">earned</p>
+                        <p className="m-0">kg of cotton</p>
+                        <p className="m-0">saved</p>
                     </div>
                 </div>
             </div>
