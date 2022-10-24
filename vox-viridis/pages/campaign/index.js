@@ -16,7 +16,7 @@ const Campaign = () => {
 
     useEffect(() => {
         instance
-            .get("http://localhost:8080/api/campaign")
+            .get("campaign")
             .then((response) => {
                 const everything = response.data;
                 const campaigns = [];

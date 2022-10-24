@@ -1,6 +1,9 @@
 import { maxHeight } from "@mui/system";
+import { useContext } from "react";
+import { useLoginContext } from "../../context/loginContext";
 
 function CampaignBoxSticky(props) {
+    const { sharedState, setSharedState } = useLoginContext();
     return (
         <div className="row p-0 mb-5 gap-5 mx-3">
             <div
@@ -98,7 +101,7 @@ function CampaignBoxSticky(props) {
                     >
                         <div className="col-3 p-0 h-25" style={{}}>
                             <img
-                                src={props.campaignData[1].image}
+                                src={props.campaignData[1]?.image}
                                 className="img-fluid w-75 mt-2 ms-2"
                                 style={{
                                     width: "60px",
@@ -114,9 +117,9 @@ function CampaignBoxSticky(props) {
                             style={{ fontWeight: "600" }}
                         >
                             {" "}
-                            {props.campaignData[1].title}
+                            {props.campaignData[1]?.title}
                             <div style={{ color: "#596D55" }}>
-                                {props.campaignData[1].companyName}
+                                {props.campaignData[1]?.companyName}
                             </div>
                             <br />
                         </div>
@@ -140,7 +143,7 @@ function CampaignBoxSticky(props) {
                             />
                         </div>
                         <div className="col-8" style={{ alignSelf: "center" }}>
-                            {props.campaignData[1].address}
+                            {props.campaignData[1]?.address}
                         </div>
                     </div>
                     <div className="row w-100 mt-2 mb-3">
@@ -152,8 +155,10 @@ function CampaignBoxSticky(props) {
                         </div>
                         <div className="col-8" style={{ alignSelf: "center" }}>
                             {`${
-                                props.campaignData[1].startDate.split("T")[0]
-                            } - ${props.campaignData[1].endDate.split("T")[0]}`}
+                                props.campaignData[1]?.startDate.split("T")[0]
+                            } - ${
+                                props.campaignData[1]?.endDate.split("T")[0]
+                            }`}
                         </div>
                     </div>
                 </div>

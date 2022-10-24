@@ -1,10 +1,13 @@
 import { Button, Form } from "react-bootstrap";
 import Navbar from "../../components/Navbar";
 import globalStyle from "../Global.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Toast from "react-bootstrap/Toast";
+import { useRouter } from "next/router";
+import { useLoginContext } from "../../context/loginContext";
+import { NextResponse } from "next/dist/server/web/spec-extension/response";
 
 const CreateCampaign = () => {
     const [inputValues, setInputValues] = useState({
@@ -19,6 +22,13 @@ const CreateCampaign = () => {
         campaignImage: "",
     });
     const [errorValues, setErrorValues] = useState({});
+    const { sharedState, setSharedState } = useLoginContext();
+    const router = useRouter();
+    useEffect(() => {
+        if (!sharedState.token) {
+            router.push("/unauthorised");
+        }
+    }, []);
 
     const onInputChange = (e) => {
         const { name, value } = e.target;
@@ -34,7 +44,6 @@ const CreateCampaign = () => {
     const handleShow = () => setShow(true);
     const [show2, setShow2] = useState(false);
 
-
     const submitContact = (e) => {
         const form = e.currentTarget;
         e.preventDefault();
@@ -49,21 +58,23 @@ const CreateCampaign = () => {
     };
 
     const submitConfirmation = (e) => {
-        axios.post("http://localhost:8080/api/email", inputValues).then((data) => {
-            handleClose();
-        setInputValues({
-            campaignName: "",
-            campaignDescription: "",
-            startDate: "",
-            endDate: "",
-            address: "",
-            location: "",
-            reward: "",
-            rewardType: "",
-            campaignImage: "",
-        });
-        setShow2(true);
-        });
+        axios
+            .post("http://localhost:8080/api/email", inputValues)
+            .then((data) => {
+                handleClose();
+                setInputValues({
+                    campaignName: "",
+                    campaignDescription: "",
+                    startDate: "",
+                    endDate: "",
+                    address: "",
+                    location: "",
+                    reward: "",
+                    rewardType: "",
+                    campaignImage: "",
+                });
+                setShow2(true);
+            });
     };
 
     const validateInput = (e) => {
@@ -79,7 +90,8 @@ const CreateCampaign = () => {
 
                 case "campaignDescription":
                     if (!value) {
-                        stateObj[name] = "Please enter your Campaign Description.";
+                        stateObj[name] =
+                            "Please enter your Campaign Description.";
                     }
                     break;
 
@@ -108,9 +120,9 @@ const CreateCampaign = () => {
                     break;
 
                 case "reward":
-                    console.log(inputValues.rewardType  && !value);
-                    console.log(inputValues.rewardType  && (!value));
-                    if (inputValues.rewardType  && !value ) {
+                    console.log(inputValues.rewardType && !value);
+                    console.log(inputValues.rewardType && !value);
+                    if (inputValues.rewardType && !value) {
                         console.log("hi");
                         stateObj[name] = "Please enter reward.";
                     }
@@ -341,7 +353,7 @@ const CreateCampaign = () => {
                                                 value={inputValues.reward}
                                                 onBlur={validateInput}
                                             />
-                                         {errorValues.reward && (
+                                            {errorValues.reward && (
                                                 <div className="mb-2 text-danger">
                                                     {errorValues.reward}
                                                 </div>
@@ -366,14 +378,16 @@ const CreateCampaign = () => {
                                         >
                                             <Form.Select
                                                 required
-                                                className="form-select" 
+                                                className="form-select"
                                                 aria-label="Default select example"
                                                 onChange={onInputChange}
                                                 name="rewardType"
                                                 value={inputValues.rewardType}
-                                                onBlur={validateInput}>
-
-                                                <option value="-" selected>Select Reward Type</option>
+                                                onBlur={validateInput}
+                                            >
+                                                <option value="-" selected>
+                                                    Select Reward Type
+                                                </option>
                                                 <option value="1">Point</option>
                                                 <option value="2">Card</option>
                                             </Form.Select>
@@ -416,20 +430,20 @@ const CreateCampaign = () => {
                                         >
                                             Campaign Image
                                         </div> */}
-                                        <label 
-                                            className="rowform-label" 
-                                            for="customFile" 
+                                        <label
+                                            className="rowform-label"
+                                            for="customFile"
                                             style={{
                                                 fontSize: "30px",
                                             }}
-                                            >
-                                                Campaign Image
+                                        >
+                                            Campaign Image
                                         </label>
-                                        <input 
-                                            type="file" 
-                                            class="form-control" 
-                                            id="customFile" 
-                                            />
+                                        <input
+                                            type="file"
+                                            class="form-control"
+                                            id="customFile"
+                                        />
                                         {/* <Form.Group
                                             className="mb-3"
                                             controlId="formBasicPassword"
@@ -471,7 +485,9 @@ const CreateCampaign = () => {
                                                 type="text"
                                                 placeholder="Enter Campaign Description"
                                                 name="campaignDescription"
-                                                value={inputValues.campaignDescription}
+                                                value={
+                                                    inputValues.campaignDescription
+                                                }
                                                 required
                                                 as="textarea"
                                                 rows={4}
@@ -480,7 +496,9 @@ const CreateCampaign = () => {
                                             />
                                             {errorValues.campaignDescription && (
                                                 <div className="mb-2 text-danger">
-                                                    {errorValues.campaignDescription}
+                                                    {
+                                                        errorValues.campaignDescription
+                                                    }
                                                 </div>
                                             )}{" "}
                                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -521,7 +539,7 @@ const CreateCampaign = () => {
                 onClose={() => setShow2(false)}
                 show={show2}
                 delay={3000}
-                style={{position:"fixed", bottom:"20px", right:"20px"}}
+                style={{ position: "fixed", bottom: "20px", right: "20px" }}
             >
                 <Toast.Header>
                     <strong className="me-auto">Vox Viridis</strong>
