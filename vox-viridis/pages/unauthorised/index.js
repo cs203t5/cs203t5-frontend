@@ -12,7 +12,7 @@ const Unauthorised = () => {
             }}
         >
             <div
-                className={styles.internalContainer}
+                className="mt-5"
                 style={{
                     alignSelf: "center",
                     alignItems: "center",
