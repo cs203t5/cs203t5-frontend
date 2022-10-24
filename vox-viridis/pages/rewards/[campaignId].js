@@ -6,6 +6,7 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import Points from "../../components/Rewards/Points";
 import Cards from "../../components/Rewards/Cards";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const data = {
     shopName: "The Body Shop",
@@ -17,6 +18,11 @@ const data = {
 function rewardPage() {
     const router = useRouter();
 
+    useEffect(() => {
+        if (sharedState.token === "") {
+            router.push("/unauthorised");
+        }
+    }, []);
     const showRewardHistory = () => {
         router.push({
             pathname: "/rewards/rewardTransaction/[campaignId]",

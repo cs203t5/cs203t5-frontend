@@ -10,8 +10,9 @@ function NavBarLogout(props) {
     const { sharedState, setSharedState } = useLoginContext();
     const handleLogout = (e) => {
         setSharedState({ ...sharedState, token: "" });
+        localStorage.setItem("token", "");
     };
-    console.log(localStorage.getItem("token"));
+
     useEffect(() => {
         instance
             .get("/users/name", {

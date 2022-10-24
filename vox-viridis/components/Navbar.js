@@ -11,7 +11,6 @@ import { useLoginContext } from "../context/loginContext";
 const Navbar = () => {
     const { sharedState, setSharedState } = useLoginContext();
     useEffect(() => {
-        console.log(localStorage.getItem("token"));
         setSharedState({
             ...sharedState,
             token: localStorage.getItem("token"),
