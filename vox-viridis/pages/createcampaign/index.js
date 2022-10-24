@@ -7,11 +7,13 @@ import Modal from "react-bootstrap/Modal";
 import Toast from "react-bootstrap/Toast";
 import { useRouter } from "next/router";
 import { useLoginContext } from "../../context/loginContext";
+import { NextResponse } from "next/dist/server/web/spec-extension/response";
+import instance from "../../services/AxiosInstance";
 
 const CreateCampaign = () => {
     const [inputValues, setInputValues] = useState({
-        campaignName: "",
-        campaignDescription: "",
+        title: "",
+        description: "",
         startDate: "",
         endDate: "",
         address: "",
@@ -22,6 +24,7 @@ const CreateCampaign = () => {
     });
     const [errorValues, setErrorValues] = useState({});
     const { sharedState, setSharedState } = useLoginContext();
+
     const router = useRouter();
 
     useEffect(() => {
@@ -36,6 +39,9 @@ const CreateCampaign = () => {
 
     const onInputChange = (e) => {
         const { name, value } = e.target;
+        if (name === "endDate" || name === "startDate") {
+            value = value.split("").reverse().join("");
+        }
         setInputValues((prev) => ({
             ...prev,
             [name]: value,
@@ -62,13 +68,24 @@ const CreateCampaign = () => {
     };
 
     const submitConfirmation = (e) => {
-        axios
-            .post("http://localhost:8080/api/email", inputValues)
+        console.log(sharedState.token);
+        console.log(inputValues.endDate);
+        instance
+            .post(
+                "/campaign",
+                { inputValues },
+                {
+                    headers: {
+                        Authorization: `Bearer ${sharedState.token}`,
+                    },
+                }
+            )
             .then((data) => {
+                console.log(data);
                 handleClose();
                 setInputValues({
-                    campaignName: "",
-                    campaignDescription: "",
+                    title: "",
+                    description: "",
                     startDate: "",
                     endDate: "",
                     address: "",
@@ -78,6 +95,9 @@ const CreateCampaign = () => {
                     campaignImage: "",
                 });
                 setShow2(true);
+            })
+            .catch((e) => {
+                console.log(e);
             });
     };
 
@@ -86,13 +106,13 @@ const CreateCampaign = () => {
         setErrorValues((prev) => {
             const stateObj = { ...prev, [name]: "" };
             switch (name) {
-                case "campaignName":
+                case "title":
                     if (!value) {
                         stateObj[name] = "Please enter your Campaign Name.";
                     }
                     break;
 
-                case "campaignDescription":
+                case "description":
                     if (!value) {
                         stateObj[name] =
                             "Please enter your Campaign Description.";
@@ -195,15 +215,15 @@ const CreateCampaign = () => {
                                     <Form.Control
                                         type="text"
                                         placeholder="Enter campaign name"
-                                        name="campaignName"
-                                        value={inputValues.campaignName}
+                                        name="title"
+                                        value={inputValues.title}
                                         required
                                         onChange={onInputChange}
                                         onBlur={validateInput}
                                     />
-                                    {errorValues.campaignName && (
+                                    {errorValues.title && (
                                         <div className="mb-2 text-danger">
-                                            {errorValues.campaignName}
+                                            {errorValues.title}
                                         </div>
                                     )}{" "}
                                     <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -488,21 +508,17 @@ const CreateCampaign = () => {
                                             <Form.Control
                                                 type="text"
                                                 placeholder="Enter Campaign Description"
-                                                name="campaignDescription"
-                                                value={
-                                                    inputValues.campaignDescription
-                                                }
+                                                name="description"
+                                                value={inputValues.description}
                                                 required
                                                 as="textarea"
                                                 rows={4}
                                                 onChange={onInputChange}
                                                 onBlur={validateInput}
                                             />
-                                            {errorValues.campaignDescription && (
+                                            {errorValues.description && (
                                                 <div className="mb-2 text-danger">
-                                                    {
-                                                        errorValues.campaignDescription
-                                                    }
+                                                    {errorValues.description}
                                                 </div>
                                             )}{" "}
                                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
