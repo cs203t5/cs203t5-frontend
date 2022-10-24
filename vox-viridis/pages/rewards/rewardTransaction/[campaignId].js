@@ -1,8 +1,27 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Navbar from "../../../components/Navbar";
 import RewardTransactionCard from "../../../components/Rewards/rewardTransaction/rewardTransactionCard";
+import instance from "../../../services/AxiosInstance";
 import globalStyle from "../../Global.module.css";
 
 function rewardTransaction() {
+    // console.log(router.query.rewardId);
+
+    const router = useRouter();
+    const campaignId = router.query.campaignId;
+
+    useEffect(() => {
+        instance
+            .get(`campaign/${campaignId}/reward`)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
     return (
         <div>
             <div

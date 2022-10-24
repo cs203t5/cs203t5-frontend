@@ -1,9 +1,10 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
-import axios from "axios";
+
 import { useState } from "react";
 import Router from "next/router";
 import { Alert, Button, Form } from "react-bootstrap";
+import instance from "../services/AxiosInstance";
 
 function NavBarLogin(props) {
     const [inputValues, setInputValues] = useState({
@@ -11,6 +12,7 @@ function NavBarLogin(props) {
         password: "",
     });
     const [validated, setValidated] = useState(false);
+    const [wrongLogin, setWrongLogin] = useState(false);
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -27,9 +29,9 @@ function NavBarLogin(props) {
     const sendLogin = (e) => {
         e.preventDefault();
 
-        axios
+        instance
             .post(
-                "http://localhost:8080/api/users/token",
+                "/users/token",
                 {},
                 {
                     auth: {
@@ -45,7 +47,8 @@ function NavBarLogin(props) {
             .catch(function (error) {
                 console.log(error.response.status);
                 if (error.response.status === 401) {
-                    <Alert>hello</Alert>;
+                    setValidated(false);
+                    setWrongLogin(true);
                 }
             });
     };
@@ -136,10 +139,16 @@ function NavBarLogin(props) {
                                     Remember me
                                 </label>
                             </div>
+
+                            {wrongLogin && (
+                                <div class="" style={{ color: "red" }}>
+                                    Wrong user credentials!
+                                </div>
+                            )}
+
                             <Button
                                 type="submit"
                                 className="btn btn-primary"
-                                // onClick={(e) => handleSubmit(e)}
                                 style={{
                                     marginTop: "5px",
                                     fontWeight: "bold",
@@ -170,7 +179,7 @@ function NavBarLogin(props) {
                                     textAlign: "center",
                                 }}
                             >
-                                <a href="/register" style={{ color: "black" }}>
+                                <a style={{ color: "black" }}>
                                     Forgot Password?
                                 </a>
                             </div>

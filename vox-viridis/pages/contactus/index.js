@@ -2,9 +2,10 @@ import { Button, Form } from "react-bootstrap";
 import Navbar from "../../components/Navbar";
 import globalStyle from "../Global.module.css";
 import { useState } from "react";
-import axios from "axios";
+
 import Modal from "react-bootstrap/Modal";
 import Toast from "react-bootstrap/Toast";
+import instance from "../../services/AxiosInstance";
 
 const ContactUs = () => {
     const [inputValues, setInputValues] = useState({
@@ -29,7 +30,6 @@ const ContactUs = () => {
     const handleShow = () => setShow(true);
     const [show2, setShow2] = useState(false);
 
-
     const submitContact = (e) => {
         const form = e.currentTarget;
         e.preventDefault();
@@ -44,15 +44,15 @@ const ContactUs = () => {
     };
 
     const submitConfirmation = (e) => {
-        axios.post("http://localhost:8080/api/email", inputValues).then((data) => {
+        instance.post("email", inputValues).then((data) => {
             handleClose();
-        setInputValues({
-            firstName: "",
-            lastName: "",
-            email: "",
-            question: "",
-        });
-        setShow2(true);
+            setInputValues({
+                firstName: "",
+                lastName: "",
+                email: "",
+                question: "",
+            });
+            setShow2(true);
         });
     };
 
@@ -294,7 +294,7 @@ const ContactUs = () => {
                 onClose={() => setShow2(false)}
                 show={show2}
                 delay={3000}
-                style={{position:"fixed", bottom:"20px", right:"20px"}}
+                style={{ position: "fixed", bottom: "20px", right: "20px" }}
             >
                 <Toast.Header>
                     <strong className="me-auto">Vox Viridis</strong>

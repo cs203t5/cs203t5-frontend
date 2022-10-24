@@ -19,8 +19,8 @@ function rewardPage() {
 
     const showRewardHistory = () => {
         router.push({
-            pathname: "/rewards/rewardTransaction/[rewardId]",
-            query: { rewardId: router.query.rewardId },
+            pathname: "/rewards/rewardTransaction/[campaignId]",
+            query: { campaignId: router.query.campaignId },
         });
     };
     return (

@@ -7,14 +7,15 @@ import CampaignFilter from "../../components/Campaign/CampaignFilter/CampaignFil
 import Footer from "../../components/Footer.js";
 import CampaignBoxSticky from "../../components/Campaign/CampaignBoxSticky";
 import { useEffect } from "react";
-import axios from "axios";
+
 import { useState } from "react";
+import instance from "../../services/AxiosInstance";
 
 const Campaign = () => {
     const [data, setdata] = useState([]);
 
     useEffect(() => {
-        axios
+        instance
             .get("http://localhost:8080/api/campaign")
             .then((response) => {
                 console.log(response);
