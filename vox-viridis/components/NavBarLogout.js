@@ -3,14 +3,15 @@ import Router from "next/router";
 import { useEffect, useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import instance from "../services/AxiosInstance";
+import { useLoginContext } from "../context/loginContext";
+
 function NavBarLogout(props) {
     const [name, setName] = useState("");
-
+    const { sharedState, setSharedState } = useLoginContext();
     const handleLogout = (e) => {
-        localStorage.removeItem("token");
-        props.setIsLoggedIn(false);
-        Router.reload(window.location.pathname);
+        setSharedState({ ...sharedState, token: "" });
     };
+    console.log(localStorage.getItem("token"));
     useEffect(() => {
         instance
             .get("/users/name", {

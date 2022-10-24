@@ -6,22 +6,21 @@ import NavbarTemplate from "react-bootstrap/Navbar";
 import NavBarLogin from "./NavBarLogin";
 import NavBarLogout from "./NavBarLogout";
 import { useEffect, useState } from "react";
+import { useLoginContext } from "../context/loginContext";
 
 const Navbar = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { sharedState, setSharedState } = useLoginContext();
     useEffect(() => {
-        if (localStorage.getItem("token")) {
-            setIsLoggedIn(true);
-        }
-    }, [isLoggedIn]);
+        console.log(localStorage.getItem("token"));
+        setSharedState({
+            ...sharedState,
+            token: localStorage.getItem("token"),
+        });
+    }, []);
 
     return (
         <div className="container-fluid p-0">
-            {isLoggedIn ? (
-                <NavBarLogout setIsLoggedIn={setIsLoggedIn} />
-            ) : (
-                <NavBarLogin />
-            )}
+            {sharedState.token === "" ? <NavBarLogin /> : <NavBarLogout />}
 
             <div className="row m-auto  ">
                 <Link href="/">
@@ -68,7 +67,7 @@ const Navbar = () => {
                                 </IconButton>
                             </Link>
 
-                            {isLoggedIn && (
+                            {sharedState.token !== "" && (
                                 <Link href="/rewards">
                                     <IconButton
                                         sx={{
@@ -79,7 +78,7 @@ const Navbar = () => {
                                     </IconButton>
                                 </Link>
                             )}
-                            {isLoggedIn && (
+                            {sharedState.token !== "" && (
                                 <Link href="/history">
                                     <IconButton
                                         sx={{
