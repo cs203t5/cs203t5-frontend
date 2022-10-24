@@ -25,7 +25,7 @@ const CreateCampaign = () => {
     const { sharedState, setSharedState } = useLoginContext();
     const router = useRouter();
     useEffect(() => {
-        if (!sharedState.token) {
+        if (sharedState.token === "") {
             router.push("/unauthorised");
         }
     }, []);
