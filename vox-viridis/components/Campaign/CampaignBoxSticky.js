@@ -1,7 +1,6 @@
 import { maxHeight } from "@mui/system";
 
 function CampaignBoxSticky(props) {
-    console.log(props);
     return (
         <div className="row p-0 mb-5 gap-5 mx-3">
             <div
