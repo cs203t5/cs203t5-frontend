@@ -3,7 +3,6 @@ import Router from "next/router";
 import { useState } from "react";
 import instance from "../../services/AxiosInstance";
 
-
 const Register = () => {
     const [inputValues, setInputValues] = useState({
         username: "",
@@ -13,6 +12,7 @@ const Register = () => {
         lastName: "",
         email: "",
         dob: "",
+        isBusiness: false,
         validated: false,
     });
     const [errorValues, setErrorValues] = useState({});
@@ -344,6 +344,7 @@ const Register = () => {
                             )}{" "}
                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                         </div>
+                        
                         <Button
                             className="w-25 ms-auto me-3 mt-5"
                             as="input"

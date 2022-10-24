@@ -7,7 +7,6 @@ import Modal from "react-bootstrap/Modal";
 import Toast from "react-bootstrap/Toast";
 import { useRouter } from "next/router";
 import { useLoginContext } from "../../context/loginContext";
-import { NextResponse } from "next/dist/server/web/spec-extension/response";
 
 const CreateCampaign = () => {
     const [inputValues, setInputValues] = useState({
@@ -24,7 +23,12 @@ const CreateCampaign = () => {
     const [errorValues, setErrorValues] = useState({});
     const { sharedState, setSharedState } = useLoginContext();
     const router = useRouter();
+
     useEffect(() => {
+        setSharedState({
+            ...sharedState,
+            token: localStorage.getItem("token"),
+        });
         if (sharedState.token === "") {
             router.push("/unauthorised");
         }

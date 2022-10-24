@@ -8,6 +8,7 @@ import { useLoginContext } from "../context/loginContext";
 function NavBarLogout(props) {
     const [name, setName] = useState("");
     const { sharedState, setSharedState } = useLoginContext();
+    console.log(`from navbar logout ${sharedState.token}`);
     const handleLogout = (e) => {
         setSharedState({ ...sharedState, token: "" });
         localStorage.setItem("token", "");
