@@ -60,7 +60,7 @@ function HistoryCard(props) {
                     </div>
                 </div>
             </div>
-            <div className="col-2 d-flex">
+            <div className="col-2 col-sm-12 pb-sm-3 d-flex">
                 {props.state === "ongoing" ? (
                     <Button
                         style={{
