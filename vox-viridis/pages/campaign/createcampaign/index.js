@@ -21,8 +21,10 @@ const CreateCampaign = () => {
         address: "",
         location: "",
         reward: "",
+        goal: "",
         rewardType: "",
-        campaignImage: "",
+        imageFile: "",
+        termsAndCondition: "",
     });
     const [errorValues, setErrorValues] = useState({});
     const { sharedState, setSharedState } = useLoginContext();
@@ -39,7 +41,6 @@ const CreateCampaign = () => {
         let { name, value } = e.target;
         console.log(name, value);
         if (name === "displayEndDate" || name === "displayStartDate") {
-            console.log("hellooo");
             let temp = "startDate";
             if (name === "displayEndDate") {
                 temp = "endDate";
@@ -79,25 +80,19 @@ const CreateCampaign = () => {
 
     const submitConfirmation = (e) => {
         console.log(JSON.stringify(inputValues));
+        const formData = new FormData();
+        formData.append("imageFile", inputValues.file);
+        Object.keys(inputValues).forEach((key) => {
+            formData.append(key, inputValues[key]);
+        });
 
         instance
-            .post(
-                "/campaign",
-                {
-                    title: inputValues.title,
-                    startDate: inputValues.startDate,
-                    endDate: inputValues.endDate,
-                    description: inputValues.description,
-                    address: inputValues.address,
-                    location: inputValues.location,
+            .post("/campaign", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${sharedState.token}`,
                 },
-                {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                        Authorization: `Bearer ${sharedState.token}`,
-                    },
-                }
-            )
+            })
             .then((data) => {
                 console.log(data);
                 handleClose();
@@ -112,7 +107,9 @@ const CreateCampaign = () => {
                     location: "",
                     reward: "",
                     rewardType: "",
-                    campaignImage: "",
+                    imageFile: "",
+                    goal: "",
+                    termsAndCondition: "",
                 });
                 setShow2(true);
             })
@@ -156,10 +153,21 @@ const CreateCampaign = () => {
                         stateObj[name] = "Please enter Address.";
                     }
                     break;
+                case "goal":
+                    if (!value) {
+                        stateObj[name] = "Please enter Goals for Reward.";
+                    }
+                    break;
 
                 case "location":
                     if (!value) {
                         stateObj[name] = "Please enter Location.";
+                    }
+                    break;
+
+                case "termsAndCondition":
+                    if (!value) {
+                        stateObj[name] = "Please enter Terms and Conditions.";
                     }
                     break;
 
@@ -175,7 +183,7 @@ const CreateCampaign = () => {
                     }
                     break;
 
-                case "campaignImage":
+                case "imageFile":
                     if (!value) {
                         stateObj[name] = "Please upload Campaign Image.";
                     }
@@ -312,39 +320,7 @@ const CreateCampaign = () => {
                                         </Form.Group>
                                     </div>
                                 </div>
-                                <div className="row">
-                                    <div className="col lg-12">
-                                        <div
-                                            className="col lg-12"
-                                            style={{
-                                                fontSize: "30px",
-                                            }}
-                                        >
-                                            Address
-                                        </div>
 
-                                        <Form.Group
-                                            mb={3}
-                                            controlId="formBasicPassword"
-                                        >
-                                            <Form.Control
-                                                type="text"
-                                                placeholder="Enter address"
-                                                name="address"
-                                                value={inputValues.address}
-                                                required
-                                                onChange={onInputChange}
-                                                onBlur={validateInput}
-                                            />
-                                            {errorValues.address && (
-                                                <div className="mb-2 text-danger">
-                                                    {errorValues.address}
-                                                </div>
-                                            )}{" "}
-                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                                        </Form.Group>
-                                    </div>
-                                </div>
                                 <div className="row pt-3">
                                     <div className="col-6">
                                         <div
@@ -407,6 +383,105 @@ const CreateCampaign = () => {
                                         </Form.Group>
                                     </div>
                                 </div>
+                                <div className="row">
+                                    <div className="col lg-12">
+                                        <div
+                                            className="col lg-12"
+                                            style={{
+                                                fontSize: "30px",
+                                            }}
+                                        >
+                                            Address
+                                        </div>
+
+                                        <Form.Group
+                                            mb={3}
+                                            controlId="formBasicPassword"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Enter address"
+                                                name="address"
+                                                value={inputValues.address}
+                                                required
+                                                onChange={onInputChange}
+                                                onBlur={validateInput}
+                                            />
+                                            {errorValues.address && (
+                                                <div className="mb-2 text-danger">
+                                                    {errorValues.address}
+                                                </div>
+                                            )}{" "}
+                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                                        </Form.Group>
+                                    </div>
+                                </div>
+                                <div className="row pt-3">
+                                    <div className="col-6">
+                                        <div
+                                            className="col lg-12"
+                                            style={{
+                                                fontSize: "30px",
+                                            }}
+                                        >
+                                            Reward Goals
+                                        </div>
+
+                                        <Form.Group
+                                            mb={3}
+                                            controlId="formBasicPassword"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Enter Reward Goals"
+                                                name="goal"
+                                                value={inputValues.goal}
+                                                required
+                                                onChange={onInputChange}
+                                                onBlur={validateInput}
+                                            />
+                                            {errorValues.goal && (
+                                                <div className="mb-2 text-danger">
+                                                    {errorValues.goal}
+                                                </div>
+                                            )}{" "}
+                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                                        </Form.Group>
+                                    </div>
+                                    <div className="col-6">
+                                        <div
+                                            className="col lg-12"
+                                            style={{
+                                                fontSize: "30px",
+                                            }}
+                                        >
+                                            Terms and Conditions
+                                        </div>
+                                        <Form.Group
+                                            className="mb-3"
+                                            controlId="formBasicPassword"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Enter Terms and Conditions"
+                                                onChange={onInputChange}
+                                                name="termsAndCondition"
+                                                value={
+                                                    inputValues.termsAndCondition
+                                                }
+                                                onBlur={validateInput}
+                                            />
+                                            {errorValues.termsAndCondition && (
+                                                <div className="mb-2 text-danger">
+                                                    {
+                                                        errorValues.termsAndCondition
+                                                    }
+                                                </div>
+                                            )}{" "}
+                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                                        </Form.Group>
+                                    </div>
+                                </div>
                                 <div className="row pt-2">
                                     <div className="col-6">
                                         <div
@@ -443,38 +518,8 @@ const CreateCampaign = () => {
                                             )}{" "}
                                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                                         </Form.Group>
-
-                                        {/* <Form.Group
-                                            mb={3}
-                                            controlId="formBasicPassword"
-                                        >
-
-                                            <Form.Control
-                                                type="text"
-                                                placeholder="Select reward type"
-                                                name="rewardType"
-                                                value={inputValues.rewardType}
-                                                required
-                                                onChange={onInputChange}
-                                                onBlur={validateInput}
-                                            />
-                                            {errorValues.rewardType && (
-                                                <div className="mb-2 text-danger">
-                                                    {errorValues.rewardType}
-                                                </div>
-                                            )}{" "}
-                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                                        </Form.Group> */}
                                     </div>
                                     <div className="col-6">
-                                        {/* <div
-                                            className="col lg-12"
-                                            style={{
-                                                fontSize: "30px",
-                                            }}
-                                        >
-                                            Campaign Image
-                                        </div> */}
                                         <label
                                             className="rowform-label"
                                             for="customFile"
@@ -487,28 +532,9 @@ const CreateCampaign = () => {
                                         <input
                                             type="file"
                                             class="form-control"
-                                            id="customFile"
+                                            id="imageFile"
+                                            onChange={onInputChange}
                                         />
-                                        {/* <Form.Group
-                                            className="mb-3"
-                                            controlId="formBasicPassword"
-                                        >
-                                            <Form.Control
-                                                type="text"
-                                                placeholder="Upload image"
-                                                required
-                                                onChange={onInputChange}
-                                                name="campaignImage"
-                                                value={inputValues.campaignImage}
-                                                onBlur={validateInput}
-                                            />
-                                            {errorValues.campaignImage && (
-                                                <div className="mb-2 text-danger">
-                                                    {errorValues.campaignImage}
-                                                </div>
-                                            )}{" "}
-                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                                        </Form.Group> */}
                                     </div>
                                 </div>
                                 <div className="row pt-4">
