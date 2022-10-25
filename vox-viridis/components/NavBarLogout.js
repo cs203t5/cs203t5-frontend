@@ -92,7 +92,7 @@ function NavBarLogout(props) {
                             <a
                                 className="dropdown-item"
                                 onClick={(e) =>
-                                    router.push("/campaign/createcampaign")
+                                    router.push("/campaign/deletecampaign")
                                 }
                             >
                                 Delete/Update Campaign
@@ -101,7 +101,7 @@ function NavBarLogout(props) {
                             <a
                                 className="dropdown-item"
                                 onClick={(e) =>
-                                    router.push("/reward/createreward")
+                                    router.push("/rewards/createreward")
                                 }
                             >
                                 Create Reward
@@ -109,7 +109,7 @@ function NavBarLogout(props) {
                             <a
                                 className="dropdown-item"
                                 onClick={(e) =>
-                                    router.push("/reward/deletecampaign")
+                                    router.push("/rewards/deletereward")
                                 }
                             >
                                 Delete/Upgrade Reward
