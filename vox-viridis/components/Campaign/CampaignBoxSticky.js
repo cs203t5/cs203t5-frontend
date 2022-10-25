@@ -82,7 +82,7 @@ function CampaignBoxSticky(props) {
                     </div>
                 </div>
             </div>
-            {props.length === 2 && (
+            {props.campaignData.length === 2 && (
                 <div
                     className="col-lg-5 md-5 col-xs-6  border border-dark "
                     style={{
