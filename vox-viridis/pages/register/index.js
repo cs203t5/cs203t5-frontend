@@ -40,6 +40,7 @@ const Register = () => {
                     if (!value) {
                         stateObj[name] = "Please enter Username.";
                     }
+
                     break;
 
                 case "firstName":
@@ -69,6 +70,9 @@ const Register = () => {
                 case "password":
                     if (!value) {
                         stateObj[name] = "Please enter Password.";
+                    } else if (/^[ A-Za-z0-9_@./#&+-]*$/.test(value)) {
+                        stateObj[name] =
+                            "Password must be alphanumeric and at least";
                     } else if (
                         inputValues.confirmPassword &&
                         value !== inputValues.confirmPassword
@@ -344,7 +348,6 @@ const Register = () => {
                             )}{" "}
                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                         </div>
-                        
                         <Button
                             className="w-25 ms-auto me-3 mt-5"
                             as="input"
