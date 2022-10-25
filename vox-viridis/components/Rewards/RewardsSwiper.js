@@ -1,7 +1,7 @@
 import Card from "react-bootstrap/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import "swiper/css";
@@ -9,17 +9,22 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Button, Modal } from "react-bootstrap";
 import Router, { useRouter } from "next/router";
+import instance from "../../services/AxiosInstance";
+import { SwiperCard } from "./SwiperCard";
 
 function RewardsSwiper(props) {
+    console.log(props.data);
     const router = useRouter();
+
     const showViewAll = () => {
-        if (props.data.title === "Rewards") {
+        if (props.header.title === "Rewards") {
             router.push("/rewards/allRewards");
             return;
-        } else if (props.data.title === "Shops") {
+        } else if (props.header.title === "Shops") {
             router.push("/rewards/allShops");
         }
     };
+
     return (
         <div className="row mt-5 mx-4" style={{ overflow: "hidden" }}>
             <div className="row mb-2 pe-0">
@@ -28,7 +33,7 @@ function RewardsSwiper(props) {
                         className="me-auto"
                         style={{ fontWeight: "bold", fontSize: "1.5em" }}
                     >
-                        {props.data.title}
+                        {props.header.title}
                     </div>
                     <Button
                         variant="outline-dark ml-auto"
@@ -46,98 +51,17 @@ function RewardsSwiper(props) {
                 navigation={true}
                 pagination={{ clickable: true }}
             >
-                <SwiperSlide>
-                    <SwiperCard />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <SwiperCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <SwiperCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <SwiperCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <SwiperCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <SwiperCard />
-                </SwiperSlide>
+                {props.data &&
+                    props.data.map((element) => {
+                        return (
+                            <SwiperSlide>
+                                <SwiperCard data={element} />
+                            </SwiperSlide>
+                        );
+                    })}
             </Swiper>
         </div>
     );
 }
-function SwiperCard() {
-    const [opacity, setOpacity] = useState({
-        imageOpacity: 1,
-        textOpacity: 0,
-    });
-    const [show, setShow] = useState(false);
 
-    const showOverlay = (show) => {
-        if (show) {
-            setOpacity({
-                imageOpacity: 0.3,
-                textOpacity: 1,
-            });
-        } else {
-            setOpacity({
-                imageOpacity: 1,
-                textOpacity: 0,
-            });
-        }
-    };
-    const showModal = (isShow) => setShow(isShow);
-    return (
-        <div className="col">
-            <Card
-                onMouseOver={() => showOverlay(true)}
-                onMouseOut={() => {
-                    showOverlay(false);
-                }}
-            >
-                <Card.Img
-                    variant="top"
-                    src="../../shaoDong.jpeg"
-                    style={{
-                        objectFit: "cover",
-                        opacity: opacity.imageOpacity,
-                    }}
-                />
-                <Card.ImgOverlay
-                    className="d-flex align-items-end"
-                    style={{ opacity: opacity.textOpacity }}
-                >
-                    <Card.Body className="p-0 w-100">
-                        <Card.Title
-                            style={{
-                                fontSize: "30px",
-                                cursor: "pointer",
-                                fontWeight: "bold",
-                            }}
-                            onClick={() => showModal(true)}
-                        >
-                            Card title
-                        </Card.Title>
-                        <Card.Text style={{ fontSize: "20px" }}>
-                            This is a wider card with supporting text below as a
-                            natural lead-in to additional content. This content
-                            is a little bit longer.
-                        </Card.Text>
-                    </Card.Body>
-                </Card.ImgOverlay>
-            </Card>
-            <Modal show={show} onHide={() => showModal(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Woohoo, you're reading this text in a modal!
-                </Modal.Body>
-            </Modal>
-        </div>
-    );
-}
 export default RewardsSwiper;

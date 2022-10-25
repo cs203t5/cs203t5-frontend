@@ -7,32 +7,45 @@ function RewardCard(props) {
     const router = useRouter();
     const { sharedState, useSharedState } = useLoginContext();
     const [rewardId, setrewardId] = useState("");
+
     useEffect(() => {
-        setrewardId(props.data.rewardId);
+        if (sharedState.token === "") {
+            router.push("/unauthorized");
+        }
     }, []);
 
     const handleClick = () => {
         router.push({
             pathname: "/rewards/[campaignId]",
-            query: { campaignId: props.data.rewardId },
+            query: { campaignId: props.data.id },
         });
     };
 
     return (
         <Col>
-            <Card style={{ width: "auto" }}>
-                <Card.Img variant="top" src="../rewards/theBodyShop.webp" />
+            <Card className="" style={{ width: "auto", height: "700px" }}>
+                <Card.Img
+                    className="mh-50 h-50"
+                    variant="top"
+                    src={props.data.campaignImage}
+                    style={{
+                        objectFit: "cover",
+                    }}
+                />
                 <Card.Body>
-                    <Card.Title>{props.data.shop}</Card.Title>
-                    <Card.Text>{props.data.text}</Card.Text>
-
-                    <Button
-                        className="float-end"
-                        variant="primary"
-                        onClick={handleClick}
-                    >
-                        View More
-                    </Button>
+                    <Card.Title>{props.data.campaignTitle}</Card.Title>
+                    <div className="row h-50 h-md-50">
+                        <Card.Text>{props.data.tnc}</Card.Text>
+                    </div>
+                    <div className="row ">
+                        <Button
+                            className=""
+                            variant="primary"
+                            onClick={handleClick}
+                        >
+                            View More
+                        </Button>
+                    </div>
                 </Card.Body>
             </Card>
         </Col>
