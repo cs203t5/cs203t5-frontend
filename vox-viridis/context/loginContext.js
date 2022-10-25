@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const LoginContext = React.createContext();
 
@@ -11,6 +11,13 @@ export function AppWrapper({ children }) {
         token: "",
         isBusiness: undefined,
     });
+
+    useEffect(() => {
+        setSharedState({
+            ...sharedState,
+            token: localStorage.getItem("token"),
+        });
+    }, []);
 
     return (
         <LoginContext.Provider value={{ sharedState, setSharedState }}>
