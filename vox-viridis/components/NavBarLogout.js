@@ -39,7 +39,7 @@ function NavBarLogout(props) {
             .then((response) => {
                 setSharedState({
                     ...sharedState,
-                    isBusiness: response.data === "BUSINESS" ? true : false,
+                    role: response.data,
                 });
             })
             .catch((error) => {
@@ -60,63 +60,74 @@ function NavBarLogout(props) {
                     <LogoutIcon style={{ fontSize: "xx-large" }} />
                     Logout
                 </div>
-                <div
-                    className="col-auto p-0 float-end mt-2 me-3
+                {sharedState.role === "BUSINESS" ? (
+                    <div
+                        className="col-auto p-0 float-end mt-2 me-3
              "
-                    style={{}}
-                >
-                    <Dropdown align="end" drop="down">
-                        <Dropdown.Toggle
-                            className="col float-end p-0 dropdown"
-                            style={{
-                                backgroundColor: "inherit",
-                                border: "0",
-                                color: "black",
-                            }}
-                        >
-                            <AccountCircleIcon
-                                style={{ fontSize: "xx-large" }}
-                            />
-                            {name}
-                        </Dropdown.Toggle>
+                        style={{}}
+                    >
+                        <Dropdown align="end" drop="down">
+                            <Dropdown.Toggle
+                                className="col float-end p-0 dropdown"
+                                style={{
+                                    backgroundColor: "inherit",
+                                    border: "0",
+                                    color: "black",
+                                }}
+                            >
+                                <AccountCircleIcon
+                                    style={{ fontSize: "xx-large" }}
+                                />
+                                {name}
+                            </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
-                            <a
-                                className="dropdown-item"
-                                onClick={(e) =>
-                                    router.push("/campaign/createcampaign")
-                                }
-                            >
-                                Create Campaign
-                            </a>
-                            <a
-                                className="dropdown-item"
-                                onClick={(e) =>
-                                    router.push("/campaign/deletecampaign")
-                                }
-                            >
-                                Delete/Update Campaign
-                            </a>
-                            <div className="dropdown-divider"></div>
-                            <a
-                                className="dropdown-item"
-                                onClick={(e) =>
-                                    router.push("/rewards/createreward")
-                                }
-                            >
-                                Create Reward
-                            </a>
-                            <a
-                                className="dropdown-item"
-                                onClick={(e) =>
-                                    router.push("/rewards/deletereward")
-                                }
-                            >
-                                Delete/Upgrade Reward
-                            </a>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </div>
+                            <Dropdown.Menu>
+                                <a
+                                    className="dropdown-item"
+                                    onClick={(e) =>
+                                        router.push("/campaign/createcampaign")
+                                    }
+                                >
+                                    Create Campaign
+                                </a>
+                                <a
+                                    className="dropdown-item"
+                                    onClick={(e) =>
+                                        router.push("/campaign/deletecampaign")
+                                    }
+                                >
+                                    Delete/Update Campaign
+                                </a>
+                                <div className="dropdown-divider"></div>
+                                <a
+                                    className="dropdown-item"
+                                    onClick={(e) =>
+                                        router.push("/rewards/createreward")
+                                    }
+                                >
+                                    Create Reward
+                                </a>
+                                <a
+                                    className="dropdown-item"
+                                    onClick={(e) =>
+                                        router.push("/rewards/deletereward")
+                                    }
+                                >
+                                    Delete/Upgrade Reward
+                                </a>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
+                ) : (
+                    <div
+                        className="col-auto p-0 float-end mt-2 me-3
+     "
+                        style={{}}
+                    >
+                        <AccountCircleIcon style={{ fontSize: "xx-large" }} />
+                        {name}
+                    </div>
+                )}
             </div>
         </div>
     );

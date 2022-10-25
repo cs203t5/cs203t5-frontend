@@ -9,7 +9,7 @@ export function useLoginContext() {
 export function AppWrapper({ children }) {
     const [sharedState, setSharedState] = useState({
         token: "",
-        isBusiness: undefined,
+        role: undefined,
     });
 
     useEffect(() => {
