@@ -5,6 +5,7 @@ import Footer from "../../components/Footer.js";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useLoginContext } from "../../context/loginContext";
+import instance from "../../services/AxiosInstance";
 
 function index() {
     const router = useRouter();
@@ -13,6 +14,16 @@ function index() {
         if (sharedState.token === "") {
             router.push("/unauthorised");
         }
+        instance
+            .post("/rewards",{}, {
+                headers: { Authorization: `Bearer ${sharedState.token}` },
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     }, []);
     return (
         <div>

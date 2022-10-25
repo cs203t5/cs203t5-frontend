@@ -3,8 +3,19 @@ import globalStyle from "../../Global.module.css";
 import Footer from "../../../components/Footer.js";
 import RewardCard from "../../../components/AllRewards/RewardCard";
 import { Row } from "react-bootstrap";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useLoginContext } from "../../../context/loginContext";
 
 function index() {
+    const router = useRouter();
+    const { sharedState, setSharedState } = useLoginContext();
+    useEffect(() => {
+        console.log(sharedState);
+        if (sharedState.token === "") {
+            router.push("/unauthorised");
+        }
+    }, []);
     return (
         <div>
             <div

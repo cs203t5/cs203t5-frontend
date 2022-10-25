@@ -8,15 +8,16 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Button, Modal } from "react-bootstrap";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 
 function RewardsSwiper(props) {
+    const router = useRouter();
     const showViewAll = () => {
         if (props.data.title === "Rewards") {
-            Router.push("/rewards/allRewards");
+            router.push("/rewards/allRewards");
             return;
         } else if (props.data.title === "Shops") {
-            Router.push("/rewards/allShops");
+            router.push("/rewards/allShops");
         }
     };
     return (

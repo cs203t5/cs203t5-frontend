@@ -7,6 +7,7 @@ import Points from "../../components/Rewards/Points";
 import Cards from "../../components/Rewards/Cards";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useLoginContext } from "../../context/loginContext";
 
 const data = {
     shopName: "The Body Shop",
@@ -17,6 +18,7 @@ const data = {
 };
 function rewardPage() {
     const router = useRouter();
+    const { sharedState, setSharedState } = useLoginContext();
 
     useEffect(() => {
         if (sharedState.token === "") {
