@@ -3,27 +3,31 @@ import RewardsSwiper from "../../components/Rewards/RewardsSwiper";
 import globalStyle from "../Global.module.css";
 import Footer from "../../components/Footer.js";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoginContext } from "../../context/loginContext";
 import instance from "../../services/AxiosInstance";
 
 function index() {
     const router = useRouter();
     const { sharedState, setSharedState } = useLoginContext();
+
+    const [data, setData] = useState([]);
+
     useEffect(() => {
-        if (sharedState.token === "") {
-            router.push("/unauthorised");
-        }
         instance
-            .post("/rewards",{}, {
-                headers: { Authorization: `Bearer ${sharedState.token}` },
-            })
+            .get("/reward")
             .then((response) => {
-                console.log(response);
+                setData(response.data);
             })
             .catch((e) => {
                 console.log(e);
             });
+    }, []);
+
+    useEffect(() => {
+        if (sharedState.token === "") {
+            router.push("/unauthorised");
+        }
     }, []);
     return (
         <div>
@@ -32,8 +36,7 @@ function index() {
                 style={{ paddingBottom: "5vh" }}
             >
                 <Navbar />
-                <RewardsSwiper data={{ title: "Rewards" }} />
-                <RewardsSwiper data={{ title: "Shops" }} />
+                <RewardsSwiper header={{ title: "Rewards" }} data={data} />
             </div>
             <Footer />
         </div>
