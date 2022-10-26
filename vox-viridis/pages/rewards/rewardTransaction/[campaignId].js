@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Navbar from "../../../components/Navbar";
 import RewardTransactionCard from "../../../components/Rewards/rewardTransaction/rewardTransactionCard";
+import { useLoginContext } from "../../../context/loginContext";
 import instance from "../../../services/AxiosInstance";
 import globalStyle from "../../Global.module.css";
 
@@ -10,6 +11,13 @@ function rewardTransaction() {
 
     const router = useRouter();
     const campaignId = router.query.campaignId;
+    const { sharedState, setSharedState } = useLoginContext();
+
+    useEffect(() => {
+        if (sharedState.token === "") {
+            router.push("/unauthorised");
+        }
+    }, []);
 
     useEffect(() => {
         instance

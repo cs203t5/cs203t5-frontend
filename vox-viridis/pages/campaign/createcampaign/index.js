@@ -1,31 +1,62 @@
 import { Button, Form } from "react-bootstrap";
-import Navbar from "../../components/Navbar";
-import globalStyle from "../Global.module.css";
-import { useState } from "react";
+import Navbar from "../../../components/Navbar";
+import globalStyle from "../../Global.module.css";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Toast from "react-bootstrap/Toast";
+import { useRouter } from "next/router";
+import { useLoginContext } from "../../../context/loginContext";
+import { NextResponse } from "next/dist/server/web/spec-extension/response";
+import instance from "../../../services/AxiosInstance";
 
 const CreateCampaign = () => {
     const [inputValues, setInputValues] = useState({
-        campaignName: "",
-        campaignDescription: "",
+        title: "",
+        description: "",
+        displayStartDate: "",
+        displayEndDate: "",
         startDate: "",
         endDate: "",
         address: "",
         location: "",
         reward: "",
+        goal: "",
         rewardType: "",
-        campaignImage: "",
+        imageFile: "",
+        termsAndCondition: "",
     });
     const [errorValues, setErrorValues] = useState({});
+    const { sharedState, setSharedState } = useLoginContext();
+
+    const router = useRouter();
+
+    useEffect(() => {
+        if (sharedState.token === "") {
+            router.push("/unauthorised");
+        }
+    }, []);
 
     const onInputChange = (e) => {
-        const { name, value } = e.target;
-        setInputValues((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
+        let { name, value } = e.target;
+        console.log(name, value);
+        if (name === "displayEndDate" || name === "displayStartDate") {
+            let temp = "startDate";
+            if (name === "displayEndDate") {
+                temp = "endDate";
+            }
+            setInputValues((prev) => ({
+                ...prev,
+                [name]: value,
+                [temp]: value.split("-").reverse().join("-") + ` 12:00`,
+            }));
+        } else {
+            setInputValues((prev) => ({
+                ...prev,
+                [name]: value,
+            }));
+        }
+
         validateInput(e);
     };
 
@@ -33,7 +64,6 @@ const CreateCampaign = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [show2, setShow2] = useState(false);
-
 
     const submitContact = (e) => {
         const form = e.currentTarget;
@@ -49,21 +79,43 @@ const CreateCampaign = () => {
     };
 
     const submitConfirmation = (e) => {
-        axios.post("http://localhost:8080/api/email", inputValues).then((data) => {
-            handleClose();
-        setInputValues({
-            campaignName: "",
-            campaignDescription: "",
-            startDate: "",
-            endDate: "",
-            address: "",
-            location: "",
-            reward: "",
-            rewardType: "",
-            campaignImage: "",
+        console.log(JSON.stringify(inputValues));
+        const formData = new FormData();
+        formData.append("imageFile", inputValues.file);
+        Object.keys(inputValues).forEach((key) => {
+            formData.append(key, inputValues[key]);
         });
-        setShow2(true);
-        });
+
+        instance
+            .post("/campaign", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${sharedState.token}`,
+                },
+            })
+            .then((data) => {
+                console.log(data);
+                handleClose();
+                setInputValues({
+                    title: "",
+                    description: "",
+                    startDate: "",
+                    endDate: "",
+                    displaystartDate: "",
+                    displayendDate: "",
+                    address: "",
+                    location: "",
+                    reward: "",
+                    rewardType: "",
+                    imageFile: "",
+                    goal: "",
+                    termsAndCondition: "",
+                });
+                setShow2(true);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     };
 
     const validateInput = (e) => {
@@ -71,25 +123,26 @@ const CreateCampaign = () => {
         setErrorValues((prev) => {
             const stateObj = { ...prev, [name]: "" };
             switch (name) {
-                case "campaignName":
+                case "title":
                     if (!value) {
                         stateObj[name] = "Please enter your Campaign Name.";
                     }
                     break;
 
-                case "campaignDescription":
+                case "description":
                     if (!value) {
-                        stateObj[name] = "Please enter your Campaign Description.";
+                        stateObj[name] =
+                            "Please enter your Campaign Description.";
                     }
                     break;
 
-                case "startDate":
+                case "displayStartDate":
                     if (!value) {
                         stateObj[name] = "Please enter Start Date.";
                     }
                     break;
 
-                case "endDate":
+                case "displayEndDate":
                     if (!value) {
                         stateObj[name] = "Please enter End Date.";
                     }
@@ -100,6 +153,11 @@ const CreateCampaign = () => {
                         stateObj[name] = "Please enter Address.";
                     }
                     break;
+                case "goal":
+                    if (!value) {
+                        stateObj[name] = "Please enter Goals for Reward.";
+                    }
+                    break;
 
                 case "location":
                     if (!value) {
@@ -107,11 +165,14 @@ const CreateCampaign = () => {
                     }
                     break;
 
+                case "termsAndCondition":
+                    if (!value) {
+                        stateObj[name] = "Please enter Terms and Conditions.";
+                    }
+                    break;
+
                 case "reward":
-                    console.log(inputValues.rewardType  && !value);
-                    console.log(inputValues.rewardType  && (!value));
-                    if (inputValues.rewardType  && !value ) {
-                        console.log("hi");
+                    if (inputValues.rewardType && !value) {
                         stateObj[name] = "Please enter reward.";
                     }
                     break;
@@ -122,7 +183,7 @@ const CreateCampaign = () => {
                     }
                     break;
 
-                case "campaignImage":
+                case "imageFile":
                     if (!value) {
                         stateObj[name] = "Please upload Campaign Image.";
                     }
@@ -179,15 +240,15 @@ const CreateCampaign = () => {
                                     <Form.Control
                                         type="text"
                                         placeholder="Enter campaign name"
-                                        name="campaignName"
-                                        value={inputValues.campaignName}
+                                        name="title"
+                                        value={inputValues.title}
                                         required
                                         onChange={onInputChange}
                                         onBlur={validateInput}
                                     />
-                                    {errorValues.campaignName && (
+                                    {errorValues.title && (
                                         <div className="mb-2 text-danger">
-                                            {errorValues.campaignName}
+                                            {errorValues.title}
                                         </div>
                                     )}{" "}
                                     <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -210,8 +271,10 @@ const CreateCampaign = () => {
                                             <Form.Control
                                                 type="date"
                                                 placeholder="Enter start date"
-                                                name="startDate"
-                                                value={inputValues.startDate}
+                                                name="displayStartDate"
+                                                value={
+                                                    inputValues.displayStartDate
+                                                }
                                                 required
                                                 onChange={onInputChange}
                                                 onBlur={validateInput}
@@ -242,8 +305,10 @@ const CreateCampaign = () => {
                                                 placeholder="End date"
                                                 required
                                                 onChange={onInputChange}
-                                                name="endDate"
-                                                value={inputValues.endDate}
+                                                name="displayEndDate"
+                                                value={
+                                                    inputValues.displayEndDate
+                                                }
                                                 onBlur={validateInput}
                                             />
                                             {errorValues.endDate && (
@@ -255,39 +320,7 @@ const CreateCampaign = () => {
                                         </Form.Group>
                                     </div>
                                 </div>
-                                <div className="row">
-                                    <div className="col lg-12">
-                                        <div
-                                            className="col lg-12"
-                                            style={{
-                                                fontSize: "30px",
-                                            }}
-                                        >
-                                            Address
-                                        </div>
 
-                                        <Form.Group
-                                            mb={3}
-                                            controlId="formBasicPassword"
-                                        >
-                                            <Form.Control
-                                                type="text"
-                                                placeholder="Enter address"
-                                                name="address"
-                                                value={inputValues.address}
-                                                required
-                                                onChange={onInputChange}
-                                                onBlur={validateInput}
-                                            />
-                                            {errorValues.address && (
-                                                <div className="mb-2 text-danger">
-                                                    {errorValues.address}
-                                                </div>
-                                            )}{" "}
-                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                                        </Form.Group>
-                                    </div>
-                                </div>
                                 <div className="row pt-3">
                                     <div className="col-6">
                                         <div
@@ -341,9 +374,108 @@ const CreateCampaign = () => {
                                                 value={inputValues.reward}
                                                 onBlur={validateInput}
                                             />
-                                         {errorValues.reward && (
+                                            {errorValues.reward && (
                                                 <div className="mb-2 text-danger">
                                                     {errorValues.reward}
+                                                </div>
+                                            )}{" "}
+                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                                        </Form.Group>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col lg-12">
+                                        <div
+                                            className="col lg-12"
+                                            style={{
+                                                fontSize: "30px",
+                                            }}
+                                        >
+                                            Address
+                                        </div>
+
+                                        <Form.Group
+                                            mb={3}
+                                            controlId="formBasicPassword"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Enter address"
+                                                name="address"
+                                                value={inputValues.address}
+                                                required
+                                                onChange={onInputChange}
+                                                onBlur={validateInput}
+                                            />
+                                            {errorValues.address && (
+                                                <div className="mb-2 text-danger">
+                                                    {errorValues.address}
+                                                </div>
+                                            )}{" "}
+                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                                        </Form.Group>
+                                    </div>
+                                </div>
+                                <div className="row pt-3">
+                                    <div className="col-6">
+                                        <div
+                                            className="col lg-12"
+                                            style={{
+                                                fontSize: "30px",
+                                            }}
+                                        >
+                                            Reward Goals
+                                        </div>
+
+                                        <Form.Group
+                                            mb={3}
+                                            controlId="formBasicPassword"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Enter Reward Goals"
+                                                name="goal"
+                                                value={inputValues.goal}
+                                                required
+                                                onChange={onInputChange}
+                                                onBlur={validateInput}
+                                            />
+                                            {errorValues.goal && (
+                                                <div className="mb-2 text-danger">
+                                                    {errorValues.goal}
+                                                </div>
+                                            )}{" "}
+                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                                        </Form.Group>
+                                    </div>
+                                    <div className="col-6">
+                                        <div
+                                            className="col lg-12"
+                                            style={{
+                                                fontSize: "30px",
+                                            }}
+                                        >
+                                            Terms and Conditions
+                                        </div>
+                                        <Form.Group
+                                            className="mb-3"
+                                            controlId="formBasicPassword"
+                                        >
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Enter Terms and Conditions"
+                                                onChange={onInputChange}
+                                                name="termsAndCondition"
+                                                value={
+                                                    inputValues.termsAndCondition
+                                                }
+                                                onBlur={validateInput}
+                                            />
+                                            {errorValues.termsAndCondition && (
+                                                <div className="mb-2 text-danger">
+                                                    {
+                                                        errorValues.termsAndCondition
+                                                    }
                                                 </div>
                                             )}{" "}
                                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -366,14 +498,16 @@ const CreateCampaign = () => {
                                         >
                                             <Form.Select
                                                 required
-                                                className="form-select" 
+                                                className="form-select"
                                                 aria-label="Default select example"
                                                 onChange={onInputChange}
                                                 name="rewardType"
                                                 value={inputValues.rewardType}
-                                                onBlur={validateInput}>
-
-                                                <option value="-" selected>Select Reward Type</option>
+                                                onBlur={validateInput}
+                                            >
+                                                <option value="-" selected>
+                                                    Select Reward Type
+                                                </option>
                                                 <option value="1">Point</option>
                                                 <option value="2">Card</option>
                                             </Form.Select>
@@ -384,72 +518,23 @@ const CreateCampaign = () => {
                                             )}{" "}
                                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                                         </Form.Group>
-
-                                        {/* <Form.Group
-                                            mb={3}
-                                            controlId="formBasicPassword"
-                                        >
-
-                                            <Form.Control
-                                                type="text"
-                                                placeholder="Select reward type"
-                                                name="rewardType"
-                                                value={inputValues.rewardType}
-                                                required
-                                                onChange={onInputChange}
-                                                onBlur={validateInput}
-                                            />
-                                            {errorValues.rewardType && (
-                                                <div className="mb-2 text-danger">
-                                                    {errorValues.rewardType}
-                                                </div>
-                                            )}{" "}
-                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                                        </Form.Group> */}
                                     </div>
                                     <div className="col-6">
-                                        {/* <div
-                                            className="col lg-12"
+                                        <label
+                                            className="rowform-label"
+                                            for="customFile"
                                             style={{
                                                 fontSize: "30px",
                                             }}
                                         >
                                             Campaign Image
-                                        </div> */}
-                                        <label 
-                                            className="rowform-label" 
-                                            for="customFile" 
-                                            style={{
-                                                fontSize: "30px",
-                                            }}
-                                            >
-                                                Campaign Image
                                         </label>
-                                        <input 
-                                            type="file" 
-                                            class="form-control" 
-                                            id="customFile" 
-                                            />
-                                        {/* <Form.Group
-                                            className="mb-3"
-                                            controlId="formBasicPassword"
-                                        >
-                                            <Form.Control
-                                                type="text"
-                                                placeholder="Upload image"
-                                                required
-                                                onChange={onInputChange}
-                                                name="campaignImage"
-                                                value={inputValues.campaignImage}
-                                                onBlur={validateInput}
-                                            />
-                                            {errorValues.campaignImage && (
-                                                <div className="mb-2 text-danger">
-                                                    {errorValues.campaignImage}
-                                                </div>
-                                            )}{" "}
-                                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                                        </Form.Group> */}
+                                        <input
+                                            type="file"
+                                            class="form-control"
+                                            id="imageFile"
+                                            onChange={onInputChange}
+                                        />
                                     </div>
                                 </div>
                                 <div className="row pt-4">
@@ -470,17 +555,17 @@ const CreateCampaign = () => {
                                             <Form.Control
                                                 type="text"
                                                 placeholder="Enter Campaign Description"
-                                                name="campaignDescription"
-                                                value={inputValues.campaignDescription}
+                                                name="description"
+                                                value={inputValues.description}
                                                 required
                                                 as="textarea"
                                                 rows={4}
                                                 onChange={onInputChange}
                                                 onBlur={validateInput}
                                             />
-                                            {errorValues.campaignDescription && (
+                                            {errorValues.description && (
                                                 <div className="mb-2 text-danger">
-                                                    {errorValues.campaignDescription}
+                                                    {errorValues.description}
                                                 </div>
                                             )}{" "}
                                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -521,7 +606,7 @@ const CreateCampaign = () => {
                 onClose={() => setShow2(false)}
                 show={show2}
                 delay={3000}
-                style={{position:"fixed", bottom:"20px", right:"20px"}}
+                style={{ position: "fixed", bottom: "20px", right: "20px" }}
             >
                 <Toast.Header>
                     <strong className="me-auto">Vox Viridis</strong>

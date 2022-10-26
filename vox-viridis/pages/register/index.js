@@ -3,7 +3,6 @@ import Router from "next/router";
 import { useState } from "react";
 import instance from "../../services/AxiosInstance";
 
-
 const Register = () => {
     const [inputValues, setInputValues] = useState({
         username: "",
@@ -13,6 +12,7 @@ const Register = () => {
         lastName: "",
         email: "",
         dob: "",
+        isBusiness: false,
         validated: false,
     });
     const [errorValues, setErrorValues] = useState({});
@@ -40,6 +40,7 @@ const Register = () => {
                     if (!value) {
                         stateObj[name] = "Please enter Username.";
                     }
+
                     break;
 
                 case "firstName":
@@ -69,6 +70,9 @@ const Register = () => {
                 case "password":
                     if (!value) {
                         stateObj[name] = "Please enter Password.";
+                    } else if (/^[ A-Za-z0-9_@./#&+-]*$/.test(value)) {
+                        stateObj[name] =
+                            "Password must be alphanumeric and at least";
                     } else if (
                         inputValues.confirmPassword &&
                         value !== inputValues.confirmPassword

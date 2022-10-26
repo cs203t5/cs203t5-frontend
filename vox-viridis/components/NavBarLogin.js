@@ -5,6 +5,7 @@ import { useState } from "react";
 import Router from "next/router";
 import { Alert, Button, Form } from "react-bootstrap";
 import instance from "../services/AxiosInstance";
+import { useLoginContext } from "../context/loginContext";
 
 function NavBarLogin(props) {
     const [inputValues, setInputValues] = useState({
@@ -13,6 +14,7 @@ function NavBarLogin(props) {
     });
     const [validated, setValidated] = useState(false);
     const [wrongLogin, setWrongLogin] = useState(false);
+    const { sharedState, setSharedState } = useLoginContext();
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -22,7 +24,6 @@ function NavBarLogin(props) {
         } else {
             sendLogin(event);
         }
-
         setValidated(true);
     };
 
@@ -42,7 +43,7 @@ function NavBarLogin(props) {
             )
             .then(function (response) {
                 localStorage.setItem("token", response.data);
-                Router.reload(window.location.pathname);
+                setSharedState({ ...sharedState, token: response.data });
             })
             .catch(function (error) {
                 console.log(error.response.status);

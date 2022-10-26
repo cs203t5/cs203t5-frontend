@@ -16,7 +16,7 @@ const Campaign = () => {
 
     useEffect(() => {
         instance
-            .get("http://localhost:8080/api/campaign")
+            .get("campaign")
             .then((response) => {
                 console.log(response);
                 const everything = response.data;
@@ -29,6 +29,7 @@ const Campaign = () => {
                     allCamppaign.push(campaign2);
                     campaigns.push(allCamppaign);
                 }
+                campaigns.reverse();
                 setdata(campaigns);
             })
             .catch((error) => {
