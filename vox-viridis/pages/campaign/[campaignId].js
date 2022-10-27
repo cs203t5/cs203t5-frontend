@@ -2,14 +2,39 @@ import Navbar from "../../components/Navbar";
 import globalStyle from "../Global.module.css";
 import Footer from "../../components/Footer.js";
 import Link from "next/link";
+import instance from "../../services/AxiosInstance";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const CampaignContent = () => {
+    const [campaign, setCampaign] = useState({
+        "campaignImage": "",
+        "companyImage":"",
+        "description":"",
+        "companyName":"",
+        "campaignName":"",
+        "rewardSystem":"",
+        "location":"",
+        "duration": "",
+        "terms":""
+    });
+    const router = useRouter();
+    const {campaignId} = router.query;
+
+    useEffect(()=>{
+       instance.get(`/campaign/${campaignId}`) .then(
+        data => {
+            console.log(data);
+        }
+       )
+    },[])
+
     return (
         <div className="container-fluid p-0" style={{}}>
             <div className="row w-100 h-100 m-0 my-5">
                 <div className="col-12" style={{ textAlign: "justify" }}>
                     <img
-                        src="../../SampleCampaignPic.svg"
+                        src={campaign.campaignImage}
                         className="img-fluid w-100"
                     ></img>
                 </div>
@@ -18,7 +43,7 @@ const CampaignContent = () => {
                 <div className="col-4 ">
                     <div class="card" style={{ width: "15rem", border: "0" }}>
                         <img
-                            src="../../SampleKiehlLogo.svg"
+                            src={campaign.companyImage}
                             class="card-img-top"
                             alt="..."
                         ></img>
@@ -31,7 +56,7 @@ const CampaignContent = () => {
                             position: "relative;right:40px;top:30px",
                         }}
                     >
-                        Recycle and be Rewarded
+                        {campaign.campaignName}
                     </p>
                     <p
                         style={{
@@ -40,15 +65,94 @@ const CampaignContent = () => {
                             color: "rgb(168, 168, 168)",
                         }}
                     >
-                        Kiehl's
+                        {campaign.companyName}
                     </p>
                 </div>
             </div>
+            <div className="row mx-4 my-5">
+                <button type="button" class="btn btn-primary btn-sm">
+                    Make an Appointment
+                </button>
+            </div>
             <div
-                className="row mx-4 my-5"
+                className="row mx-4 mt-5"
                 style={{ backgroundColor: "rgb(243,243,243)" }}
             >
-                yoyo
+                <p
+                    style={{
+                        fontSize: "40px",
+                    }}
+                >
+                    Exchange Details:
+                </p>
+
+                <p
+                    style={{
+                        fontSize: "30px",
+                        textDecoration: "underline",
+                    }}
+                >
+                    Rewards:
+                </p>
+
+                <p
+                    style={{
+                        fontSize: "30px",
+                    }}
+                >
+                    {campaign.rewardSystem}
+                </p>
+
+                <p
+                    style={{
+                        fontSize: "30px",
+                        textDecoration: "underline",
+                    }}
+                >
+                    Region
+                </p>
+
+                <p
+                    style={{
+                        fontSize: "30px",
+                    }}
+                >
+                    {campaign.location}
+                </p>
+
+                <p
+                    style={{
+                        fontSize: "30px",
+                        textDecoration: "underline",
+                    }}
+                >
+                    Campaign duration
+                </p>
+
+                <p
+                    style={{
+                        fontSize: "30px",
+                    }}
+                >
+                    {campaign.duration}
+                </p>
+
+                <p
+                    style={{
+                        fontSize: "30px",
+                        textDecoration: "underline",
+                    }}
+                >
+                    Terms and Conditions
+                </p>
+
+                <p
+                    style={{
+                        fontSize: "30px",
+                    }}
+                >
+                    {campaign.terms}
+                </p>
             </div>
         </div>
     );
