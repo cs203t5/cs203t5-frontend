@@ -18,6 +18,7 @@ const Campaign = () => {
         instance
             .get("campaign")
             .then((response) => {
+                console.log(response);
                 const everything = response.data;
                 const campaigns = [];
                 for (let i = 0; i < everything.length; i += 2) {
