@@ -1,7 +1,7 @@
 import { Button, Form } from "react-bootstrap";
 import Navbar from "../../../components/Navbar";
 import globalStyle from "../../Global.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Toast from "react-bootstrap/Toast";
@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useLoginContext } from "../../../context/loginContext";
 import { NextResponse } from "next/dist/server/web/spec-extension/response";
 import instance from "../../../services/AxiosInstance";
+import { createRef } from "react";
 
 const CreateCampaign = () => {
     const [inputValues, setInputValues] = useState({
@@ -20,14 +21,15 @@ const CreateCampaign = () => {
         endDate: "",
         address: "",
         location: "",
-        reward: "",
+        rewardName: "",
         goal: "",
         rewardType: "",
-        imageFile: "",
-        termsAndCondition: "",
+        tnc: "",
+        imageFile: null,
     });
     const [errorValues, setErrorValues] = useState({});
     const { sharedState, setSharedState } = useLoginContext();
+    const imageRef = createRef();
 
     const router = useRouter();
 
@@ -39,7 +41,7 @@ const CreateCampaign = () => {
 
     const onInputChange = (e) => {
         let { name, value } = e.target;
-        console.log(name, value);
+
         if (name === "displayEndDate" || name === "displayStartDate") {
             let temp = "startDate";
             if (name === "displayEndDate") {
@@ -79,13 +81,33 @@ const CreateCampaign = () => {
     };
 
     const submitConfirmation = (e) => {
-        console.log(JSON.stringify(inputValues));
         const formData = new FormData();
-        formData.append("imageFile", inputValues.file);
-        Object.keys(inputValues).forEach((key) => {
-            formData.append(key, inputValues[key]);
-        });
+        const rewardData = {
+            rewardName: "",
+            goal: 0,
+            tnc: "",
+            rewardType: "",
+        };
 
+        inputValues["goal"] = parseInt(inputValues["goal"]);
+
+        inputValues["rewardType"] = inputValues.rewardType.toUpperCase();
+
+        Object.keys(inputValues).forEach((key) => {
+            if (
+                key === "rewardName" ||
+                key === "goal" ||
+                key === "tnc" ||
+                key === "rewardType"
+            ) {
+                rewardData[key] = inputValues[key];
+            } else if (key !== "imageFile") {
+                formData.append(key, inputValues[key]);
+            }
+        });
+        formData.append("reward", JSON.stringify(rewardData));
+        console.log(inputValues.endDate);
+        console.log(formData.get("endDate"));
         instance
             .post("/campaign", formData, {
                 headers: {
@@ -105,11 +127,11 @@ const CreateCampaign = () => {
                     displayendDate: "",
                     address: "",
                     location: "",
-                    reward: "",
+                    rewardName: "",
                     rewardType: "",
                     imageFile: "",
                     goal: "",
-                    termsAndCondition: "",
+                    tnc: "",
                 });
                 setShow2(true);
             })
@@ -165,15 +187,15 @@ const CreateCampaign = () => {
                     }
                     break;
 
-                case "termsAndCondition":
+                case "tnc":
                     if (!value) {
                         stateObj[name] = "Please enter Terms and Conditions.";
                     }
                     break;
 
-                case "reward":
+                case "rewardName":
                     if (inputValues.rewardType && !value) {
-                        stateObj[name] = "Please enter reward.";
+                        stateObj[name] = "Please enter reward name.";
                     }
                     break;
 
@@ -360,7 +382,7 @@ const CreateCampaign = () => {
                                                 fontSize: "30px",
                                             }}
                                         >
-                                            Reward
+                                            Reward Name
                                         </div>
                                         <Form.Group
                                             className="mb-3"
@@ -368,15 +390,15 @@ const CreateCampaign = () => {
                                         >
                                             <Form.Control
                                                 type="text"
-                                                placeholder="Enter reward"
+                                                placeholder="Enter reward name"
                                                 onChange={onInputChange}
-                                                name="reward"
-                                                value={inputValues.reward}
+                                                name="rewardName"
+                                                value={inputValues.rewardName}
                                                 onBlur={validateInput}
                                             />
-                                            {errorValues.reward && (
+                                            {errorValues.rewardName && (
                                                 <div className="mb-2 text-danger">
-                                                    {errorValues.reward}
+                                                    {errorValues.rewardName}
                                                 </div>
                                             )}{" "}
                                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -465,17 +487,13 @@ const CreateCampaign = () => {
                                                 type="text"
                                                 placeholder="Enter Terms and Conditions"
                                                 onChange={onInputChange}
-                                                name="termsAndCondition"
-                                                value={
-                                                    inputValues.termsAndCondition
-                                                }
+                                                name="tnc"
+                                                value={inputValues.tnc}
                                                 onBlur={validateInput}
                                             />
-                                            {errorValues.termsAndCondition && (
+                                            {errorValues.tnc && (
                                                 <div className="mb-2 text-danger">
-                                                    {
-                                                        errorValues.termsAndCondition
-                                                    }
+                                                    {errorValues.tnc}
                                                 </div>
                                             )}{" "}
                                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
@@ -508,8 +526,12 @@ const CreateCampaign = () => {
                                                 <option value="-" selected>
                                                     Select Reward Type
                                                 </option>
-                                                <option value="1">Point</option>
-                                                <option value="2">Card</option>
+                                                <option value="points">
+                                                    Points
+                                                </option>
+                                                <option value="cards">
+                                                    Cards
+                                                </option>
                                             </Form.Select>
                                             {errorValues.rewardType && (
                                                 <div className="mb-2 text-danger">
