@@ -41,7 +41,6 @@ const CreateCampaign = () => {
 
     const onInputChange = (e) => {
         let { name, value } = e.target;
-
         if (name === "displayEndDate" || name === "displayStartDate") {
             let temp = "startDate";
             if (name === "displayEndDate") {
@@ -52,6 +51,11 @@ const CreateCampaign = () => {
                 [name]: value,
                 [temp]: value.split("-").reverse().join("-") + ` 12:00`,
             }));
+        } else if (name === "imageFile") {
+            setInputValues((prev) => ({
+                ...prev,
+                [name]: e.target.files[0],
+            }));
         } else {
             setInputValues((prev) => ({
                 ...prev,
@@ -60,6 +64,7 @@ const CreateCampaign = () => {
         }
 
         validateInput(e);
+
     };
 
     const [show, setShow] = useState(false);
@@ -102,6 +107,8 @@ const CreateCampaign = () => {
             ) {
                 rewardData[key] = inputValues[key];
             } else if (key !== "imageFile") {
+                formData.append(key, inputValues[key]);
+            } else {
                 formData.append(key, inputValues[key]);
             }
         });
@@ -194,7 +201,7 @@ const CreateCampaign = () => {
                     break;
 
                 case "rewardName":
-                    if (inputValues.rewardType && !value) {
+                    if (!value) {
                         stateObj[name] = "Please enter reward name.";
                     }
                     break;
@@ -554,7 +561,7 @@ const CreateCampaign = () => {
                                         <input
                                             type="file"
                                             class="form-control"
-                                            id="imageFile"
+                                            name="imageFile"
                                             onChange={onInputChange}
                                         />
                                     </div>
