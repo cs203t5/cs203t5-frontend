@@ -5,7 +5,6 @@ import { useLoginContext } from "../../context/loginContext";
 import instance from "../../services/AxiosInstance";
 
 function CampaignBoxSticky(props) {
-    console.log(props);
 
     return (
         <div className="row p-0 mb-5 gap-5 mx-3">
@@ -29,7 +28,7 @@ function CampaignBoxSticky(props) {
                         >
                             <div className="col-3 p-0 h-25" style={{}}>
                                 <img
-                                    src={props.campaignData[0].imageUrl}
+                                    src={props.campaignData[0].companyImage}
                                     className="img-fluid w-75 mt-2 ms-2"
                                     style={{
                                         width: "100px",
@@ -128,7 +127,10 @@ function CampaignBoxSticky(props) {
                                 >
                                     <div className="col-3 p-0 h-25" style={{}}>
                                         <img
-                                            src={props.campaignData[1]?.image}
+                                            src={
+                                                props.campaignData[1]
+                                                    ?.companyImage
+                                            }
                                             className="img-fluid w-75 mt-2 ms-2"
                                             style={{
                                                 width: "60px",

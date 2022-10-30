@@ -13,7 +13,6 @@ import instance from "../../services/AxiosInstance";
 import { SwiperCard } from "./SwiperCard";
 
 function RewardsSwiper(props) {
-    console.log(props.data);
     const router = useRouter();
 
     const showViewAll = () => {

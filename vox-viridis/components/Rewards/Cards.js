@@ -1,5 +1,5 @@
 const data = { card: 5 };
-function Cards() {
+function Cards(props) {
     return (
         <div
             className="row mt-5 px-4 m-auto justify-content-center w-75"
@@ -10,7 +10,7 @@ function Cards() {
             }}
         >
             <div className="row my-5 gap-5">
-                {Array(data.card)
+                {Array(props.data)
                     .fill(0)
                     .map((_, i) => (
                         <img

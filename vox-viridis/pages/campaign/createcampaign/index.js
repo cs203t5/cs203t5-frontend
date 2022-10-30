@@ -25,7 +25,7 @@ const CreateCampaign = () => {
         goal: "",
         rewardType: "",
         tnc: "",
-        imageFile: null,
+        rewardImage: null,
     });
     const [errorValues, setErrorValues] = useState({});
     const { sharedState, setSharedState } = useLoginContext();
@@ -51,7 +51,7 @@ const CreateCampaign = () => {
                 [name]: value,
                 [temp]: value.split("-").reverse().join("-") + ` 12:00`,
             }));
-        } else if (name === "imageFile") {
+        } else if (name === "rewardImage" || name==="campaignImage") {
             setInputValues((prev) => ({
                 ...prev,
                 [name]: e.target.files[0],
@@ -64,7 +64,6 @@ const CreateCampaign = () => {
         }
 
         validateInput(e);
-
     };
 
     const [show, setShow] = useState(false);
@@ -106,15 +105,12 @@ const CreateCampaign = () => {
                 key === "rewardType"
             ) {
                 rewardData[key] = inputValues[key];
-            } else if (key !== "imageFile") {
-                formData.append(key, inputValues[key]);
             } else {
                 formData.append(key, inputValues[key]);
             }
         });
         formData.append("reward", JSON.stringify(rewardData));
-        console.log(inputValues.endDate);
-        console.log(formData.get("endDate"));
+
         instance
             .post("/campaign", formData, {
                 headers: {
@@ -136,7 +132,7 @@ const CreateCampaign = () => {
                     location: "",
                     rewardName: "",
                     rewardType: "",
-                    imageFile: "",
+                    rewardImage: null,
                     goal: "",
                     tnc: "",
                 });

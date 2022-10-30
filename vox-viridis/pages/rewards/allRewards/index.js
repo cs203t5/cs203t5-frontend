@@ -48,16 +48,6 @@ function index() {
                         {data.map((element) => {
                             return <RewardCard data={element} />;
                         })}
-
-                        <RewardCard
-                            data={{
-                                campaignTitle: "Cold Storage",
-                                tnc: "Loreum ipsum blah blah blah kjlnsdakjndalskjd kjsdnakd;jn jsnd;ajkn",
-                                id: "2",
-                                campaignImage:
-                                    "https://voxviridis.s3.ap-southeast-1.amazonaws.com/campaigns/3.jpeg",
-                            }}
-                        />
                     </Row>
                 </div>
             </div>

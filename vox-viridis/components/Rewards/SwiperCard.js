@@ -1,8 +1,10 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 
 export function SwiperCard(props) {
+    const router = useRouter();
     const [opacity, setOpacity] = useState({
         imageOpacity: 1,
         textOpacity: 0,
@@ -22,7 +24,12 @@ export function SwiperCard(props) {
             });
         }
     };
-    const showModal = (isShow) => setShow(isShow);
+    const showReward = () => {
+        router.push({
+            pathname: "/rewards/[campaignId]",
+            query: { campaignId: props.data.id },
+        });
+    };
     return (
         <div className="col">
             <Card
@@ -51,7 +58,7 @@ export function SwiperCard(props) {
                                 cursor: "pointer",
                                 fontWeight: "bold",
                             }}
-                            onClick={() => showModal(true)}
+                            onClick={showReward}
                         >
                             {props.data.campaignTitle}
                             <br />
@@ -63,14 +70,6 @@ export function SwiperCard(props) {
                     </Card.Body>
                 </Card.ImgOverlay>
             </Card>
-            <Modal show={show} onHide={() => showModal(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Woohoo, you're reading this text in a modal!
-                </Modal.Body>
-            </Modal>
         </div>
     );
 }

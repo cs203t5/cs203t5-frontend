@@ -66,28 +66,30 @@ const Navbar = () => {
                                 </IconButton>
                             </Link>
 
-                            {sharedState.token !== "" && (
-                                <Link href="/rewards">
-                                    <IconButton
-                                        sx={{
-                                            color: "black",
-                                        }}
-                                    >
-                                        Rewards
-                                    </IconButton>
-                                </Link>
-                            )}
-                            {sharedState.token !== "" && (
-                                <Link href="/history">
-                                    <IconButton
-                                        sx={{
-                                            color: "black",
-                                        }}
-                                    >
-                                        History
-                                    </IconButton>
-                                </Link>
-                            )}
+                            {sharedState.token !== "" &&
+                                sharedState.role === "CONSUMER" && (
+                                    <Link href="/rewards">
+                                        <IconButton
+                                            sx={{
+                                                color: "black",
+                                            }}
+                                        >
+                                            Rewards
+                                        </IconButton>
+                                    </Link>
+                                )}
+                            {sharedState.token !== "" &&
+                                sharedState.role === "CONSUMER" && (
+                                    <Link href="/history">
+                                        <IconButton
+                                            sx={{
+                                                color: "black",
+                                            }}
+                                        >
+                                            History
+                                        </IconButton>
+                                    </Link>
+                                )}
                         </Nav>
 
                         <Nav

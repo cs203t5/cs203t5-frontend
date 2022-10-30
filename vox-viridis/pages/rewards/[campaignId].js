@@ -6,20 +6,14 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import Points from "../../components/Rewards/Points";
 import Cards from "../../components/Rewards/Cards";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoginContext } from "../../context/loginContext";
+import instance from "../../services/AxiosInstance";
 
-const data = {
-    shopName: "The Body Shop",
-    campaignName: "Recycle Paper",
-    termsAndCondition:
-        "Please sell your tissue, we can only give 5 tissue each. I like psyduck, i like turtles",
-    rewardType: "cards",
-};
 function rewardPage() {
     const router = useRouter();
     const { sharedState, setSharedState } = useLoginContext();
-
+    const [data, setdata] = useState({});
     useEffect(() => {
         if (sharedState.token === "") {
             router.push("/unauthorised");
@@ -31,6 +25,29 @@ function rewardPage() {
             query: { campaignId: router.query.campaignId },
         });
     };
+
+    useEffect(() => {
+        if (!router.isReady) {
+            return;
+        }
+        instance
+            .get(`/reward/${router.query.campaignId}`)
+            .then((response) => {
+                console.log(response.data);
+                setdata({
+                    ...data,
+                    campaignName: response.data.campaignTitle,
+                    shopName: response.data.rewardName,
+                    goal: response.data.goal,
+                    termsAndCondition: response.data.tnc,
+                });
+            })
+            .catch((error) => {
+                console.log("hello");
+                console.log(error);
+            });
+    }, [router.isReady]);
+
     return (
         <div>
             <div>
@@ -87,8 +104,8 @@ function rewardPage() {
                         >
                             {data.campaignName}
                         </div>
-                        <Points />
-                        <Cards />
+                        <Points data={data.goal} />
+                        <Cards data={data.goal} />
                         <div className="row mt-5 px-4">
                             <Alert key="dark" variant="dark">
                                 <div

@@ -5,29 +5,71 @@ import Link from "next/link";
 import instance from "../../services/AxiosInstance";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useLoginContext } from "../../context/loginContext";
+import { Toast } from "react-bootstrap";
 
 const CampaignContent = () => {
     const [campaign, setCampaign] = useState({
-        "campaignImage": "",
-        "companyImage":"",
-        "description":"",
-        "companyName":"",
-        "campaignName":"",
-        "rewardSystem":"",
-        "location":"",
-        "duration": "",
-        "terms":""
+        campaignImage: "",
+        companyImage: "",
+        description: "",
+        companyName: "",
+        campaignName: "",
+        rewardSystem: "",
+        location: "",
+        duration: "",
+        terms: "",
     });
     const router = useRouter();
-    const {campaignId} = router.query;
+    const { campaignId } = router.query;
+    const [showSuccessfulAppointment, setShowSuccessfulAppointment] =
+        useState(false);
+    const [showUnsuccessfulAppointment, setShowUnsuccessfulAppointment] =
+        useState(false);
+    const { sharedState, setSharedState } = useLoginContext();
 
-    useEffect(()=>{
-       instance.get(`/campaign/${campaignId}`) .then(
-        data => {
-            console.log(data);
-        }
-       )
-    },[])
+    useEffect(() => {
+        if (!router.isReady) return;
+        instance
+            .get(`/campaign/${campaignId}`)
+            .then((response) => {
+                setCampaign({
+                    campaignImage: response.data.imageUrl,
+                    companyImage: response.data.companyImage,
+                    campaignName: response.data.title,
+                    companyName: response.data.companyName,
+                    description: response.data.rewards.campaignDescription,
+                    location: response.data.location,
+                    terms: response.data.rewards.tnc,
+                    duration: `${response.data.startDate.split("T")[0]}- ${
+                        response.data.endDate.split("T")[0]
+                    } `,
+                });
+            })
+            .catch((error) => {
+                console.log(error.response);
+            });
+    }, [router.isReady]);
+
+    const makeAppointment = () => {
+        instance
+            .post(
+                `/participation/${router.query.campaignId}`,
+                {},
+                {
+                    headers: { Authorization: `Bearer ${sharedState.token}` },
+                }
+            )
+            .then((response) => {
+                setShowSuccessfulAppointment(true);
+            })
+            .catch((error) => {
+                console.log(error);
+                if (error.response.status === 400) {
+                    setShowUnsuccessfulAppointment(true);
+                }
+            });
+    };
 
     return (
         <div className="container-fluid p-0" style={{}}>
@@ -36,7 +78,7 @@ const CampaignContent = () => {
                     <img
                         src={campaign.campaignImage}
                         className="img-fluid w-100"
-                    ></img>
+                    />
                 </div>
             </div>
             <div className="row w-100 h-100 mx-5" style={{}}>
@@ -53,7 +95,9 @@ const CampaignContent = () => {
                     <p
                         style={{
                             fontSize: "40px",
-                            position: "relative;right:40px;top:30px",
+                            position: "relative",
+                            right: "40px",
+                            top: "30px",
                         }}
                     >
                         {campaign.campaignName}
@@ -70,7 +114,11 @@ const CampaignContent = () => {
                 </div>
             </div>
             <div className="row mx-4 my-5">
-                <button type="button" class="btn btn-primary btn-sm">
+                <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    onClick={makeAppointment}
+                >
                     Make an Appointment
                 </button>
             </div>
@@ -100,7 +148,7 @@ const CampaignContent = () => {
                         fontSize: "30px",
                     }}
                 >
-                    {campaign.rewardSystem}
+                    {campaign.description}
                 </p>
 
                 <p
@@ -154,6 +202,36 @@ const CampaignContent = () => {
                     {campaign.terms}
                 </p>
             </div>
+            <Toast
+                onClose={() => setShowUnsuccessfulAppointment(false)}
+                show={showUnsuccessfulAppointment}
+                delay={3000}
+                style={{
+                    position: "fixed",
+                    bottom: "20px",
+                    right: "20px",
+                }}
+            >
+                <Toast.Header>
+                    <strong className="me-auto">Vox Viridis</strong>
+                </Toast.Header>
+                <Toast.Body>Campaign Joined Already!</Toast.Body>
+            </Toast>
+            <Toast
+                onClose={() => setShowSuccessfulAppointment(false)}
+                show={showSuccessfulAppointment}
+                delay={3000}
+                style={{
+                    position: "fixed",
+                    bottom: "20px",
+                    right: "20px",
+                }}
+            >
+                <Toast.Header>
+                    <strong className="me-auto">Vox Viridis</strong>
+                </Toast.Header>
+                <Toast.Body>Campaign Joined Successfully!</Toast.Body>
+            </Toast>
         </div>
     );
 };

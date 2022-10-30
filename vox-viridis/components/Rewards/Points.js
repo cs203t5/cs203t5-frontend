@@ -1,4 +1,5 @@
-function Points() {
+function Points(props) {
+
     return (
         <div
             className="row mt-5 px-4 m-auto justify-content-center"
@@ -14,7 +15,7 @@ function Points() {
                     }}
                 >
                     <p className="m-0" style={{ fontSize: "3em" }}>
-                        100
+                        {props.data}
                     </p>
                     <div className="m-0">
                         <p className="m-0">pts</p>
