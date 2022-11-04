@@ -58,7 +58,7 @@ const HelpPageDetails = () => {
                                     unclean state that has caused it to be
                                     rejected! Do check with stores through our
                                     platform before going to the stores for
-                                    exchanges!"
+                                    exchanges!
                                 </div>
                             </div>
                         </div>

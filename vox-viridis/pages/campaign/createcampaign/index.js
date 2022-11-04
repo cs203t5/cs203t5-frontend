@@ -51,7 +51,7 @@ const CreateCampaign = () => {
                 [name]: value,
                 [temp]: value.split("-").reverse().join("-") + ` 12:00`,
             }));
-        } else if (name === "rewardImage" || name==="campaignImage") {
+        } else if (name === "rewardImage" || name === "campaignImage") {
             setInputValues((prev) => ({
                 ...prev,
                 [name]: e.target.files[0],
@@ -616,7 +616,7 @@ const CreateCampaign = () => {
                     <Modal.Title>Confirm submission</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    You're about to submit your campaign details...
+                    You&apos;re about to submit your campaign details...
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

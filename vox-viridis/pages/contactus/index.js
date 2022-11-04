@@ -279,7 +279,7 @@ const ContactUs = () => {
                     <Modal.Title>Confirm submission</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    You're about to submit your contact details...
+                    You&apos;re about to submit your contact details...
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

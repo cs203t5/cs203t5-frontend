@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import instance from "../../services/AxiosInstance";
 import { useState } from "react";
 
-function index() {
+function Index() {
     const router = useRouter();
 
     const { sharedState, setSharedState } = useLoginContext();
@@ -56,7 +56,7 @@ function index() {
     );
 }
 
-export default index;
+export default Index;
 
 function HistoryCard(props) {
     console.log(props);
