@@ -2,7 +2,7 @@ import Navbar from "../../../components/Navbar";
 import globalStyle from "../../Global.module.css";
 import DataTable from "react-data-table-component";
 import { useEffect, useState } from "react";
-import instance from "../../../services/AxiosInstance";
+import instance from "../../../services/axiosInstance";
 import { useLoginContext } from "../../../context/loginContext";
 import { PencilSquare, Trash } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
@@ -17,24 +17,26 @@ const ModifyCampaign = () => {
     const [refresh, setRefresh] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => {
-        instance.get(`/campaign/${currentId}`, {
-            headers: {
-                Authorization: `Bearer ${sharedState.token}`,
-            },
-        }).then(async({data})=>{
-            let values = {
-                title: data.title,
-                startDate: data.startDate,
-                endDate: data.endDate,
-                address: data.address,
-                location: data.location,
-                rewardName: data.rewardName,
-                rewardType: data.rewardType,
-            }
-            setInputValues(values);
-            setShow(true);
-        })
-       };
+        instance
+            .get(`/campaign/${currentId}`, {
+                headers: {
+                    Authorization: `Bearer ${sharedState.token}`,
+                },
+            })
+            .then(async ({ data }) => {
+                let values = {
+                    title: data.title,
+                    startDate: data.startDate,
+                    endDate: data.endDate,
+                    address: data.address,
+                    location: data.location,
+                    rewardName: data.rewardName,
+                    rewardType: data.rewardType,
+                };
+                setInputValues(values);
+                setShow(true);
+            });
+    };
     const [inputValues, setInputValues] = useState({
         title: "",
         displayStartDate: "",
@@ -47,16 +49,15 @@ const ModifyCampaign = () => {
         rewardType: "",
     });
 
-    useEffect(()=>{
-        if(inputValues.title){
+    useEffect(() => {
+        if (inputValues.title) {
             setShow(true);
         }
-    }, [inputValues])
+    }, [inputValues]);
 
-    useEffect(()=>{
-        if(currentId)
-            handleShow();
-    },[currentId])
+    useEffect(() => {
+        if (currentId) handleShow();
+    }, [currentId]);
     const onInputChange = (e) => {
         let { name, value } = e.target;
         if (name === "displayEndDate" || name === "displayStartDate") {
@@ -75,7 +76,6 @@ const ModifyCampaign = () => {
                 [name]: value,
             }));
         }
-
     };
 
     useEffect(() => {
@@ -149,8 +149,8 @@ const ModifyCampaign = () => {
                     <>
                         <Button
                             className="btn btn-success btn-sm"
-                            onClick={()=>{
-                                if(currentId === row.id){
+                            onClick={() => {
+                                if (currentId === row.id) {
                                     handleShow();
                                 }
                                 setCurrentId(row.id);
@@ -158,7 +158,7 @@ const ModifyCampaign = () => {
                         >
                             <PencilSquare color="white" />
                         </Button>
-                        
+
                         <button
                             className="btn btn-danger btn-sm"
                             onClick={() => Remove(row.id)}
@@ -256,109 +256,75 @@ const ModifyCampaign = () => {
                 <Modal.Body>
                     <Form>
                         <Form.Group className="mb-3">
-                            <Form.Label>
-                                Title
-                            </Form.Label>
+                            <Form.Label>Title</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"
-                                value={
-                                    inputValues.title
-                                }
+                                value={inputValues.title}
                                 onChange={onInputChange}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>
-                                Start Date
-                            </Form.Label>
+                            <Form.Label>Start Date</Form.Label>
                             <Form.Control
                                 type="date"
                                 name="displayStartDate"
-                                value={
-                                    inputValues.displayStartDate
-                                }
+                                value={inputValues.displayStartDate}
                                 onChange={onInputChange}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>
-                                End Date
-                            </Form.Label>
+                            <Form.Label>End Date</Form.Label>
                             <Form.Control
                                 type="date"
                                 name="displayEndDate"
-                                value={
-                                    inputValues.displayEndDate
-                                }
+                                value={inputValues.displayEndDate}
                                 onChange={onInputChange}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>
-                                Address
-                            </Form.Label>
+                            <Form.Label>Address</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="address"
-                                value={
-                                    inputValues.address
-                                }
+                                value={inputValues.address}
                                 onChange={onInputChange}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>
-                                Location
-                            </Form.Label>
+                            <Form.Label>Location</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="location"
-                                value={
-                                    inputValues.location
-                                }
+                                value={inputValues.location}
                                 onChange={onInputChange}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>
-                                Reward
-                            </Form.Label>
+                            <Form.Label>Reward</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="reward"
-                                value={
-                                    inputValues.reward
-                                }
+                                value={inputValues.reward}
                                 onChange={onInputChange}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>
-                                Reward Type
-                            </Form.Label>
+                            <Form.Label>Reward Type</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="rewardType"
-                                value={
-                                    inputValues.rewardType
-                                }
+                                value={inputValues.rewardType}
                                 onChange={onInputChange}
                             />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button
-                        variant="secondary"
-                        onClick={handleClose}
-                    >
+                    <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button 
-                        variant="primary" 
-                        onClick={Edit}
-                    >
+                    <Button variant="primary" onClick={Edit}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
