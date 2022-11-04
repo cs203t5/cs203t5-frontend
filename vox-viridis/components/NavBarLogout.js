@@ -93,27 +93,10 @@ function NavBarLogout(props) {
                                 <a
                                     className="dropdown-item"
                                     onClick={(e) =>
-                                        router.push("/campaign/deletecampaign")
+                                        router.push("/campaign/modifycampaign")
                                     }
                                 >
-                                    Delete/Update Campaign
-                                </a>
-                                <div className="dropdown-divider"></div>
-                                <a
-                                    className="dropdown-item"
-                                    onClick={(e) =>
-                                        router.push("/rewards/createreward")
-                                    }
-                                >
-                                    Create Reward
-                                </a>
-                                <a
-                                    className="dropdown-item"
-                                    onClick={(e) =>
-                                        router.push("/rewards/deletereward")
-                                    }
-                                >
-                                    Delete/Upgrade Reward
+                                    Modify Campaign
                                 </a>
                             </Dropdown.Menu>
                         </Dropdown>
