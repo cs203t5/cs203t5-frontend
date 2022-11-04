@@ -8,7 +8,7 @@ import Toast from "react-bootstrap/Toast";
 import { useRouter } from "next/router";
 import { useLoginContext } from "../../../context/loginContext";
 import { NextResponse } from "next/dist/server/web/spec-extension/response";
-import Instance from "../../../services/AxiosInstance";
+import Instance from "../../../services/axiosInstance";
 import { createRef } from "react";
 
 const CreateCampaign = () => {

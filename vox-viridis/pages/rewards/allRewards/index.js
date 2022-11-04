@@ -6,7 +6,7 @@ import { Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useLoginContext } from "../../../context/loginContext";
-import Instance from "../../../services/AxiosInstance";
+import Instance from "../../../services/axiosInstance";
 
 function Index() {
     const router = useRouter();

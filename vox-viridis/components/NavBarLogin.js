@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Router from "next/router";
 import { Alert, Button, Form } from "react-bootstrap";
-import Instance from "../services/AxiosInstance";
+import Instance from "../services/axiosInstance";
 import { useLoginContext } from "../context/loginContext";
 
 function NavBarLogin(props) {

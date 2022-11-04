@@ -8,7 +8,7 @@ import Cards from "../../components/Rewards/Cards";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useLoginContext } from "../../context/loginContext";
-import Instance from "../../services/AxiosInstance";
+import Instance from "../../services/axiosInstance";
 
 function RewardPage() {
     const router = useRouter();

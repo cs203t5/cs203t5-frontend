@@ -1,7 +1,7 @@
 import { Button, Form, CloseButton } from "react-bootstrap";
 import Router from "next/router";
 import { useState } from "react";
-import Instance from "../../services/AxiosInstance";
+import Instance from "../../services/axiosInstance";
 
 const Register = () => {
     const [inputValues, setInputValues] = useState({

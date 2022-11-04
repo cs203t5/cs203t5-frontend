@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Navbar from "../../../components/Navbar";
 import { useLoginContext } from "../../../context/loginContext";
-import Instance from "../../../services/AxiosInstance";
+import Instance from "../../../services/axiosInstance";
 import globalStyle from "../../Global.module.css";
 
 function RewardTransaction() {

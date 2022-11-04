@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card";
 import { useLoginContext } from "../../context/loginContext";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import Instance from "../../services/AxiosInstance";
+import Instance from "../../services/axiosInstance";
 import { useState } from "react";
 
 function Index() {
