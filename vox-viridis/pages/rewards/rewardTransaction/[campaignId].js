@@ -6,7 +6,7 @@ import { useLoginContext } from "../../../context/loginContext";
 import instance from "../../../services/AxiosInstance";
 import globalStyle from "../../Global.module.css";
 
-function rewardTransaction() {
+function RewardTransaction() {
     const randomDate = ["12/45/56", "01/12/2022", "02/12/2022", "30/10/2022"];
     const random = Math.floor(Math.random() * randomDate.length);
     const router = useRouter();
@@ -109,4 +109,4 @@ function RewardTransactionCard(props) {
         </div>
     );
 }
-export default rewardTransaction;
+export default RewardTransaction;

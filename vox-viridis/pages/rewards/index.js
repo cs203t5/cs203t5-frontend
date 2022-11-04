@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useLoginContext } from "../../context/loginContext";
 import instance from "../../services/AxiosInstance";
 
-function index() {
+function Index() {
     const router = useRouter();
     const { sharedState, setSharedState } = useLoginContext();
 
@@ -43,5 +43,5 @@ function index() {
     );
 }
 
-export default index;
+export default Index;
 //

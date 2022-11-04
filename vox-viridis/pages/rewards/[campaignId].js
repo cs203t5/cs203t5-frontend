@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { useLoginContext } from "../../context/loginContext";
 import instance from "../../services/AxiosInstance";
 
-function rewardPage() {
+function RewardPage() {
     const router = useRouter();
     const { sharedState, setSharedState } = useLoginContext();
     const [data, setdata] = useState({});
@@ -148,4 +148,4 @@ function rewardPage() {
     );
 }
 
-export default rewardPage;
+export default RewardPage;

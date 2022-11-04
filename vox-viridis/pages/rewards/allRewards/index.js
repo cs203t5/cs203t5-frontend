@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useLoginContext } from "../../../context/loginContext";
 import instance from "../../../services/AxiosInstance";
 
-function index() {
+function Index() {
     const router = useRouter();
     const { sharedState, setSharedState } = useLoginContext();
     const [data, setData] = useState([]);
@@ -45,8 +45,8 @@ function index() {
                         Rewards
                     </div>
                     <Row xs={1} md={3} className="g-4">
-                        {data.map((element) => {
-                            return <RewardCard data={element} />;
+                        {data.map((element, index) => {
+                            return <RewardCard data={element} key={index} />;
                         })}
                     </Row>
                 </div>
@@ -56,4 +56,4 @@ function index() {
     );
 }
 
-export default index;
+export default Index;

@@ -1,6 +1,6 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
-
+import Link from "next/link";
 import { useState } from "react";
 import Router from "next/router";
 import { Alert, Button, Form } from "react-bootstrap";
@@ -167,9 +167,9 @@ function NavBarLogin(props) {
                             }}
                         >
                             New around here?{" "}
-                            <a href="/register" style={{ color: "black" }}>
+                            <Link href="/register" style={{ color: "black" }}>
                                 Sign up
-                            </a>
+                            </Link>
                         </div>
                         <div className="row m-auto">
                             <div

@@ -17,6 +17,7 @@ function Cards(props) {
                             className=""
                             src="..//rewards/rewardIcon.svg"
                             style={{ width: "20%" }}
+                            key={i}
                         />
                     ))}
             </div>

@@ -42,9 +42,13 @@ function Index() {
                     <HistoryCard state={"upcoming"} />
                     <HistoryCard state={"ongoing"} /> */}
                     {data.length !== 0 ? (
-                        data.map((history) => {
+                        data.map((history, i) => {
                             return (
-                                <HistoryCard state={"ongoing"} data={history} />
+                                <HistoryCard
+                                    state={"ongoing"}
+                                    data={history}
+                                    key={i}
+                                />
                             );
                         })
                     ) : (
