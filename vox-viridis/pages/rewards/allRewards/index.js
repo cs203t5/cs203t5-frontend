@@ -6,7 +6,7 @@ import { Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useLoginContext } from "../../../context/loginContext";
-import instance from "../../../services/AxiosInstance";
+import Instance from "../../../services/AxiosInstance";
 
 function Index() {
     const router = useRouter();
@@ -17,8 +17,7 @@ function Index() {
         if (sharedState.token === "") {
             router.push("/unauthorised");
         }
-        instance
-            .get("/reward")
+        Instance.get("/reward")
             .then((response) => {
                 setData(response.data);
             })

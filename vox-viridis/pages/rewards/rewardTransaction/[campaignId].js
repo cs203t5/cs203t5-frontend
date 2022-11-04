@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Navbar from "../../../components/Navbar";
 import { useLoginContext } from "../../../context/loginContext";
-import instance from "../../../services/AxiosInstance";
+import Instance from "../../../services/AxiosInstance";
 import globalStyle from "../../Global.module.css";
 
 function RewardTransaction() {
@@ -23,20 +23,18 @@ function RewardTransaction() {
         if (!router.isReady) {
             return;
         }
-        instance
-            .get("/reward/myReward", {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
+        Instance.get("/reward/myReward", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
             .then((response) => {
                 if (response.data.length === 0) return;
             })
             .catch((error) => {
                 console.log(error);
             });
-        instance
-            .get(`/reward/${router.query.campaignId}`)
+        Instance.get(`/reward/${router.query.campaignId}`)
             .then((response) => {
                 setData({
                     ...data,
@@ -84,10 +82,9 @@ function RewardTransaction() {
 function RewardTransactionCard(props) {
     const { sharedState, setSharedState } = useLoginContext();
     const router = useRouter();
-    instance
-        .get("/participation", {
-            headers: { Authorization: `Bearer ${sharedState.token}` },
-        })
+    Instance.get("/participation", {
+        headers: { Authorization: `Bearer ${sharedState.token}` },
+    })
         .then((response) => {
             if (response.data.length === 0) router.push("/unauthorized");
             console.log(response);

@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Button, Modal } from "react-bootstrap";
 import Router, { useRouter } from "next/router";
-import instance from "../../services/AxiosInstance";
+import Instance from "../../services/AxiosInstance";
 import { SwiperCard } from "./SwiperCard";
 
 function RewardsSwiper(props) {

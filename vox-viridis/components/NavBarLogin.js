@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Router from "next/router";
 import { Alert, Button, Form } from "react-bootstrap";
-import instance from "../services/AxiosInstance";
+import Instance from "../services/AxiosInstance";
 import { useLoginContext } from "../context/loginContext";
 
 function NavBarLogin(props) {
@@ -30,17 +30,16 @@ function NavBarLogin(props) {
     const sendLogin = (e) => {
         e.preventDefault();
 
-        instance
-            .post(
-                "/users/token",
-                {},
-                {
-                    auth: {
-                        username: inputValues.username,
-                        password: inputValues.password,
-                    },
-                }
-            )
+        Instance.post(
+            "/users/token",
+            {},
+            {
+                auth: {
+                    username: inputValues.username,
+                    password: inputValues.password,
+                },
+            }
+        )
             .then(function (response) {
                 localStorage.setItem("token", response.data);
                 setSharedState({ ...sharedState, token: response.data });

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import Modal from "react-bootstrap/Modal";
 import Toast from "react-bootstrap/Toast";
-import instance from "../../services/AxiosInstance";
+import Instance from "../../services/AxiosInstance";
 
 const ContactUs = () => {
     const [inputValues, setInputValues] = useState({
@@ -44,7 +44,7 @@ const ContactUs = () => {
     };
 
     const submitConfirmation = (e) => {
-        instance.post("email", inputValues).then((data) => {
+        Instance.post("email", inputValues).then((data) => {
             handleClose();
             setInputValues({
                 firstName: "",

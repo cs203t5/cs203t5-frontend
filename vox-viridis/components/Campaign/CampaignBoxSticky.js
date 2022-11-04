@@ -1,8 +1,4 @@
-import { maxHeight } from "@mui/system";
 import Link from "next/link";
-import { useContext } from "react";
-import { useLoginContext } from "../../context/loginContext";
-import instance from "../../services/AxiosInstance";
 
 function CampaignBoxSticky(props) {
 

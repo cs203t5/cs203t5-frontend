@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card";
 import { useLoginContext } from "../../context/loginContext";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import instance from "../../services/AxiosInstance";
+import Instance from "../../services/AxiosInstance";
 import { useState } from "react";
 
 function Index() {
@@ -18,12 +18,11 @@ function Index() {
         if (sharedState.token === "") {
             router.push("/unauthorised");
         }
-        instance
-            .get("/participation", {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
+        Instance.get("/participation", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
             .then((response) => {
                 setData(response.data);
             })
