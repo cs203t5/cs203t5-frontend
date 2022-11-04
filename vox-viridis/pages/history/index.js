@@ -6,10 +6,10 @@ import Card from "react-bootstrap/Card";
 import { useLoginContext } from "../../context/loginContext";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import instance from "../../services/AxiosInstance";
+import Instance from "../../services/axiosInstance";
 import { useState } from "react";
 
-function index() {
+function Index() {
     const router = useRouter();
 
     const { sharedState, setSharedState } = useLoginContext();
@@ -18,12 +18,11 @@ function index() {
         if (sharedState.token === "") {
             router.push("/unauthorised");
         }
-        instance
-            .get("/participation", {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
+        Instance.get("/participation", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
             .then((response) => {
                 setData(response.data);
             })
@@ -42,9 +41,13 @@ function index() {
                     <HistoryCard state={"upcoming"} />
                     <HistoryCard state={"ongoing"} /> */}
                     {data.length !== 0 ? (
-                        data.map((history) => {
+                        data.map((history, i) => {
                             return (
-                                <HistoryCard state={"ongoing"} data={history} />
+                                <HistoryCard
+                                    state={"ongoing"}
+                                    data={history}
+                                    key={i}
+                                />
                             );
                         })
                     ) : (
@@ -56,7 +59,7 @@ function index() {
     );
 }
 
-export default index;
+export default Index;
 
 function HistoryCard(props) {
     console.log(props);

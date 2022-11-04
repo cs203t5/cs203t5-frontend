@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Navbar from "../../../components/Navbar";
 import { useLoginContext } from "../../../context/loginContext";
-import instance from "../../../services/AxiosInstance";
+import Instance from "../../../services/axiosInstance";
 import globalStyle from "../../Global.module.css";
 
-function rewardTransaction() {
+function RewardTransaction() {
     const randomDate = ["12/45/56", "01/12/2022", "02/12/2022", "30/10/2022"];
     const random = Math.floor(Math.random() * randomDate.length);
     const router = useRouter();
@@ -23,20 +23,18 @@ function rewardTransaction() {
         if (!router.isReady) {
             return;
         }
-        instance
-            .get("/reward/myReward", {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
+        Instance.get("/reward/myReward", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
             .then((response) => {
                 if (response.data.length === 0) return;
             })
             .catch((error) => {
                 console.log(error);
             });
-        instance
-            .get(`/reward/${router.query.campaignId}`)
+        Instance.get(`/reward/${router.query.campaignId}`)
             .then((response) => {
                 setData({
                     ...data,
@@ -84,10 +82,9 @@ function rewardTransaction() {
 function RewardTransactionCard(props) {
     const { sharedState, setSharedState } = useLoginContext();
     const router = useRouter();
-    instance
-        .get("/participation", {
-            headers: { Authorization: `Bearer ${sharedState.token}` },
-        })
+    Instance.get("/participation", {
+        headers: { Authorization: `Bearer ${sharedState.token}` },
+    })
         .then((response) => {
             if (response.data.length === 0) router.push("/unauthorized");
             console.log(response);
@@ -109,4 +106,4 @@ function RewardTransactionCard(props) {
         </div>
     );
 }
-export default rewardTransaction;
+export default RewardTransaction;

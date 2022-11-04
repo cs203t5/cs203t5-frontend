@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Button, Modal } from "react-bootstrap";
 import Router, { useRouter } from "next/router";
-import instance from "../../services/AxiosInstance";
+import Instance from "../../services/axiosInstance";
 import { SwiperCard } from "./SwiperCard";
 
 function RewardsSwiper(props) {
@@ -51,10 +51,10 @@ function RewardsSwiper(props) {
                 pagination={{ clickable: true }}
             >
                 {props.data &&
-                    props.data.map((element) => {
+                    props.data.map((element, index) => {
                         return (
-                            <SwiperSlide>
-                                <SwiperCard data={element} />
+                            <SwiperSlide key={index}>
+                                <SwiperCard data={element} key={index} />
                             </SwiperSlide>
                         );
                     })}

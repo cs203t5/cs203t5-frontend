@@ -9,7 +9,7 @@ import CampaignBoxSticky from "../../components/Campaign/CampaignBoxSticky";
 import { useEffect } from "react";
 
 import { useState } from "react";
-import instance from "../../services/AxiosInstance";
+import instance from "../../services/axiosInstance";
 
 const Campaign = () => {
     const [data, setdata] = useState([]);

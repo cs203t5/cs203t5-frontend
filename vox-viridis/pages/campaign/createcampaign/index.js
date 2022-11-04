@@ -8,7 +8,7 @@ import Toast from "react-bootstrap/Toast";
 import { useRouter } from "next/router";
 import { useLoginContext } from "../../../context/loginContext";
 import { NextResponse } from "next/dist/server/web/spec-extension/response";
-import instance from "../../../services/AxiosInstance";
+import Instance from "../../../services/axiosInstance";
 import { createRef } from "react";
 
 const CreateCampaign = () => {
@@ -51,7 +51,7 @@ const CreateCampaign = () => {
                 [name]: value,
                 [temp]: value.split("-").reverse().join("-") + ` 12:00`,
             }));
-        } else if (name === "rewardImage" || name==="campaignImage") {
+        } else if (name === "rewardImage" || name === "campaignImage") {
             setInputValues((prev) => ({
                 ...prev,
                 [name]: e.target.files[0],
@@ -111,13 +111,12 @@ const CreateCampaign = () => {
         });
         formData.append("reward", JSON.stringify(rewardData));
 
-        instance
-            .post("/campaign", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                    Authorization: `Bearer ${sharedState.token}`,
-                },
-            })
+        Instance.post("/campaign", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${sharedState.token}`,
+            },
+        })
             .then((data) => {
                 console.log(data);
                 handleClose();
@@ -616,7 +615,7 @@ const CreateCampaign = () => {
                     <Modal.Title>Confirm submission</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    You're about to submit your campaign details...
+                    You&apos;re about to submit your campaign details...
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

@@ -2,7 +2,7 @@ import Navbar from "../../components/Navbar";
 import globalStyle from "../Global.module.css";
 import Footer from "../../components/Footer.js";
 import Link from "next/link";
-import instance from "../../services/AxiosInstance";
+import instance from "../../services/axiosInstance";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useLoginContext } from "../../context/loginContext";

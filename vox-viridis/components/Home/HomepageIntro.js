@@ -1,4 +1,3 @@
-import styles from "./HomePageIntro.module.css";
 const HomePageIntro = () => {
     return (
         <div className="container-fluid">

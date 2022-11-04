@@ -2,7 +2,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import instance from "../services/AxiosInstance";
+import Instance from "../services/axiosInstance";
 import { useLoginContext } from "../context/loginContext";
 import { Dropdown } from "react-bootstrap";
 import AccountCircleRounded from "@mui/icons-material/AccountCircleRounded";
@@ -18,24 +18,22 @@ function NavBarLogout(props) {
     };
 
     useEffect(() => {
-        instance
-            .get("/users/name", {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
+        Instance.get("/users/name", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
             .then((response) => {
                 setName(response.data);
             })
             .catch((error) => {
                 console.log(error);
             });
-        instance
-            .get("/users/role", {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
+        Instance.get("/users/role", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
             .then((response) => {
                 setSharedState({
                     ...sharedState,

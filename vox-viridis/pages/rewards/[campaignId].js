@@ -8,9 +8,9 @@ import Cards from "../../components/Rewards/Cards";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useLoginContext } from "../../context/loginContext";
-import instance from "../../services/AxiosInstance";
+import Instance from "../../services/axiosInstance";
 
-function rewardPage() {
+function RewardPage() {
     const router = useRouter();
     const { sharedState, setSharedState } = useLoginContext();
     const [data, setdata] = useState({});
@@ -30,8 +30,7 @@ function rewardPage() {
         if (!router.isReady) {
             return;
         }
-        instance
-            .get(`/reward/${router.query.campaignId}`)
+        Instance.get(`/reward/${router.query.campaignId}`)
             .then((response) => {
                 console.log(response.data);
                 setdata({
@@ -148,4 +147,4 @@ function rewardPage() {
     );
 }
 
-export default rewardPage;
+export default RewardPage;

@@ -6,9 +6,9 @@ import { Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useLoginContext } from "../../../context/loginContext";
-import instance from "../../../services/AxiosInstance";
+import Instance from "../../../services/axiosInstance";
 
-function index() {
+function Index() {
     const router = useRouter();
     const { sharedState, setSharedState } = useLoginContext();
     const [data, setData] = useState([]);
@@ -17,8 +17,7 @@ function index() {
         if (sharedState.token === "") {
             router.push("/unauthorised");
         }
-        instance
-            .get("/reward")
+        Instance.get("/reward")
             .then((response) => {
                 setData(response.data);
             })
@@ -45,8 +44,8 @@ function index() {
                         Rewards
                     </div>
                     <Row xs={1} md={3} className="g-4">
-                        {data.map((element) => {
-                            return <RewardCard data={element} />;
+                        {data.map((element, index) => {
+                            return <RewardCard data={element} key={index} />;
                         })}
                     </Row>
                 </div>
@@ -56,4 +55,4 @@ function index() {
     );
 }
 
-export default index;
+export default Index;
