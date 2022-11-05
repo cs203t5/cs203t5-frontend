@@ -19,7 +19,7 @@ const Navbar = () => {
 
     return (
         <div className="container-fluid p-0">
-            {sharedState.token === "" ? <NavBarLogin /> : <NavBarLogout />}
+            {sharedState.token ? <NavBarLogout /> : <NavBarLogin />}
 
             <div className="row m-auto  ">
                 <Link href="/">
