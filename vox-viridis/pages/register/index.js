@@ -109,13 +109,32 @@ const Register = () => {
 
     const submitRegister = (e) => {
         const form = e.currentTarget;
+        e.preventDefault();
 
         if (form.checkValidity() === false) {
-            e.preventDefault();
             e.stopPropagation();
         }
 
         setInputValues({ ...inputValues, validated: true });
+        Instance.post("/users/save", inputValues).then((response) => {
+            Instance.post(
+                "/users/token",
+                {},
+                {
+                    auth: {
+                        username: inputValues.username,
+                        password: inputValues.password,
+                    },
+                }
+            )
+                .then((response) => {
+                    localStorage.setItem("token", response.data);
+                    Router.push("/");
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        });
     };
 
     return (
