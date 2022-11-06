@@ -360,15 +360,34 @@ const CreateCampaign = () => {
                                             mb={3}
                                             controlId="formBasicPassword"
                                         >
-                                            <Form.Control
-                                                type="text"
-                                                placeholder="Enter location"
+                                            <Form.Select
+                                                type="form-select"
+                                                aria-label="Default select example"
                                                 name="location"
                                                 value={inputValues.location}
                                                 required
                                                 onChange={onInputChange}
                                                 onBlur={validateInput}
-                                            />
+                                            >
+                                                <option value="-" selected>
+                                                    Select location
+                                                </option>
+                                                <option value="North">
+                                                    North
+                                                </option>
+                                                <option value="East">
+                                                    East
+                                                </option>
+                                                <option value="South">
+                                                    South
+                                                </option>
+                                                <option value="West">
+                                                    West
+                                                </option>
+                                                <option value="Central">
+                                                    Central
+                                                </option>
+                                            </Form.Select>
                                             {errorValues.location && (
                                                 <div className="mb-2 text-danger">
                                                     {errorValues.location}
