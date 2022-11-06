@@ -99,6 +99,37 @@ function NavBarLogout(props) {
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
+                ) : sharedState.role === "ADMIN" ? (
+                    <div
+                        className="col-auto p-0 float-end mt-2 me-3
+             "
+                        style={{}}
+                    >
+                        <Dropdown align="end" drop="down">
+                            <Dropdown.Toggle
+                                className="col float-end p-0 dropdown"
+                                style={{
+                                    backgroundColor: "inherit",
+                                    border: "0",
+                                    color: "black",
+                                }}
+                            >
+                                <AccountCircleIcon
+                                    style={{ fontSize: "xx-large" }}
+                                />
+                                {name}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <a
+                                    className="dropdown-item"
+                                    onClick={(e) => router.push("/role")}
+                                >
+                                    Modify User Role
+                                </a>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
                 ) : (
                     <div
                         className="col-auto p-0 float-end mt-2 me-3
