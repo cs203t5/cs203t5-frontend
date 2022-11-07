@@ -24,7 +24,7 @@ function Index() {
             },
         })
             .then((response) => {
-                setData(response.data);
+                setData(response.data.elements);
             })
             .catch((error) => {
                 console.log(error);
@@ -40,7 +40,7 @@ function Index() {
                     <HistoryCard state={"completed"} />
                     <HistoryCard state={"upcoming"} />
                     <HistoryCard state={"ongoing"} /> */}
-                    {!data && data.length !== 0 ? (
+                    {data && data.length !== 0 ? (
                         data.map((history, i) => {
                             return (
                                 <HistoryCard
