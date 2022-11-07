@@ -78,7 +78,7 @@ const CampaignContent = () => {
     return (
         <div className="container-fluid p-0" style={{}}>
             <div className="row w-100 h-100 m-0 my-5">
-                <div className="col-12" style={{ textAlign: "justify" }}>
+                <div className="col-12" style={{ textAlign: "center" }}>
                     <img
                         src={campaign.campaignImage}
                         className="img-fluid w-50 ms-auto me-auto"

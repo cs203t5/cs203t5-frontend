@@ -19,7 +19,7 @@ function Index() {
         }
         Instance.get("/reward")
             .then((response) => {
-                setData(response.data);
+                setData(response.data.elements);
             })
             .catch((e) => {
                 console.log(e);

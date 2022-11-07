@@ -13,6 +13,7 @@ import Instance from "../../services/axiosInstance";
 import { SwiperCard } from "./SwiperCard";
 
 function RewardsSwiper(props) {
+    console.log(props);
     const router = useRouter();
 
     const showViewAll = () => {
@@ -52,9 +53,8 @@ function RewardsSwiper(props) {
             >
                 {props &&
                     props.data &&
-                    props.data.elements &&
-                    props.data.elements.length !== 0 &&
-                    props.data.elements.map((element, index) => {
+                    props.data.length !== 0 &&
+                    props.data.map((element, index) => {
                         return (
                             <SwiperSlide key={index}>
                                 <SwiperCard data={element} key={index} />
