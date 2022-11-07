@@ -44,8 +44,7 @@ export function SwiperCard(props) {
                     style={{
                         objectFit: "cover",
                         opacity: opacity.imageOpacity,
-                        maxHeight: "500px",
-                        minHeight: "300px",
+                        height: "300px",
                     }}
                 />
                 <Card.ImgOverlay

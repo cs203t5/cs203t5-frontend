@@ -90,11 +90,19 @@ const CampaignContent = () => {
             <div className="row w-100 h-100 mx-5" style={{}}>
                 <div className="col-4 ">
                     <div class="card" style={{ width: "15rem", border: "0" }}>
-                        <img
-                            src={campaign.companyImage}
-                            class="card-img-top"
-                            alt="..."
-                        ></img>
+                        {campaign.companyImage !== null ? (
+                            <img
+                                src={campaign.companyImage}
+                                class="card-img-top"
+                                alt="..."
+                            />
+                        ) : (
+                            <img
+                                src="../../smu-logo.jpeg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                        )}
                     </div>
                 </div>
                 <div className="col-8 px-0" style={{ textAlign: "center" }}>

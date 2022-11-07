@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 function CampaignBoxSticky(props) {
-
     return (
         <div className="row p-0 mb-5 gap-5 mx-3">
             <div
@@ -22,19 +21,36 @@ function CampaignBoxSticky(props) {
                             className="row w-100 "
                             style={{ alignItems: "center" }}
                         >
-                            <div className="col-3 p-0 h-25" style={{}}>
-                                <img
-                                    src={props.campaignData[0].companyImage}
-                                    className="img-fluid w-75 mt-2 ms-2"
-                                    style={{
-                                        width: "100px",
-                                        height: "100px",
-                                        aspectRatio: "1",
-                                        alignSelf: "center",
-                                        objectFit: "contain" /*magic*/,
-                                    }}
-                                />
-                            </div>
+                            {props.campaignData[0].companyImage !== null ? (
+                                <div className="col-3 p-0 h-25" style={{}}>
+                                    <img
+                                        src={props.campaignData[0].companyImage}
+                                        className="img-fluid w-75 mt-2 ms-2"
+                                        style={{
+                                            width: "100px",
+                                            height: "100px",
+                                            aspectRatio: "1",
+                                            alignSelf: "center",
+                                            objectFit: "contain" /*magic*/,
+                                        }}
+                                    />
+                                </div>
+                            ) : (
+                                <div className="col-3 p-0 h-25" style={{}}>
+                                    <img
+                                        src="../../../smu-logo.jpeg"
+                                        className="img-fluid w-75 mt-2 ms-2"
+                                        style={{
+                                            width: "100px",
+                                            height: "100px",
+                                            aspectRatio: "1",
+                                            alignSelf: "center",
+                                            objectFit: "contain" /*magic*/,
+                                        }}
+                                    />
+                                </div>
+                            )}
+                            {console.log(props.campaignData[0].companyImage)}
                             <div
                                 className="col-8 p-0 ms-2 h-25 mt-sm-3 mt-2 text-align-center"
                                 style={{ fontWeight: "600" }}
@@ -121,22 +137,47 @@ function CampaignBoxSticky(props) {
                                     className="row w-100 "
                                     style={{ alignItems: "center" }}
                                 >
-                                    <div className="col-3 p-0 h-25" style={{}}>
-                                        <img
-                                            src={
-                                                props.campaignData[1]
-                                                    ?.companyImage
-                                            }
-                                            className="img-fluid w-75 mt-2 ms-2"
-                                            style={{
-                                                width: "60px",
-                                                height: "100px",
-                                                aspectRatio: "1",
-                                                alignSelf: "center",
-                                                objectFit: "contain" /*magic*/,
-                                            }}
-                                        />
-                                    </div>
+                                    {props.campaignData[1].companyImage !==
+                                    null ? (
+                                        <div
+                                            className="col-3 p-0 h-25"
+                                            style={{}}
+                                        >
+                                            <img
+                                                src={
+                                                    props.campaignData[1]
+                                                        .companyImage
+                                                }
+                                                className="img-fluid w-75 mt-2 ms-2"
+                                                style={{
+                                                    width: "100px",
+                                                    height: "100px",
+                                                    aspectRatio: "1",
+                                                    alignSelf: "center",
+                                                    objectFit:
+                                                        "contain" /*magic*/,
+                                                }}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div
+                                            className="col-3 p-0 h-25"
+                                            style={{}}
+                                        >
+                                            <img
+                                                src="../../../smu-logo.jpeg"
+                                                className="img-fluid w-75 mt-2 ms-2"
+                                                style={{
+                                                    width: "100px",
+                                                    height: "100px",
+                                                    aspectRatio: "1",
+                                                    alignSelf: "center",
+                                                    objectFit:
+                                                        "contain" /*magic*/,
+                                                }}
+                                            />
+                                        </div>
+                                    )}
                                     <div
                                         className="col-8 p-0 ms-2 h-25 mt-sm-3 mt-2 text-align-center"
                                         style={{ fontWeight: "600" }}
