@@ -41,6 +41,7 @@ const CreateCampaign = () => {
 
     const onInputChange = (e) => {
         let { name, value } = e.target;
+        console.log(name);
         if (name === "displayEndDate" || name === "displayStartDate") {
             let temp = "startDate";
             if (name === "displayEndDate") {
@@ -51,10 +52,11 @@ const CreateCampaign = () => {
                 [name]: value,
                 [temp]: value.split("-").reverse().join("-") + ` 12:00`,
             }));
-        } else if (name === "rewardImage" || name === "campaignImage") {
+        } else if (name === "imageFile") {
+            console.log(e.target.files[0]);
             setInputValues((prev) => ({
                 ...prev,
-                [name]: e.target.files[0],
+                campaignImage: e.target.files[0],
             }));
         } else {
             setInputValues((prev) => ({

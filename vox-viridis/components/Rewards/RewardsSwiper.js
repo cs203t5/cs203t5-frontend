@@ -50,8 +50,11 @@ function RewardsSwiper(props) {
                 navigation={true}
                 pagination={{ clickable: true }}
             >
-                {props.data &&
-                    props.data.map((element, index) => {
+                {props &&
+                    props.data &&
+                    props.data.elements &&
+                    props.data.elements.length !== 0 &&
+                    props.data.elements.map((element, index) => {
                         return (
                             <SwiperSlide key={index}>
                                 <SwiperCard data={element} key={index} />

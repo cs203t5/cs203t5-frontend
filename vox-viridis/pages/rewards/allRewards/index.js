@@ -44,9 +44,13 @@ function Index() {
                         Rewards
                     </div>
                     <Row xs={1} md={3} className="g-4">
-                        {data.map((element, index) => {
-                            return <RewardCard data={element} key={index} />;
-                        })}
+                        {data &&
+                            data.length !== undefined &&
+                            data.map((element, index) => {
+                                return (
+                                    <RewardCard data={element} key={index} />
+                                );
+                            })}
                     </Row>
                 </div>
             </div>

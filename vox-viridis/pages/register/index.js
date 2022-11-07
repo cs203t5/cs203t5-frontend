@@ -70,9 +70,8 @@ const Register = () => {
                 case "password":
                     if (!value) {
                         stateObj[name] = "Please enter Password.";
-                    } else if (/^[ A-Za-z0-9_@./#&+-]*$/.test(value)) {
-                        stateObj[name] =
-                            "Password must be alphanumeric and at least";
+                    } else if (!/^[ A-Za-z0-9_@./#&+-]*$/.test(value)) {
+                        stateObj[name] = "Password must be alphanumeric";
                     } else if (
                         inputValues.confirmPassword &&
                         value !== inputValues.confirmPassword

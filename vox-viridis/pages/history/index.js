@@ -40,7 +40,7 @@ function Index() {
                     <HistoryCard state={"completed"} />
                     <HistoryCard state={"upcoming"} />
                     <HistoryCard state={"ongoing"} /> */}
-                    {data.length !== 0 ? (
+                    {!data && data.length !== 0 ? (
                         data.map((history, i) => {
                             return (
                                 <HistoryCard
