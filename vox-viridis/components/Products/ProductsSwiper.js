@@ -13,16 +13,10 @@ import Instance from "../../services/axiosInstance";
 import { SwiperCard } from "./SwiperCard";
 
 function RewardsSwiper(props) {
-    console.log(props);
     const router = useRouter();
 
     const showViewAll = () => {
-        if (props.header.title === "Rewards") {
-            router.push("/rewards/allRewards");
-            return;
-        } else if (props.header.title === "Shops") {
-            router.push("/rewards/allShops");
-        }
+        router.push("/marketplace/allProducts");
     };
 
     return (

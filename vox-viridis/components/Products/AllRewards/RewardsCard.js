@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Card, Button, Col } from "react-bootstrap";
 import { useLoginContext } from "../../context/loginContext";
 
-function RewardCard(props) {
+function RewardsCard(props) {
     const router = useRouter();
     const { sharedState, useSharedState } = useLoginContext();
     const [rewardId, setrewardId] = useState("");
@@ -63,4 +63,4 @@ function RewardCard(props) {
     );
 }
 
-export default RewardCard;
+export default RewardsCard;

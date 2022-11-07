@@ -12,17 +12,26 @@ function Index() {
     const router = useRouter();
     const { sharedState, setSharedState } = useLoginContext();
     const [data, setData] = useState([]);
+    const [points, setPoints] = useState(0);
 
     useEffect(() => {
-        if (sharedState.token === "") {
-            router.push("/unauthorised");
-        }
-        Instance.get("/reward")
+        Instance.get("/products")
             .then((response) => {
-                setData(response.data.elements);
+                setData(response.data);
             })
             .catch((e) => {
                 console.log(e);
+            });
+
+        Instance.get("/participation/myPoints", {
+            headers: { Authorization: `Bearer ${sharedState.token}` },
+        })
+            .then((response) => {
+                console.log(response);
+                setPoints(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
             });
     }, []);
     return (
@@ -41,7 +50,16 @@ function Index() {
                             fontSize: "3em",
                         }}
                     >
-                        Rewards
+                        Products
+                    </div>
+                    <div
+                        className="my-4 ms-2"
+                        style={{
+                            fontWeight: "bold",
+                            fontSize: "1.5em",
+                        }}
+                    >
+                        You currently have {points} points
                     </div>
                     <Row xs={1} md={3} className="g-4">
                         {data &&

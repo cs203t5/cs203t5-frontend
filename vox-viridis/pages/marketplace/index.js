@@ -26,14 +26,14 @@ const Marketplace = () => {
                 console.log(e);
             });
 
-        Instance.get(`/users/${sharedState.username}`, {
+        Instance.get(`/participation/myPoints`, {
             headers: { Authorization: `Bearer ${sharedState.token}` },
         })
             .then((response) => {
-                console.log("hi", response);
-                setPoints(response.data.points);
+                setPoints(response.data);
             })
             .catch((e) => {
+                console.log("hello");
                 console.log(e);
             });
     }, []);
