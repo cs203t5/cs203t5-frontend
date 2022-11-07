@@ -44,6 +44,7 @@ const CampaignContent = () => {
                     location: response.data.location,
                     terms: response.data.rewards.tnc,
                     rewardId: response.data.rewards.id,
+                    address: response.data.address,
                     duration: `${response.data.startDate.split("T")[0]}- ${
                         response.data.endDate.split("T")[0]
                     } `,
@@ -82,6 +83,7 @@ const CampaignContent = () => {
                     <img
                         src={campaign.campaignImage}
                         className="img-fluid w-50 ms-auto me-auto"
+                        style={{ minHeight: "250px" }}
                     />
                 </div>
             </div>
@@ -146,7 +148,7 @@ const CampaignContent = () => {
                         textDecoration: "underline",
                     }}
                 >
-                    Rewards:
+                    Description:
                 </p>
 
                 <p
@@ -172,6 +174,23 @@ const CampaignContent = () => {
                     }}
                 >
                     {campaign.location}
+                </p>
+
+                <p
+                    style={{
+                        fontSize: "30px",
+                        textDecoration: "underline",
+                    }}
+                >
+                    Address
+                </p>
+
+                <p
+                    style={{
+                        fontSize: "30px",
+                    }}
+                >
+                    {campaign.address}
                 </p>
 
                 <p

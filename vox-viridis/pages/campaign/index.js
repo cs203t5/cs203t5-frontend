@@ -29,7 +29,7 @@ const Campaign = () => {
                     allCamppaign.push(campaign2);
                     campaigns.push(allCamppaign);
                 }
-                campaigns.reverse();
+                // campaigns.reverse();
                 setdata(campaigns);
             })
             .catch((error) => {

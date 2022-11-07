@@ -62,9 +62,8 @@ function Index() {
 export default Index;
 
 function HistoryCard(props) {
-    console.log(props);
-    const randomDate = ["12/45/56", "01/12/2022", "02/12/2022", "30/10/2022"];
-    const random = Math.floor(Math.random() * randomDate.length);
+    const { sharedState, setSharedState } = useLoginContext();
+
     return (
         <div
             className="row d-flex mb-3"
@@ -108,7 +107,7 @@ function HistoryCard(props) {
                             />
                         </div>
                         <div className="col-8" style={{ alignSelf: "center" }}>
-                            {randomDate[random]}
+                            {props.data.participatedOn.split("T")[0]}
                         </div>
                     </div>
                 </div>
