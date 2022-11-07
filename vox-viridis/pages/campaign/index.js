@@ -19,7 +19,7 @@ const Campaign = () => {
             .get("campaign")
             .then((response) => {
                 console.log(response);
-                const everything = response.data;
+                const everything = response.data.elements;
                 const campaigns = [];
                 for (let i = 0; i < everything.length; i += 2) {
                     const campaign1 = everything[i];

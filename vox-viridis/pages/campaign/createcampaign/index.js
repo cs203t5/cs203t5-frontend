@@ -464,7 +464,7 @@ const CreateCampaign = () => {
                                     </div>
                                 </div>
                                 <div className="row pt-3">
-                                    <div className="col-6">
+                                    <div className="col-5">
                                         <div
                                             className="col lg-12"
                                             style={{
@@ -495,7 +495,7 @@ const CreateCampaign = () => {
                                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                                         </Form.Group>
                                     </div>
-                                    <div className="col-6">
+                                    <div className="col-7">
                                         <div
                                             className="col lg-12"
                                             style={{
@@ -541,7 +541,7 @@ const CreateCampaign = () => {
                                         >
                                             <Form.Select
                                                 required
-                                                className="form-select"
+                                                type="form-select"
                                                 aria-label="Default select example"
                                                 onChange={onInputChange}
                                                 name="rewardType"

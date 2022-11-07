@@ -26,12 +26,12 @@ const ModifyCampaign = () => {
             .then(async ({ data }) => {
                 let values = {
                     title: data.title,
-                    startDate: data.startDate,
-                    endDate: data.endDate,
+                    startDate: data.startDate.split("T")[0],
+                    endDate: data.endDate.split("T")[0],
                     address: data.address,
                     location: data.location,
-                    rewardName: data.rewardName,
-                    rewardType: data.rewardType,
+                    rewardName: data.rewards.rewardName,
+                    rewardType: data.rewards.rewardType,
                 };
                 setInputValues(values);
                 setShow(true);
@@ -47,6 +47,9 @@ const ModifyCampaign = () => {
         location: "",
         rewardName: "",
         rewardType: "",
+        rewardId: "",
+        goal: "",
+        tnc: "",
     });
 
     useEffect(() => {
@@ -61,15 +64,17 @@ const ModifyCampaign = () => {
     const onInputChange = (e) => {
         let { name, value } = e.target;
         if (name === "displayEndDate" || name === "displayStartDate") {
+
             let temp = "startDate";
             if (name === "displayEndDate") {
                 temp = "endDate";
             }
             setInputValues((prev) => ({
                 ...prev,
-                [name]: value,
-                [temp]: value.split("-").reverse().join("-") + ` 12:00`,
+                [temp]: value,
+                [name]: value.split("-").reverse().join("-") + `T12:00`,
             }));
+            console.log(inputValues.displayStartDate);
         } else {
             setInputValues((prev) => ({
                 ...prev,
@@ -87,7 +92,7 @@ const ModifyCampaign = () => {
                 },
             })
             .then((arr) => {
-                console.log(arr.data);
+                console.log("data", arr.data);
                 let records = [];
                 arr.data.map((record) => {
                     records.push({
@@ -96,8 +101,11 @@ const ModifyCampaign = () => {
                         endDate: record.endDate,
                         address: record.address,
                         location: record.location,
-                        reward: record.rewardName,
-                        rewardType: record.rewardType,
+                        rewardName: record.rewards.rewardName,
+                        rewardType: record.rewards.rewardType,
+                        rewardId: record.rewards.id,
+                        goal: record.rewards.goal,
+                        tnc: record.rewards.tnc,
                         id: record.id,
                     });
                 });
@@ -113,12 +121,12 @@ const ModifyCampaign = () => {
         },
         {
             name: "Start Date",
-            selector: (row) => row.startDate,
+            selector: (row) => row.startDate.split("T")[0],
             sortable: true,
         },
         {
             name: "End Date",
-            selector: (row) => row.endDate,
+            selector: (row) => row.endDate.split("T")[0],
             sortable: true,
         },
         {
@@ -175,30 +183,31 @@ const ModifyCampaign = () => {
         let id = currentId;
         console.log(currentId);
         const formData = new FormData();
+        let rewards = data.filter((record) => currentId === record.id)[0];
+
         const rewardData = {
             rewardName: "",
-            goal: 0,
-            tnc: "",
             rewardType: "",
+            goal: rewards.goal,
+            tnc: rewards.tnc,
         };
 
-        inputValues["goal"] = parseInt(inputValues["goal"]);
+       // console.log("rewardData", rewardData);
 
         inputValues["rewardType"] = inputValues.rewardType.toUpperCase();
 
         Object.keys(inputValues).forEach((key) => {
-            if (
-                key === "rewardName" ||
-                key === "goal" ||
-                key === "tnc" ||
-                key === "rewardType"
-            ) {
+            if (key === "rewardName" || key === "rewardType") {
                 rewardData[key] = inputValues[key];
+            }else if (key==="startDate" || key ==="endDate"){
+                formData.append(key, inputValues[key].split("-").reverse().join("-") +" 12:00");
             } else {
                 formData.append(key, inputValues[key]);
             }
         });
-        formData.append("reward", JSON.stringify(rewardData));
+
+        console.log(rewardData);
+        console.log(formData);
 
         instance
             .put(`/campaign/${id}`, formData, {
@@ -210,6 +219,20 @@ const ModifyCampaign = () => {
             .then((arr) => {
                 console.log(arr.data);
                 handleClose();
+                setRefresh(true);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+
+        instance
+            .put(`/reward/${rewards.rewardId}`, rewardData, {
+                headers: {
+                    Authorization: `Bearer ${sharedState.token}`,
+                },
+            })
+            .then((arr) => {
+                console.log(arr.data);
                 setRefresh(true);
             })
             .catch((e) => {
@@ -269,7 +292,7 @@ const ModifyCampaign = () => {
                             <Form.Control
                                 type="date"
                                 name="displayStartDate"
-                                value={inputValues.displayStartDate}
+                                value={inputValues.startDate}
                                 onChange={onInputChange}
                             />
                         </Form.Group>
@@ -278,7 +301,7 @@ const ModifyCampaign = () => {
                             <Form.Control
                                 type="date"
                                 name="displayEndDate"
-                                value={inputValues.displayEndDate}
+                                value={inputValues.endDate}
                                 onChange={onInputChange}
                             />
                         </Form.Group>
@@ -293,30 +316,41 @@ const ModifyCampaign = () => {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Location</Form.Label>
-                            <Form.Control
-                                type="text"
+                            <Form.Select
+                                type="form-select"
+                                aria-label="Default select example"
                                 name="location"
                                 value={inputValues.location}
                                 onChange={onInputChange}
-                            />
+                            >
+                                <option value="North">North</option>
+                                <option value="East">East</option>
+                                <option value="South">South</option>
+                                <option value="West">West</option>
+                                <option value="Central">Central</option>
+                            </Form.Select>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Reward</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="reward"
-                                value={inputValues.reward}
+                                name="rewardName"
+                                value={inputValues.rewardName}
                                 onChange={onInputChange}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Reward Type</Form.Label>
-                            <Form.Control
-                                type="text"
+                            <Form.Select
+                                type="form-select"
+                                aria-label="Default select example"
                                 name="rewardType"
                                 value={inputValues.rewardType}
                                 onChange={onInputChange}
-                            />
+                            >
+                                <option value="POINTS">Points</option>
+                                <option value="CARDS">Cards</option>
+                            </Form.Select>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
