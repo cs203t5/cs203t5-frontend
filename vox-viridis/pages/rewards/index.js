@@ -36,6 +36,16 @@ function Index() {
             >
                 <Navbar />
                 <RewardsSwiper header={{ title: "Rewards" }} data={data} />
+                <button
+                    type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={() => {
+                        router.push("/marketplace");
+                    }}
+                    style={{ marginLeft: "1.5rem", marginTop: "40px" }}
+                >
+                    Visit Marketplace
+                </button>
             </div>
             <Footer />
         </div>

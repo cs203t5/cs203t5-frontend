@@ -10,6 +10,7 @@ export function AppWrapper({ children }) {
     const [sharedState, setSharedState] = useState({
         token: "",
         role: undefined,
+        username: "",
     });
 
     useEffect(() => {
