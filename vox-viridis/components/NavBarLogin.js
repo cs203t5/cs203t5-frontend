@@ -42,7 +42,11 @@ function NavBarLogin(props) {
         )
             .then(function (response) {
                 localStorage.setItem("token", response.data);
-                setSharedState({ ...sharedState, token: response.data });
+                setSharedState({
+                    ...sharedState,
+                    token: response.data,
+                    username: inputValues.username,
+                });
             })
             .catch(function (error) {
                 console.log(error.response.status);
