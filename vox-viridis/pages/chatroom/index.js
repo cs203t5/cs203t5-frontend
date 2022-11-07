@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import "./index.module.css";
+import { border } from "@mui/system";
 
 var stompClient = null;
 const ChatRoom = () => {
@@ -169,30 +170,65 @@ const ChatRoom = () => {
                         >
                             <ul
                                 className="chat-messages"
-                                style={{ height: "90%" }}
+                                style={{
+                                    height: "90%",
+                                    overflow: "auto",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    paddingRight: "2em",
+                                }}
                             >
                                 {publicChats.map((chat, index) => (
-                                    <li className="message" key={index}>
-                                        {chat.senderName !==
-                                            userData.username && (
-                                            <div className="avatar">
-                                                {chat.senderName}
-                                            </div>
-                                        )}
-                                        <div className="message-data">
-                                            {chat.message}
+                                    <li
+                                        className="message"
+                                        key={index}
+                                        style={{ listStyle: "none" }}
+                                    >
+                                        <div
+                                            style={{
+                                                width: "200px",
+                                                border: "1px solid grey",
+                                                borderRadius: "5px",
+                                                paddingLeft: "10px",
+                                                paddingRight: "10px",
+                                                marginTop: "10px",
+                                                display: "flex",
+                                                flexDirection: "column",
+                                            }}
+                                        >
+                                            <span className="message-data">
+                                                {chat.message}
+                                            </span>
+                                            {chat.senderName ===
+                                                userData.username && (
+                                                <span
+                                                    className="avatar self"
+                                                    style={{
+                                                        fontSize: "20px",
+                                                        alignSelf: "flex-end",
+                                                    }}
+                                                >
+                                                    {chat.senderName}
+                                                </span>
+                                            )}
+                                            {chat.senderName !==
+                                                userData.username && (
+                                                <span
+                                                    className="avatar"
+                                                    style={{
+                                                        fontSize: "20px",
+                                                        alignSelf: "flex-end",
+                                                    }}
+                                                >
+                                                    {chat.senderName}
+                                                </span>
+                                            )}
                                         </div>
-                                        {chat.senderName ===
-                                            userData.username && (
-                                            <div className="avatar self">
-                                                {chat.senderName}
-                                            </div>
-                                        )}
                                     </li>
                                 ))}
                             </ul>
                             <div
-                                className="send-message d-flex align-items-center align-self-center"
+                                className="send-message d-flex align-items-center align-self-center w-100 justify-content-center"
                                 style={{ gap: "10px" }}
                             >
                                 <input
@@ -203,6 +239,8 @@ const ChatRoom = () => {
                                     style={{
                                         border: "1px solid grey",
                                         borderRadius: "5px",
+                                        width: "80%",
+                                        paddingLeft: "20px",
                                     }}
                                     value={userData.message}
                                     onChange={handleValue}
@@ -222,7 +260,11 @@ const ChatRoom = () => {
                             <ul className="chat-messages">
                                 {[...privateChats.get(tab)].map(
                                     (chat, index) => (
-                                        <li className="message" key={index}>
+                                        <li
+                                            className="message"
+                                            key={index}
+                                            style={{ listStyle: "none" }}
+                                        >
                                             {chat.senderName !==
                                                 userData.username && (
                                                 <div className="avatar">
