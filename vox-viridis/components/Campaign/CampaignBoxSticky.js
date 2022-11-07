@@ -38,7 +38,7 @@ function CampaignBoxSticky(props) {
                             ) : (
                                 <div className="col-3 p-0 h-25" style={{}}>
                                     <img
-                                        src="../../../smu-logo.jpeg"
+                                        src="https://www.smu.edu.sg/sites/default/files/smu-logo.jpg"
                                         className="img-fluid w-75 mt-2 ms-2"
                                         style={{
                                             width: "100px",
@@ -165,7 +165,7 @@ function CampaignBoxSticky(props) {
                                             style={{}}
                                         >
                                             <img
-                                                src="../../../smu-logo.jpeg"
+                                                src="https://www.smu.edu.sg/sites/default/files/smu-logo.jpg"
                                                 className="img-fluid w-75 mt-2 ms-2"
                                                 style={{
                                                     width: "100px",
