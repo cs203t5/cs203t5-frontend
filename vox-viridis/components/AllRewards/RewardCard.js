@@ -24,14 +24,25 @@ function RewardCard(props) {
     return (
         <Col>
             <Card className="" style={{ width: "auto", height: "700px" }}>
-                <Card.Img
-                    className="mh-50 h-50"
-                    variant="top"
-                    src={props.data.campaignImage}
-                    style={{
-                        objectFit: "cover",
-                    }}
-                />
+                {props.data.campaignImage !== null ? (
+                    <Card.Img
+                        className="mh-50 h-50"
+                        variant="top"
+                        src={props.data.campaignImage}
+                        style={{
+                            objectFit: "cover",
+                        }}
+                    />
+                ) : (
+                    <Card.Img
+                        className="mh-50 h-50"
+                        variant="top"
+                        src="../../smu-logo.jpeg"
+                        style={{
+                            objectFit: "cover",
+                        }}
+                    />
+                )}
                 <Card.Body>
                     <Card.Title>{props.data.campaignTitle}</Card.Title>
                     <div className="row h-50 h-md-50">

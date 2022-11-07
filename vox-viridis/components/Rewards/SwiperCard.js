@@ -38,15 +38,27 @@ export function SwiperCard(props) {
                     showOverlay(false);
                 }}
             >
-                <Card.Img
-                    variant="top"
-                    src={props.data.campaignImage}
-                    style={{
-                        objectFit: "cover",
-                        opacity: opacity.imageOpacity,
-                        height: "300px",
-                    }}
-                />
+                {props.data.campaignImage !== null ? (
+                    <Card.Img
+                        variant="top"
+                        src={props.data.campaignImage}
+                        style={{
+                            objectFit: "cover",
+                            opacity: opacity.imageOpacity,
+                            height: "300px",
+                        }}
+                    />
+                ) : (
+                    <Card.Img
+                        variant="top"
+                        src="../../smu-logo.jpeg"
+                        style={{
+                            objectFit: "cover",
+                            opacity: opacity.imageOpacity,
+                            height: "300px",
+                        }}
+                    />
+                )}
                 <Card.ImgOverlay
                     className="d-flex align-items-end"
                     style={{ opacity: opacity.textOpacity }}
