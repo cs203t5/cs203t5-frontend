@@ -37,7 +37,7 @@ function RewardCard(props) {
                     <Card.Img
                         className="mh-50 h-50"
                         variant="top"
-                        src="../../smu-logo.jpeg"
+                        src="https://www.smu.edu.sg/sites/default/files/smu-logo.jpg"
                         style={{
                             objectFit: "cover",
                         }}

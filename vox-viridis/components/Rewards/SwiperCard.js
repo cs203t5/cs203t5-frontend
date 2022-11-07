@@ -51,7 +51,7 @@ export function SwiperCard(props) {
                 ) : (
                     <Card.Img
                         variant="top"
-                        src="../../smu-logo.jpeg"
+                        src="https://www.smu.edu.sg/sites/default/files/smu-logo.jpg"
                         style={{
                             objectFit: "cover",
                             opacity: opacity.imageOpacity,

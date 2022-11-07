@@ -98,7 +98,7 @@ const CampaignContent = () => {
                             />
                         ) : (
                             <img
-                                src="../../smu-logo.jpeg"
+                                src="https://www.smu.edu.sg/sites/default/files/smu-logo.jpg"
                                 class="card-img-top"
                                 alt="..."
                             />
