@@ -25,7 +25,6 @@ const CreateCampaign = () => {
         goal: "",
         rewardType: "",
         tnc: "",
-        rewardImage: null,
     });
     const [errorValues, setErrorValues] = useState({});
     const { sharedState, setSharedState } = useLoginContext();
@@ -133,7 +132,7 @@ const CreateCampaign = () => {
                     location: "",
                     rewardName: "",
                     rewardType: "",
-                    rewardImage: null,
+                    imageFile: null,
                     goal: "",
                     tnc: "",
                 });
@@ -152,6 +151,9 @@ const CreateCampaign = () => {
                 case "title":
                     if (!value) {
                         stateObj[name] = "Please enter your Campaign Name.";
+                    } else if (value.length < 5) {
+                        stateObj[name] =
+                            "Campaign Name must be at least 5 characters!";
                     }
                     break;
 
