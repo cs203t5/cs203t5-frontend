@@ -28,7 +28,7 @@ const CampaignContent = () => {
     const [showUnsuccessfulAppointment, setShowUnsuccessfulAppointment] =
         useState(false);
     const { sharedState, setSharedState } = useLoginContext();
-
+    console.log(sharedState.role === "CONSUMER");
     useEffect(() => {
         if (!router.isReady) return;
         instance
@@ -117,7 +117,7 @@ const CampaignContent = () => {
                     </p>
                 </div>
             </div>
-            {sharedState.Role === "CONSUMER" && (
+            {sharedState.role === "CONSUMER" && (
                 <div className="row mx-4 my-5">
                     <button
                         type="button"
