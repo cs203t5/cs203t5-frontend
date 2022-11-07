@@ -55,7 +55,7 @@ const CreateCampaign = () => {
             console.log(e.target.files[0]);
             setInputValues((prev) => ({
                 ...prev,
-                campaignImage: e.target.files[0],
+                imageFile: e.target.files[0],
             }));
         } else {
             setInputValues((prev) => ({
