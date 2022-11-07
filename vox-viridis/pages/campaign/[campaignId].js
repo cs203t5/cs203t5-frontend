@@ -19,6 +19,7 @@ const CampaignContent = () => {
         location: "",
         duration: "",
         terms: "",
+        rewardId: "",
     });
     const router = useRouter();
     const { campaignId } = router.query;
@@ -33,6 +34,7 @@ const CampaignContent = () => {
         instance
             .get(`/campaign/${campaignId}`)
             .then((response) => {
+                console.log(response.data);
                 setCampaign({
                     campaignImage: response.data.imageUrl,
                     companyImage: response.data.companyImage,
@@ -41,6 +43,7 @@ const CampaignContent = () => {
                     description: response.data.rewards.campaignDescription,
                     location: response.data.location,
                     terms: response.data.rewards.tnc,
+                    rewardId: response.data.rewards.id,
                     duration: `${response.data.startDate.split("T")[0]}- ${
                         response.data.endDate.split("T")[0]
                     } `,
@@ -52,9 +55,10 @@ const CampaignContent = () => {
     }, [router.isReady]);
 
     const makeAppointment = () => {
+        console.log(campaign.rewardId);
         instance
             .post(
-                `/participation/${router.query.campaignId}`,
+                `/participation/${campaign.rewardId}`,
                 {},
                 {
                     headers: { Authorization: `Bearer ${sharedState.token}` },
@@ -77,7 +81,7 @@ const CampaignContent = () => {
                 <div className="col-12" style={{ textAlign: "justify" }}>
                     <img
                         src={campaign.campaignImage}
-                        className="img-fluid w-100"
+                        className="img-fluid w-50 ms-auto me-auto"
                     />
                 </div>
             </div>
@@ -113,15 +117,17 @@ const CampaignContent = () => {
                     </p>
                 </div>
             </div>
-            <div className="row mx-4 my-5">
-                <button
-                    type="button"
-                    class="btn btn-primary btn-sm"
-                    onClick={makeAppointment}
-                >
-                    Make an Appointment
-                </button>
-            </div>
+            {sharedState.Role === "CONSUMER" && (
+                <div className="row mx-4 my-5">
+                    <button
+                        type="button"
+                        class="btn btn-primary btn-sm"
+                        onClick={makeAppointment}
+                    >
+                        Make an Appointment
+                    </button>
+                </div>
+            )}
             <div
                 className="row mx-4 mt-5"
                 style={{ backgroundColor: "rgb(243,243,243)" }}
