@@ -22,7 +22,7 @@ const ChatRoom = () => {
     };
 
     const registerUser = () => {
-        let Sock = new SockJS("http://localhost:8080/api/ws");
+        let Sock = new SockJS("https://voxviridis.ml/api/ws");
         stompClient = over(Sock);
         stompClient.connect({}, onConnected, onError);
     };
