@@ -52,7 +52,6 @@ function CampaignBoxSticky(props) {
                                     />
                                 </div>
                             )}
-                            {console.log(props.campaignData[0].companyImage)}
                             <div
                                 className="col-8 p-0 ms-2 h-25 mt-sm-3 mt-2 text-align-center"
                                 style={{ fontWeight: "600" }}
@@ -77,7 +76,9 @@ function CampaignBoxSticky(props) {
                                 style={{ alignSelf: "center" }}
                             >
                                 {props.campaignData[0]?.rewards?.rewardName ===
-                                null
+                                    null ||
+                                props.campaignData[0]?.rewards?.rewardName ===
+                                    undefined
                                     ? "Free Face Mask"
                                     : props.campaignData[0]?.rewards
                                           ?.rewardName}
@@ -208,7 +209,9 @@ function CampaignBoxSticky(props) {
                                         style={{ alignSelf: "center" }}
                                     >
                                         {props.campaignData[1]?.rewards
-                                            ?.rewardName === null
+                                            ?.rewardName === null ||
+                                        props.campaignData[1]?.rewards
+                                            ?.rewardName === undefined
                                             ? "Free Face Mask"
                                             : props.campaignData[1]?.rewards
                                                   ?.rewardName}
