@@ -4,11 +4,15 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <a
-                href="https://franky-lim24.github.io/"
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{
+                    textDecoration: "underline",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                }}
             >
-                Powered by Franky Lim
+                Vox-Viridis
             </a>
         </footer>
     );
