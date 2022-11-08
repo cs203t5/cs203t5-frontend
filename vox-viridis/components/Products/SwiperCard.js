@@ -23,8 +23,17 @@ export function SwiperCard(props) {
         })
             .then((response) => {
                 setPoints(response.data);
-                if (response.data < props.data.points) {
+                console.log(response.data);
+                console.log(props.data.points);
+                if (
+                    !props.data.points ||
+                    response.data.length === 0 ||
+                    response.data < props.data.points
+                ) {
+                    console.log("object");
                     setDisableConfirmation(true);
+                } else {
+                    console.log(response.data);
                 }
             })
             .catch((err) => {
