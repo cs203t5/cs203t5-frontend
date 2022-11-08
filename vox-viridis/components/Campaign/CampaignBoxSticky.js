@@ -76,7 +76,6 @@ function CampaignBoxSticky(props) {
                                 style={{ alignSelf: "center" }}
                             >
                                 Free Face Mask
-                                {/* {props.campaignData[0].rewards.rewardName} */}
                             </div>
                         </div>
                         <div className="row w-100 mt-2">
@@ -204,10 +203,6 @@ function CampaignBoxSticky(props) {
                                         style={{ alignSelf: "center" }}
                                     >
                                         Free Face Mask
-                                        {/* {
-                                            props.campaignData[1].rewards
-                                                .rewardName
-                                        } */}
                                     </div>
                                 </div>
                                 <div className="row w-100 mt-2">
