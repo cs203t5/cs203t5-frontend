@@ -37,7 +37,7 @@ const Analysis = () => {
                 display: true,
                 text: "Participations by Category",
             },
-            scale: {
+            scales: {
                 y: {
                     ticks: {
                         callback: function (val, index) {
