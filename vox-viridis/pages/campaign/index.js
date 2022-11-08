@@ -9,16 +9,14 @@ import CampaignBoxSticky from "../../components/Campaign/CampaignBoxSticky";
 import { useEffect } from "react";
 
 import { useState } from "react";
-import instance from "../../services/axiosInstance";
+import Instance from "../../services/axiosInstance";
 
 const Campaign = () => {
     const [data, setdata] = useState([]);
 
     useEffect(() => {
-        instance
-            .get("campaign")
+        Instance.get("campaign")
             .then((response) => {
-                console.log(response);
                 const everything = response.data.elements;
                 const campaigns = [];
                 for (let i = 0; i < everything.length; i += 2) {

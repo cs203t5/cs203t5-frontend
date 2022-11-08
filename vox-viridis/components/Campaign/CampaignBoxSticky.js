@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 function CampaignBoxSticky(props) {
+    console.log(props);
     return (
         <div className="row p-0 mb-5 gap-5 mx-3">
             <div
@@ -74,7 +75,7 @@ function CampaignBoxSticky(props) {
                                 className="col-8"
                                 style={{ alignSelf: "center" }}
                             >
-                                Free Face Mask
+                                {props.campaignData[0].rewards.rewardName}
                             </div>
                         </div>
                         <div className="row w-100 mt-2">
@@ -201,7 +202,10 @@ function CampaignBoxSticky(props) {
                                         className="col-8"
                                         style={{ alignSelf: "center" }}
                                     >
-                                        Free Face Mask
+                                        {
+                                            props.campaignData[1].rewards
+                                                .rewardName
+                                        }
                                     </div>
                                 </div>
                                 <div className="row w-100 mt-2">
