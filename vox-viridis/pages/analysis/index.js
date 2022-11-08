@@ -37,6 +37,15 @@ const Analysis = () => {
                 display: true,
                 text: "Participations by Category",
             },
+            scale: {
+                y: {
+                    ticks: {
+                        callback: function (val, index) {
+                            return "${this.getLabelForValue(Number(val))}%";
+                        },
+                    },
+                },
+            },
         },
     };
 
