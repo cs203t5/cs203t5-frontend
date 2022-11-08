@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useLoginContext } from "../../context/loginContext";
 import Instance from "../../services/axiosInstance";
-import marketplace from "../../public/marketplace/marketplace.svg";
 
 const Marketplace = () => {
     const [data, setData] = useState();

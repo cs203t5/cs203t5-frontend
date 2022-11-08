@@ -90,6 +90,18 @@ const Navbar = () => {
                                         </IconButton>
                                     </Link>
                                 )}
+                            {sharedState.token !== "" &&
+                                sharedState.role === "ADMIN" && (
+                                    <Link href="/analysis">
+                                        <IconButton
+                                            sx={{
+                                                color: "black",
+                                            }}
+                                        >
+                                            Analysis
+                                        </IconButton>
+                                    </Link>
+                                )}
                         </Nav>
 
                         <Nav
