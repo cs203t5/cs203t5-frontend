@@ -71,6 +71,7 @@ const CreateCampaign = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [show2, setShow2] = useState(false);
+    const [show3, setShow3] = useState(false);
 
     const submitContact = (e) => {
         const form = e.currentTarget;
@@ -139,6 +140,10 @@ const CreateCampaign = () => {
                 setShow2(true);
             })
             .catch((e) => {
+                if (e.response.status === 409) {
+                    setShow3(true);
+                    handleClose();
+                }
                 console.log(e);
             });
     };
@@ -659,6 +664,21 @@ const CreateCampaign = () => {
                     <strong className="me-auto">Vox Viridis</strong>
                 </Toast.Header>
                 <Toast.Body>Campaign Created Successfully!</Toast.Body>
+            </Toast>
+            <Toast
+                onClose={() => setShow3(false)}
+                show={show3}
+                delay={3000}
+                style={{ position: "fixed", bottom: "20px", right: "20px" }}
+            >
+                <Toast.Header>
+                    <strong className="me-auto">Vox Viridis</strong>
+                </Toast.Header>
+                <Toast.Body>
+                    Unsuccessful : Unrelated campaign containing no green
+                    content.
+                    Please contact the administrators for more information
+                </Toast.Body>
             </Toast>
         </div>
     );
