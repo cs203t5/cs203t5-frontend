@@ -7,12 +7,15 @@ import { useLoginContext } from "../../../context/loginContext";
 import { PencilSquare, Trash } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
 import { Button, Form } from "react-bootstrap";
+import Toast from "react-bootstrap/Toast";
 import SelectInput from "@mui/material/Select/SelectInput";
 
 const ModifyCampaign = () => {
     const { sharedState, setSharedState } = useLoginContext();
     const [data, setData] = useState([]);
     const [show, setShow] = useState(false);
+    const [show2, setShow2] = useState(false);
+    const [show3, setShow3] = useState(false);
     const [currentId, setCurrentId] = useState();
     const [refresh, setRefresh] = useState(false);
     const handleClose = () => setShow(false);
@@ -192,8 +195,6 @@ const ModifyCampaign = () => {
             tnc: rewards.tnc,
         };
 
-       // console.log("rewardData", rewardData);
-
         inputValues["rewardType"] = inputValues.rewardType.toUpperCase();
 
         Object.keys(inputValues).forEach((key) => {
@@ -222,6 +223,12 @@ const ModifyCampaign = () => {
                 setRefresh(true);
             })
             .catch((e) => {
+                if (e.response.status === 409) {
+                    setShow2(true);
+                } else{
+                    setShow3(true);
+                }
+                handleClose();
                 console.log(e);
             });
 
@@ -236,6 +243,12 @@ const ModifyCampaign = () => {
                 setRefresh(true);
             })
             .catch((e) => {
+                if (e.response.status === 409) {
+                    setShow2(true);
+                } else{
+                    setShow3(true);
+                }
+                handleClose();
                 console.log(e);
             });
     };
@@ -251,6 +264,7 @@ const ModifyCampaign = () => {
                 setData(data.filter((row) => row.id !== id));
             })
             .catch((e) => {
+                setShow3(true);
                 console.log(e);
             });
     };
@@ -363,6 +377,34 @@ const ModifyCampaign = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+            <Toast
+                onClose={() => setShow2(false)}
+                show={show2}
+                delay={3000}
+                style={{ position: "fixed", bottom: "20px", right: "20px" }}
+            >
+                <Toast.Header>
+                    <strong className="me-auto">Vox Viridis</strong>
+                </Toast.Header>
+                <Toast.Body>
+                    Unsuccessful : Unrelated campaign containing no green
+                    content.
+                    Contact the administrators for more information
+                </Toast.Body>
+            </Toast>
+            <Toast
+                onClose={() => setShow3(false)}
+                show={show3}
+                delay={3000}
+                style={{ position: "fixed", bottom: "20px", right: "20px" }}
+            >
+                <Toast.Header>
+                    <strong className="me-auto">Vox Viridis</strong>
+                </Toast.Header>
+                <Toast.Body>
+                    An unknown error has occurred. Please contact the adminstrators for more information
+                </Toast.Body>
+            </Toast>
         </div>
     );
 };
