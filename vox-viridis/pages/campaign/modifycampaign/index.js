@@ -223,7 +223,7 @@ const ModifyCampaign = () => {
                 setRefresh(true);
             })
             .catch((e) => {
-                if (e.response.status === 409) {
+                if (e.response.status === 400) {
                     setShow2(true);
                 } else{
                     setShow3(true);
@@ -243,7 +243,7 @@ const ModifyCampaign = () => {
                 setRefresh(true);
             })
             .catch((e) => {
-                if (e.response.status === 409) {
+                if (e.response.status === 400) {
                     setShow2(true);
                 } else{
                     setShow3(true);
